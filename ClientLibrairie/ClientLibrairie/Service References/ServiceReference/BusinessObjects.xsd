@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BusinessObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BusinessObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Affiliate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CardNum" type="xs:int" />
+      <xs:element minOccurs="0" name="CardValidity" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MainLibraryId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Affiliate" nillable="true" type="tns:Affiliate" />
+  <xs:complexType name="ArrayOfEmprunt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Emprunt" nillable="true" type="tns:Emprunt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmprunt" nillable="true" type="tns:ArrayOfEmprunt" />
+  <xs:complexType name="Emprunt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardNum" type="xs:int" />
+      <xs:element minOccurs="0" name="DailyPenalty" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Duration" type="xs:int" />
+      <xs:element minOccurs="0" name="Fee" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LibraryId" type="xs:int" />
+      <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnDte" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TarifName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VolumeTitle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Emprunt" nillable="true" type="tns:Emprunt" />
+  <xs:complexType name="ArrayOfLibrary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Library" nillable="true" type="tns:Library" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLibrary" nillable="true" type="tns:ArrayOfLibrary" />
+  <xs:complexType name="Library">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Library" nillable="true" type="tns:Library" />
+  <xs:complexType name="ArrayOfItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuyDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateEmprunt" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LibraryId" type="xs:int" />
+      <xs:element minOccurs="0" name="Localisation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VolumeId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
+  <xs:complexType name="Volume">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authors" nillable="true" type="tns:ArrayOfAuthor" />
+      <xs:element minOccurs="0" name="Cover" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Isbn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Volume" nillable="true" type="tns:Volume" />
+  <xs:complexType name="ArrayOfAuthor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Author" nillable="true" type="tns:Author" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuthor" nillable="true" type="tns:ArrayOfAuthor" />
+  <xs:complexType name="Author">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Author" nillable="true" type="tns:Author" />
+  <xs:complexType name="ArrayOfVolume">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Volume" nillable="true" type="tns:Volume" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVolume" nillable="true" type="tns:ArrayOfVolume" />
+  <xs:complexType name="ArrayOfTarif">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tarif" nillable="true" type="tns:Tarif" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTarif" nillable="true" type="tns:ArrayOfTarif" />
+  <xs:complexType name="Tarif">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DailyPenalty" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Duration" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Fee" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LibraryId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tarif" nillable="true" type="tns:Tarif" />
+</xs:schema>

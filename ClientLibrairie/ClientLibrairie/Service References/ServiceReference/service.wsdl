@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfLibrairie" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BusinessObjects" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IadminService_CheckIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIn" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_CheckIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_CheckIn_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q1:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAffiliateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateById" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAffiliateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAffiliateById_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q2:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAffiliateByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateByName" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAffiliateByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAffiliateByName_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q3:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetEmpruntsByAffiliate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliate" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetEmpruntsByAffiliate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetEmpruntsByAffiliate_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q4:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetEmpruntByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntByCode" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetEmpruntByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetEmpruntByCode_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q5:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetRetards_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRetards" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetRetards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRetardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetRetards_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q6:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetLibraries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLibraries" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetLibraries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLibrariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetLibraries_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q7:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetItemsByVolume_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsByVolume" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetItemsByVolume_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsByVolumeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetItemsByVolume_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q8:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetails" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeDetails_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q9:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeDetailsByIsbn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetailsByIsbn" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeDetailsByIsbn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetailsByIsbnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeDetailsByIsbn_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q10:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeByTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeByTitle" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeByTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeByTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumeByTitle_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q11:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumesByTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumesByTitle" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumesByTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumesByTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetVolumesByTitle_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q12:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetTarifsByLib_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTarifsByLib" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetTarifsByLib_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTarifsByLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetTarifsByLib_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q13:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAllAuthorsNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAuthorsNames" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAllAuthorsNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAuthorsNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_GetAllAuthorsNames_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q14:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_AddVolume_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVolume" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_AddVolume_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVolumeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_AddVolume_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q15:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_UpdateVolume_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVolume" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_UpdateVolume_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVolumeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_UpdateVolume_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q16:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_DeleteVolume_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVolume" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_DeleteVolume_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVolumeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_DeleteVolume_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q17:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_AddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddItem" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_AddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_AddItem_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q18:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_UpdateItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateItem" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_UpdateItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_UpdateItem_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q19:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_DeleteItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteItem" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_DeleteItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_DeleteItem_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q20:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_CloseEmprunt_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseEmprunt" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_CloseEmprunt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseEmpruntResponse" />
+  </wsdl:message>
+  <wsdl:message name="IadminService_CloseEmprunt_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/WcfLibrairie" name="detail" element="q21:CustomFault" />
+  </wsdl:message>
+  <wsdl:portType name="IadminService">
+    <wsdl:operation name="CheckIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/CheckIn" message="tns:IadminService_CheckIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/CheckInResponse" message="tns:IadminService_CheckIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/CheckInCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_CheckIn_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetAffiliateById" message="tns:IadminService_GetAffiliateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetAffiliateByIdResponse" message="tns:IadminService_GetAffiliateById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetAffiliateByIdCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetAffiliateById_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetAffiliateByName" message="tns:IadminService_GetAffiliateByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetAffiliateByNameResponse" message="tns:IadminService_GetAffiliateByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetAffiliateByNameCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetAffiliateByName_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntsByAffiliate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetEmpruntsByAffiliate" message="tns:IadminService_GetEmpruntsByAffiliate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetEmpruntsByAffiliateResponse" message="tns:IadminService_GetEmpruntsByAffiliate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetEmpruntsByAffiliateCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetEmpruntsByAffiliate_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetEmpruntByCode" message="tns:IadminService_GetEmpruntByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetEmpruntByCodeResponse" message="tns:IadminService_GetEmpruntByCode_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetEmpruntByCodeCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetEmpruntByCode_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRetards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetRetards" message="tns:IadminService_GetRetards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetRetardsResponse" message="tns:IadminService_GetRetards_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetRetardsCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetRetards_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLibraries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetLibraries" message="tns:IadminService_GetLibraries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetLibrariesResponse" message="tns:IadminService_GetLibraries_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetLibrariesCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetLibraries_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsByVolume">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetItemsByVolume" message="tns:IadminService_GetItemsByVolume_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetItemsByVolumeResponse" message="tns:IadminService_GetItemsByVolume_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetItemsByVolumeCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetItemsByVolume_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetVolumeDetails" message="tns:IadminService_GetVolumeDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetVolumeDetailsResponse" message="tns:IadminService_GetVolumeDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetVolumeDetailsCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetVolumeDetails_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetailsByIsbn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetVolumeDetailsByIsbn" message="tns:IadminService_GetVolumeDetailsByIsbn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetVolumeDetailsByIsbnResponse" message="tns:IadminService_GetVolumeDetailsByIsbn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetVolumeDetailsByIsbnCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetVolumeDetailsByIsbn_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeByTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetVolumeByTitle" message="tns:IadminService_GetVolumeByTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetVolumeByTitleResponse" message="tns:IadminService_GetVolumeByTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetVolumeByTitleCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetVolumeByTitle_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumesByTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetVolumesByTitle" message="tns:IadminService_GetVolumesByTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetVolumesByTitleResponse" message="tns:IadminService_GetVolumesByTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetVolumesByTitleCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetVolumesByTitle_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTarifsByLib">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetTarifsByLib" message="tns:IadminService_GetTarifsByLib_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetTarifsByLibResponse" message="tns:IadminService_GetTarifsByLib_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetTarifsByLibCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetTarifsByLib_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAuthorsNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/GetAllAuthorsNames" message="tns:IadminService_GetAllAuthorsNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/GetAllAuthorsNamesResponse" message="tns:IadminService_GetAllAuthorsNames_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/GetAllAuthorsNamesCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_GetAllAuthorsNames_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVolume">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/AddVolume" message="tns:IadminService_AddVolume_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/AddVolumeResponse" message="tns:IadminService_AddVolume_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/AddVolumeCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_AddVolume_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVolume">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/UpdateVolume" message="tns:IadminService_UpdateVolume_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/UpdateVolumeResponse" message="tns:IadminService_UpdateVolume_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/UpdateVolumeCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_UpdateVolume_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVolume">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/DeleteVolume" message="tns:IadminService_DeleteVolume_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/DeleteVolumeResponse" message="tns:IadminService_DeleteVolume_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/DeleteVolumeCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_DeleteVolume_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/AddItem" message="tns:IadminService_AddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/AddItemResponse" message="tns:IadminService_AddItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/AddItemCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_AddItem_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/UpdateItem" message="tns:IadminService_UpdateItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/UpdateItemResponse" message="tns:IadminService_UpdateItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/UpdateItemCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_UpdateItem_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/DeleteItem" message="tns:IadminService_DeleteItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/DeleteItemResponse" message="tns:IadminService_DeleteItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/DeleteItemCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_DeleteItem_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseEmprunt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IadminService/CloseEmprunt" message="tns:IadminService_CloseEmprunt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IadminService/CloseEmpruntResponse" message="tns:IadminService_CloseEmprunt_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IadminService/CloseEmpruntCustomFaultFault" name="CustomFaultFault" message="tns:IadminService_CloseEmprunt_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IadminService" type="tns:IadminService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckIn">
+      <soap:operation soapAction="http://tempuri.org/IadminService/CheckIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateById">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetAffiliateById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateByName">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetAffiliateByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntsByAffiliate">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetEmpruntsByAffiliate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntByCode">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetEmpruntByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetards">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetRetards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLibraries">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetLibraries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsByVolume">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetItemsByVolume" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetails">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetVolumeDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetailsByIsbn">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetVolumeDetailsByIsbn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeByTitle">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetVolumeByTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumesByTitle">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetVolumesByTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTarifsByLib">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetTarifsByLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAuthorsNames">
+      <soap:operation soapAction="http://tempuri.org/IadminService/GetAllAuthorsNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddVolume">
+      <soap:operation soapAction="http://tempuri.org/IadminService/AddVolume" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVolume">
+      <soap:operation soapAction="http://tempuri.org/IadminService/UpdateVolume" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVolume">
+      <soap:operation soapAction="http://tempuri.org/IadminService/DeleteVolume" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <soap:operation soapAction="http://tempuri.org/IadminService/AddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap:operation soapAction="http://tempuri.org/IadminService/UpdateItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItem">
+      <soap:operation soapAction="http://tempuri.org/IadminService/DeleteItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CloseEmprunt">
+      <soap:operation soapAction="http://tempuri.org/IadminService/CloseEmprunt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminService">
+    <wsdl:port name="BasicHttpBinding_IadminService" binding="tns:BasicHttpBinding_IadminService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WcfLibrairie/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ExamSGBD2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vAffiliate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vAffiliate">
+          <Key>
+            <PropertyRef Name="CardNum" />
+            <PropertyRef Name="MainLibrary_Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+          </Key>
+          <Property Name="CardNum" Type="int" Nullable="false" />
+          <Property Name="Validity" Type="date" />
+          <Property Name="MainLibrary_Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vAuthor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vAuthor">
+          <Key>
+            <PropertyRef Name="Pers_Id" />
+            <PropertyRef Name="Volume_Isbn" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Pers_Id" Type="int" Nullable="false" />
+          <Property Name="Volume_Isbn" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vEmpruntDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vEmpruntDetails">
+          <Key>
+            <PropertyRef Name="IdEmprunt" />
+            <PropertyRef Name="CardNum" />
+            <PropertyRef Name="Item_Id" />
+            <PropertyRef Name="Tarif_Id" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Fee" />
+            <PropertyRef Name="DailyPenalty" />
+            <PropertyRef Name="NameTarif" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Library_Id" />
+            <PropertyRef Name="NameLibrary" />
+          </Key>
+          <Property Name="IdEmprunt" Type="int" Nullable="false" />
+          <Property Name="CardNum" Type="int" Nullable="false" />
+          <Property Name="Item_Id" Type="int" Nullable="false" />
+          <Property Name="Tarif_Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="Duration" Type="smallint" Nullable="false" />
+          <Property Name="ReturnDate" Type="date" />
+          <Property Name="Fee" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="DailyPenalty" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="NameTarif" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Library_Id" Type="int" Nullable="false" />
+          <Property Name="NameLibrary" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vItemDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vItemDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Library_Id" />
+            <PropertyRef Name="Volume_Id" />
+            <PropertyRef Name="Isbn" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Library_Id" Type="int" Nullable="false" />
+          <Property Name="Volume_Id" Type="int" Nullable="false" />
+          <Property Name="BuyDate" Type="date" />
+          <Property Name="Localisation" Type="varchar" MaxLength="50" />
+          <Property Name="Isbn" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cover" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vLibrary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vLibrary">
+          <Key>
+            <PropertyRef Name="IdLibrary" />
+            <PropertyRef Name="NameLibrary" />
+            <PropertyRef Name="CodeIdLibrary" />
+          </Key>
+          <Property Name="IdLibrary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameLibrary" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodeIdLibrary" Type="nchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vVolume' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vVolume">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Isbn" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Pers_Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Isbn" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cover" Type="varchar" MaxLength="50" />
+          <Property Name="Pers_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vWishlist">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CardNum" />
+            <PropertyRef Name="Volume_Id" />
+            <PropertyRef Name="Isbn" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CardNum" Type="int" Nullable="false" />
+          <Property Name="Volume_Id" Type="int" Nullable="false" />
+          <Property Name="Isbn" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cover" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="DeleteWishById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAffiliateByCardNum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="number" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAffiliateByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllVolumes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate" />
+        <Function Name="GetAuthorByVolumeIsbn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="VolumeIsbn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetEmpruntByAffiliate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="SelectClosed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GetEmpruntByCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Code" Type="int" Mode="In" />
+          <Parameter Name="SelectClosed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GetEmpruntById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="SelectClosed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GetItemByVol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Idvol" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetLibraries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate" />
+        <Function Name="GetVolumeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetVolumeByIsbn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="isbn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetVolumeByTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="title" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetWishlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertWish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="CardNum" Type="int" Mode="In" />
+          <Parameter Name="Volume_Id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ExamSGBD2017ModelStoreContainer">
+          <EntitySet Name="vAffiliate" EntityType="Self.vAffiliate" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vAffiliate].[CardNum] AS [CardNum], 
+    [vAffiliate].[Validity] AS [Validity], 
+    [vAffiliate].[MainLibrary_Id] AS [MainLibrary_Id], 
+    [vAffiliate].[FirstName] AS [FirstName], 
+    [vAffiliate].[LastName] AS [LastName], 
+    [vAffiliate].[BirthDate] AS [BirthDate]
+    FROM [SchAffiliate].[vAffiliate] AS [vAffiliate]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vAuthor" EntityType="Self.vAuthor" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vAuthor].[Pers_Id] AS [Pers_Id], 
+    [vAuthor].[Volume_Isbn] AS [Volume_Isbn], 
+    [vAuthor].[FirstName] AS [FirstName], 
+    [vAuthor].[LastName] AS [LastName], 
+    [vAuthor].[Id] AS [Id]
+    FROM [SchAffiliate].[vAuthor] AS [vAuthor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vEmpruntDetails" EntityType="Self.vEmpruntDetails" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vEmpruntDetails].[IdEmprunt] AS [IdEmprunt], 
+    [vEmpruntDetails].[CardNum] AS [CardNum], 
+    [vEmpruntDetails].[Item_Id] AS [Item_Id], 
+    [vEmpruntDetails].[Tarif_Id] AS [Tarif_Id], 
+    [vEmpruntDetails].[Title] AS [Title], 
+    [vEmpruntDetails].[StartDate] AS [StartDate], 
+    [vEmpruntDetails].[Duration] AS [Duration], 
+    [vEmpruntDetails].[ReturnDate] AS [ReturnDate], 
+    [vEmpruntDetails].[Fee] AS [Fee], 
+    [vEmpruntDetails].[DailyPenalty] AS [DailyPenalty], 
+    [vEmpruntDetails].[NameTarif] AS [NameTarif], 
+    [vEmpruntDetails].[Code] AS [Code], 
+    [vEmpruntDetails].[Library_Id] AS [Library_Id], 
+    [vEmpruntDetails].[NameLibrary] AS [NameLibrary], 
+    [vEmpruntDetails].[LastModified] AS [LastModified]
+    FROM [SchAffiliate].[vEmpruntDetails] AS [vEmpruntDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vItemDetails" EntityType="Self.vItemDetails" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vItemDetails].[Id] AS [Id], 
+    [vItemDetails].[Code] AS [Code], 
+    [vItemDetails].[Library_Id] AS [Library_Id], 
+    [vItemDetails].[Volume_Id] AS [Volume_Id], 
+    [vItemDetails].[BuyDate] AS [BuyDate], 
+    [vItemDetails].[Localisation] AS [Localisation], 
+    [vItemDetails].[Isbn] AS [Isbn], 
+    [vItemDetails].[Title] AS [Title], 
+    [vItemDetails].[Cover] AS [Cover]
+    FROM [SchAffiliate].[vItemDetails] AS [vItemDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vLibrary" EntityType="Self.vLibrary" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vLibrary].[IdLibrary] AS [IdLibrary], 
+    [vLibrary].[NameLibrary] AS [NameLibrary], 
+    [vLibrary].[CodeIdLibrary] AS [CodeIdLibrary]
+    FROM [SchAffiliate].[vLibrary] AS [vLibrary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vVolume" EntityType="Self.vVolume" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vVolume].[Id] AS [Id], 
+    [vVolume].[Isbn] AS [Isbn], 
+    [vVolume].[Title] AS [Title], 
+    [vVolume].[Cover] AS [Cover], 
+    [vVolume].[Pers_Id] AS [Pers_Id]
+    FROM [SchAffiliate].[vVolume] AS [vVolume]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vWishlist" EntityType="Self.vWishlist" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vWishlist].[Id] AS [Id], 
+    [vWishlist].[CardNum] AS [CardNum], 
+    [vWishlist].[Volume_Id] AS [Volume_Id], 
+    [vWishlist].[Isbn] AS [Isbn], 
+    [vWishlist].[Title] AS [Title], 
+    [vWishlist].[Cover] AS [Cover]
+    FROM [SchAffiliate].[vWishlist] AS [vWishlist]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExamSGBD2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vAffiliate">
+          <Key>
+            <PropertyRef Name="CardNum" />
+            <PropertyRef Name="MainLibrary_Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+          </Key>
+          <Property Name="CardNum" Type="Int32" Nullable="false" />
+          <Property Name="Validity" Type="DateTime" Precision="0" />
+          <Property Name="MainLibrary_Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="vAuthor">
+          <Key>
+            <PropertyRef Name="Pers_Id" />
+            <PropertyRef Name="Volume_Isbn" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Pers_Id" Type="Int32" Nullable="false" />
+          <Property Name="Volume_Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vEmpruntDetail">
+          <Key>
+            <PropertyRef Name="IdEmprunt" />
+            <PropertyRef Name="CardNum" />
+            <PropertyRef Name="Item_Id" />
+            <PropertyRef Name="Tarif_Id" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Fee" />
+            <PropertyRef Name="DailyPenalty" />
+            <PropertyRef Name="NameTarif" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Library_Id" />
+            <PropertyRef Name="NameLibrary" />
+          </Key>
+          <Property Name="IdEmprunt" Type="Int32" Nullable="false" />
+          <Property Name="CardNum" Type="Int32" Nullable="false" />
+          <Property Name="Item_Id" Type="Int32" Nullable="false" />
+          <Property Name="Tarif_Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Duration" Type="Int16" Nullable="false" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+          <Property Name="Fee" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="DailyPenalty" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="NameTarif" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Library_Id" Type="Int32" Nullable="false" />
+          <Property Name="NameLibrary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vItemDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Library_Id" />
+            <PropertyRef Name="Volume_Id" />
+            <PropertyRef Name="Isbn" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Library_Id" Type="Int32" Nullable="false" />
+          <Property Name="Volume_Id" Type="Int32" Nullable="false" />
+          <Property Name="BuyDate" Type="DateTime" Precision="0" />
+          <Property Name="Localisation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vLibrary">
+          <Key>
+            <PropertyRef Name="IdLibrary" />
+            <PropertyRef Name="NameLibrary" />
+            <PropertyRef Name="CodeIdLibrary" />
+          </Key>
+          <Property Name="IdLibrary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameLibrary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeIdLibrary" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vVolume">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Isbn" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Pers_Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pers_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vWishlist">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CardNum" />
+            <PropertyRef Name="Volume_Id" />
+            <PropertyRef Name="Isbn" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CardNum" Type="Int32" Nullable="false" />
+          <Property Name="Volume_Id" Type="Int32" Nullable="false" />
+          <Property Name="Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ExamSGBD2017Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vAffiliates" EntityType="Self.vAffiliate" />
+          <EntitySet Name="vAuthors" EntityType="Self.vAuthor" />
+          <EntitySet Name="vEmpruntDetails" EntityType="Self.vEmpruntDetail" />
+          <EntitySet Name="vItemDetails" EntityType="Self.vItemDetail" />
+          <EntitySet Name="vLibraries" EntityType="Self.vLibrary" />
+          <EntitySet Name="vVolumes" EntityType="Self.vVolume" />
+          <EntitySet Name="vWishlists" EntityType="Self.vWishlist" />
+          <FunctionImport Name="DeleteWishById">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAffiliateByCardNum" ReturnType="Collection(ExamSGBD2017Model.GetAffiliateByCardNum_Result)">
+            <Parameter Name="number" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAffiliateByName" ReturnType="Collection(ExamSGBD2017Model.GetAffiliateByName_Result)">
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllVolumes" ReturnType="Collection(ExamSGBD2017Model.GetAllVolumes_Result)" />
+          <FunctionImport Name="GetAuthorByVolumeIsbn" ReturnType="Collection(ExamSGBD2017Model.GetAuthorByVolumeIsbn_Result)">
+            <Parameter Name="VolumeIsbn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetEmpruntByAffiliate" ReturnType="Collection(ExamSGBD2017Model.GetEmpruntByAffiliate_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="SelectClosed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetEmpruntByCode" ReturnType="Collection(ExamSGBD2017Model.GetEmpruntByCode_Result)">
+            <Parameter Name="Code" Mode="In" Type="Int32" />
+            <Parameter Name="SelectClosed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetEmpruntById" ReturnType="Collection(ExamSGBD2017Model.GetEmpruntById_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="SelectClosed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetItemByVol" ReturnType="Collection(ExamSGBD2017Model.GetItemByVol_Result)">
+            <Parameter Name="Idvol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetLibraries" ReturnType="Collection(ExamSGBD2017Model.GetLibraries_Result)" />
+          <FunctionImport Name="GetVolumeById" ReturnType="Collection(ExamSGBD2017Model.GetVolumeById_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetVolumeByIsbn" ReturnType="Collection(ExamSGBD2017Model.GetVolumeByIsbn_Result)">
+            <Parameter Name="isbn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetVolumeByTitle" ReturnType="Collection(ExamSGBD2017Model.GetVolumeByTitle_Result)">
+            <Parameter Name="title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetWishlist" ReturnType="Collection(ExamSGBD2017Model.GetWishlist_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertWish">
+            <Parameter Name="CardNum" Mode="In" Type="Int32" />
+            <Parameter Name="Volume_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAffiliateByCardNum_Result">
+          <Property Type="Int32" Name="CardNum" Nullable="false" />
+          <Property Type="DateTime" Name="Validity" Nullable="true" />
+          <Property Type="Int32" Name="MainLibrary_Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAffiliateByName_Result">
+          <Property Type="Int32" Name="CardNum" Nullable="false" />
+          <Property Type="DateTime" Name="Validity" Nullable="true" />
+          <Property Type="Int32" Name="MainLibrary_Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllVolumes_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAuthorByVolumeIsbn_Result">
+          <Property Type="Int32" Name="Pers_Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetEmpruntByAffiliate_Result">
+          <Property Type="Int32" Name="IdEmprunt" Nullable="false" />
+          <Property Type="Int32" Name="CardNum" Nullable="false" />
+          <Property Type="Int32" Name="Item_Id" Nullable="false" />
+          <Property Type="Int32" Name="Tarif_Id" Nullable="false" />
+          <Property Type="Int32" Name="Library_Id" Nullable="false" />
+          <Property Type="String" Name="NameLibrary" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="Int16" Name="Duration" Nullable="false" />
+          <Property Type="DateTime" Name="ReturnDate" Nullable="true" />
+          <Property Type="Decimal" Name="Fee" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="DailyPenalty" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="String" Name="NameTarif" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="LastModified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetEmpruntByCode_Result">
+          <Property Type="Int32" Name="IdEmprunt" Nullable="false" />
+          <Property Type="Int32" Name="CardNum" Nullable="false" />
+          <Property Type="Int32" Name="Item_Id" Nullable="false" />
+          <Property Type="Int32" Name="Tarif_Id" Nullable="false" />
+          <Property Type="Int32" Name="Library_Id" Nullable="false" />
+          <Property Type="String" Name="NameLibrary" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="Int16" Name="Duration" Nullable="false" />
+          <Property Type="DateTime" Name="ReturnDate" Nullable="true" />
+          <Property Type="Decimal" Name="Fee" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="DailyPenalty" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="String" Name="NameTarif" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="LastModified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetEmpruntById_Result">
+          <Property Type="Int32" Name="IdEmprunt" Nullable="false" />
+          <Property Type="Int32" Name="CardNum" Nullable="false" />
+          <Property Type="Int32" Name="Item_Id" Nullable="false" />
+          <Property Type="Int32" Name="Tarif_Id" Nullable="false" />
+          <Property Type="Int32" Name="Library_Id" Nullable="false" />
+          <Property Type="String" Name="NameLibrary" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="Int16" Name="Duration" Nullable="false" />
+          <Property Type="DateTime" Name="ReturnDate" Nullable="true" />
+          <Property Type="Decimal" Name="Fee" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="DailyPenalty" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="String" Name="NameTarif" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="LastModified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetItemByVol_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Library_Id" Nullable="false" />
+          <Property Type="Int32" Name="Volume_Id" Nullable="false" />
+          <Property Type="DateTime" Name="BuyDate" Nullable="true" />
+          <Property Type="String" Name="Localisation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLibraries_Result">
+          <Property Type="Int32" Name="IdLibrary" Nullable="false" />
+          <Property Type="String" Name="NameLibrary" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodeIdLibrary" Nullable="false" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="GetVolumeById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetVolumeByIsbn_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetVolumeByTitle_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetWishlist_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="CardNum" Nullable="false" />
+          <Property Type="Int32" Name="Volume_Id" Nullable="false" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExamSGBD2017ModelStoreContainer" CdmEntityContainer="ExamSGBD2017Entities">
+          <EntitySetMapping Name="vAffiliates">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vAffiliate">
+              <MappingFragment StoreEntitySet="vAffiliate">
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Validity" ColumnName="Validity" />
+                <ScalarProperty Name="MainLibrary_Id" ColumnName="MainLibrary_Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAuthors">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vAuthor">
+              <MappingFragment StoreEntitySet="vAuthor">
+                <ScalarProperty Name="Pers_Id" ColumnName="Pers_Id" />
+                <ScalarProperty Name="Volume_Isbn" ColumnName="Volume_Isbn" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vEmpruntDetails">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vEmpruntDetail">
+              <MappingFragment StoreEntitySet="vEmpruntDetails">
+                <ScalarProperty Name="IdEmprunt" ColumnName="IdEmprunt" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+                <ScalarProperty Name="Tarif_Id" ColumnName="Tarif_Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+                <ScalarProperty Name="NameTarif" ColumnName="NameTarif" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="NameLibrary" ColumnName="NameLibrary" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vItemDetails">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vItemDetail">
+              <MappingFragment StoreEntitySet="vItemDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="Volume_Id" ColumnName="Volume_Id" />
+                <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+                <ScalarProperty Name="Localisation" ColumnName="Localisation" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vLibraries">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vLibrary">
+              <MappingFragment StoreEntitySet="vLibrary">
+                <ScalarProperty Name="IdLibrary" ColumnName="IdLibrary" />
+                <ScalarProperty Name="NameLibrary" ColumnName="NameLibrary" />
+                <ScalarProperty Name="CodeIdLibrary" ColumnName="CodeIdLibrary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vVolumes">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vVolume">
+              <MappingFragment StoreEntitySet="vVolume">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Pers_Id" ColumnName="Pers_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vWishlists">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vWishlist">
+              <MappingFragment StoreEntitySet="vWishlist">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Volume_Id" ColumnName="Volume_Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteWishById" FunctionName="ExamSGBD2017Model.Store.DeleteWishById" />
+          <FunctionImportMapping FunctionImportName="GetAffiliateByCardNum" FunctionName="ExamSGBD2017Model.Store.GetAffiliateByCardNum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetAffiliateByCardNum_Result">
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Validity" ColumnName="Validity" />
+                <ScalarProperty Name="MainLibrary_Id" ColumnName="MainLibrary_Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAffiliateByName" FunctionName="ExamSGBD2017Model.Store.GetAffiliateByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetAffiliateByName_Result">
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Validity" ColumnName="Validity" />
+                <ScalarProperty Name="MainLibrary_Id" ColumnName="MainLibrary_Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllVolumes" FunctionName="ExamSGBD2017Model.Store.GetAllVolumes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetAllVolumes_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAuthorByVolumeIsbn" FunctionName="ExamSGBD2017Model.Store.GetAuthorByVolumeIsbn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetAuthorByVolumeIsbn_Result">
+                <ScalarProperty Name="Pers_Id" ColumnName="Pers_Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmpruntByAffiliate" FunctionName="ExamSGBD2017Model.Store.GetEmpruntByAffiliate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetEmpruntByAffiliate_Result">
+                <ScalarProperty Name="IdEmprunt" ColumnName="IdEmprunt" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+                <ScalarProperty Name="Tarif_Id" ColumnName="Tarif_Id" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="NameLibrary" ColumnName="NameLibrary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+                <ScalarProperty Name="NameTarif" ColumnName="NameTarif" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmpruntByCode" FunctionName="ExamSGBD2017Model.Store.GetEmpruntByCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetEmpruntByCode_Result">
+                <ScalarProperty Name="IdEmprunt" ColumnName="IdEmprunt" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+                <ScalarProperty Name="Tarif_Id" ColumnName="Tarif_Id" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="NameLibrary" ColumnName="NameLibrary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+                <ScalarProperty Name="NameTarif" ColumnName="NameTarif" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmpruntById" FunctionName="ExamSGBD2017Model.Store.GetEmpruntById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetEmpruntById_Result">
+                <ScalarProperty Name="IdEmprunt" ColumnName="IdEmprunt" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+                <ScalarProperty Name="Tarif_Id" ColumnName="Tarif_Id" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="NameLibrary" ColumnName="NameLibrary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+                <ScalarProperty Name="NameTarif" ColumnName="NameTarif" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetItemByVol" FunctionName="ExamSGBD2017Model.Store.GetItemByVol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetItemByVol_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="Volume_Id" ColumnName="Volume_Id" />
+                <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+                <ScalarProperty Name="Localisation" ColumnName="Localisation" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLibraries" FunctionName="ExamSGBD2017Model.Store.GetLibraries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetLibraries_Result">
+                <ScalarProperty Name="IdLibrary" ColumnName="IdLibrary" />
+                <ScalarProperty Name="NameLibrary" ColumnName="NameLibrary" />
+                <ScalarProperty Name="CodeIdLibrary" ColumnName="CodeIdLibrary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVolumeById" FunctionName="ExamSGBD2017Model.Store.GetVolumeById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetVolumeById_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVolumeByIsbn" FunctionName="ExamSGBD2017Model.Store.GetVolumeByIsbn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetVolumeByIsbn_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVolumeByTitle" FunctionName="ExamSGBD2017Model.Store.GetVolumeByTitle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetVolumeByTitle_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWishlist" FunctionName="ExamSGBD2017Model.Store.GetWishlist">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetWishlist_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Volume_Id" ColumnName="Volume_Id" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertWish" FunctionName="ExamSGBD2017Model.Store.InsertWish" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
