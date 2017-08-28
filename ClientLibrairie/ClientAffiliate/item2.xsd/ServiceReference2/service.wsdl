@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AffiliateService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAffiliateService_CheckIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIn" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_CheckIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_CheckIn_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q1:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAffiliateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateById" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAffiliateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAffiliateById_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q2:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAffiliateByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateByName" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAffiliateByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAffiliateByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAffiliateByName_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q3:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetEmpruntsByAffiliate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliate" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetEmpruntsByAffiliate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetEmpruntsByAffiliate_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q4:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetEmpruntByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntByCode" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetEmpruntByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmpruntByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetEmpruntByCode_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q5:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetRetards_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRetards" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetRetards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRetardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetRetards_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q6:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetLibraries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLibraries" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetLibraries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLibrariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetLibraries_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q7:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAllVolumes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllVolumes" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAllVolumes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllVolumesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetAllVolumes_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q8:CustomFault" />
+  </wsdl:message>
+  <wsdl:portType name="IAffiliateService">
+    <wsdl:operation name="CheckIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/CheckIn" message="tns:IAffiliateService_CheckIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/CheckInResponse" message="tns:IAffiliateService_CheckIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/CheckInCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_CheckIn_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateById" message="tns:IAffiliateService_GetAffiliateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByIdResponse" message="tns:IAffiliateService_GetAffiliateById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByIdCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetAffiliateById_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByName" message="tns:IAffiliateService_GetAffiliateByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByNameResponse" message="tns:IAffiliateService_GetAffiliateByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByNameCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetAffiliateByName_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntsByAffiliate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliate" message="tns:IAffiliateService_GetEmpruntsByAffiliate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliateResponse" message="tns:IAffiliateService_GetEmpruntsByAffiliate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliateCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetEmpruntsByAffiliate_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntByCode" message="tns:IAffiliateService_GetEmpruntByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntByCodeResponse" message="tns:IAffiliateService_GetEmpruntByCode_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntByCodeCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetEmpruntByCode_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRetards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetRetards" message="tns:IAffiliateService_GetRetards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetRetardsResponse" message="tns:IAffiliateService_GetRetards_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetRetardsCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetRetards_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLibraries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetLibraries" message="tns:IAffiliateService_GetLibraries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetLibrariesResponse" message="tns:IAffiliateService_GetLibraries_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetLibrariesCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetLibraries_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVolumes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetAllVolumes" message="tns:IAffiliateService_GetAllVolumes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetAllVolumesResponse" message="tns:IAffiliateService_GetAllVolumes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetAllVolumesCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetAllVolumes_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAffiliateService" type="tns:IAffiliateService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckIn">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/CheckIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateById">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetAffiliateById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffiliateByName">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetAffiliateByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntsByAffiliate">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpruntByCode">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetEmpruntByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetards">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetRetards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLibraries">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetLibraries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVolumes">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetAllVolumes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AffiliateService">
+    <wsdl:port name="BasicHttpBinding_IAffiliateService" binding="tns:BasicHttpBinding_IAffiliateService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WcfBLAffiliate/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
