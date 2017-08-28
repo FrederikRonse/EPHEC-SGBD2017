@@ -5,52 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using BusinessObjects;
 
 namespace WcfBLAffiliate
 {
     public static class DalLibrary
     {
-        public static DataTable GetAllLibraries()
+        /// <summary>
+        /// Retourne la liste de toutes les librairies.
+        /// </summary>
+        /// <param name="listToReturn"></param>
+        public static void GetAllLibraries(ref List<Library> listToReturn)
         {
-            DataTable dataToReturn = null;
-            SqlDataAdapter datadapt = new SqlDataAdapter();
+            StringBuilder sLog = new StringBuilder();
 
-            using (SqlConnection connection = UtilsDAL.GetConnection())
+            listToReturn.Clear();
+            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
             {
-                StringBuilder sLog = new StringBuilder();
                 try
                 {
-                    using (SqlCommand command = new SqlCommand("SchAdmin.GetLibraries", connection))
+                    foreach (GetLibraries_Result vlib in dbEntity.GetLibraries().ToList())
                     {
-                        DataTable dataTemp = new DataTable();
-                        command.CommandType = CommandType.StoredProcedure;
-                        sLog.Append("Open");
-                        connection.Open();
-                        datadapt.SelectCommand = command;
-                        sLog.Append("Fill");
-                        datadapt.Fill(dataTemp);
-                        dataToReturn = dataTemp;
+                        Library convertedLib = new Library();
+
+                        convertedLib.Id = vlib.IdLibrary;
+                        convertedLib.Code = vlib.CodeIdLibrary;
+                        convertedLib.Name = vlib.NameLibrary;
+
+                        listToReturn.Add((convertedLib));
                     }
                 }
-                catch (SqlException sqlEx)
+                catch (Exception ex)
                 {
-                    sqlEx.Data.Add("Log", sLog);
-                    int DefaultSqlError = 6; //"Erreur SQL non traitée !" L'exception sera relancée.
-                    switch (sqlEx.Number)
-                    {
-                        case 4060:
-                            throw new EL.CstmError(1, sqlEx); //"Mauvaise base de données"
-                        case 18456:
-                            throw new EL.CstmError(2, sqlEx); //"Mauvais mot de passe"
-                        default:
-                            throw new EL.CstmError(DefaultSqlError, sqlEx); //"Erreur SQL non traitée !" L'exception sera relancée.
-                    }
+                    int DefaultError = 7; //"Problème à la récupération des données !"
+                    throw new EL.CstmError(DefaultError, ex);
                 }
-                catch (Exception ex) {
-                    int DefaultError = 7; //"Problème à la récupération des données par la DAL !"
-                    throw new EL.CstmError(DefaultError, ex); }  
             }
-            return dataToReturn;
         }
     }
 }

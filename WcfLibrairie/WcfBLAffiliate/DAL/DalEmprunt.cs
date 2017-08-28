@@ -13,7 +13,7 @@ namespace WcfBLAffiliate
     {
         /// <summary>
         /// retourne les emprunts du lecteur.
-        /// Sous forme de datatable.
+        /// Sous forme de datatable. A SUPPRIMER?
         /// </summary>
         /// <param name="cardNum"></param>
         /// <param name="emprunts"></param>
@@ -68,169 +68,98 @@ namespace WcfBLAffiliate
         /// </summary>
         /// <param name="cardNum"></param>
         /// <param name="listToReturn"></param>
-        public static void GetEmpruntsByCardNum(int cardNum, bool SelectClosed, ref List<vEmpruntDetail> listToReturn)
+        public static void GetEmpruntsByCardNum(int cardNum, bool SelectClosed, ref List<Emprunt> listToReturn)
         {
-            throw new NotImplementedException();
-            //DataTable dataTemp = new DataTable();
+            StringBuilder sLog = new StringBuilder();
 
-            //using (SqlConnection connection = UtilsDAL.GetConnection())
-            //{
-            //    StringBuilder sLog = new StringBuilder();
-            //    try
-            //    {
-            //        using (SqlCommand command = new SqlCommand("[SchAdmin].[GetEmpruntByAffiliate]", connection))
-            //        {
+            listToReturn.Clear();
+            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+            {
+                try
+                {
+                    foreach (GetEmpruntByAffiliate_Result vEmprunt in dbEntity.GetEmpruntByAffiliate(cardNum, SelectClosed)) //vEmpruntDetail
+                    {
+                        Emprunt convertedEmprunt = new Emprunt();
 
-            //            SqlParameter param1 = new SqlParameter("@Id", cardNum);
-            //            SqlParameter param2 = new SqlParameter("@SelectClosed", SelectClosed);
-            //            command.CommandType = CommandType.StoredProcedure;
-            //            command.Parameters.Add(param1);
-            //            command.Parameters.Add(param2);
-            //            SqlDataAdapter datadapt = new SqlDataAdapter(command);
-            //            sLog.Append("Open");
-            //            connection.Open();
-            //            sLog.Append("Fill");
-            //            datadapt.Fill(dataTemp);
-            //        }
-            //    }
-            //    catch (SqlException sqlEx)
-            //    {
-            //        sqlEx.Data.Add("Log", sLog);
-            //        int DefaultSqlError = 6; //"Erreur SQL non traitée !" L'exception sera relancée.
-            //        switch (sqlEx.Number)
-            //        {
-            //            case 4060:
-            //                throw new EL.CstmError(1, sqlEx); //"Mauvaise base de données"
-            //            case 18456:
-            //                throw new EL.CstmError(2, sqlEx); //"Mauvais mot de passe"
-            //            default:
-            //                throw new EL.CstmError(DefaultSqlError, sqlEx); //"Erreur SQL non traitée !" L'exception sera relancée.
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        int DefaultError = 7; //"Problème à la récupération des données !"
-            //        throw new EL.CstmError(DefaultError, ex);
-            //    }
-            //}
-            //try
-            //{
-            //    if (dataTemp.Rows.Count != 0)
-            //    {
-            //        List<vEmpruntDetail> listTemp = new List<vEmpruntDetail>();
-            //        foreach (DataRowView row in dataTemp.DefaultView)
-            //        {
-            //            Emprunt emprunt = new Emprunt();
-            //            emprunt.Id = (int)row["IdEmprunt"];
-            //            emprunt.CardNum = (int)row["CardNum"];
-            //            emprunt.ItemId = (int)row["Item_Id"];
-            //            emprunt.ItemCode = row["Code"].ToString();
-            //            emprunt.LibraryId = (int)row["Item_Id"];
-            //            emprunt.LibraryName = row["NameLibrary"].ToString();
-            //            emprunt.TarifName = row["NameTarif"].ToString();
-            //            emprunt.VolumeTitle = row["Title"].ToString();
-            //            emprunt.StartDate = (DateTime)row["StartDate"];
-            //            emprunt.Duration = int.Parse(row["Duration"].ToString());
-            //            if (row["ReturnDate"] != DBNull.Value) emprunt.ReturnDte = (DateTime)row["ReturnDate"];
-            //            emprunt.Fee = (decimal)row["Fee"];
-            //            emprunt.DailyPenalty = (decimal)row["DailyPenalty"];
-            //            emprunt.LastModified = (DateTime)row["LastModified"];
-            //            listTemp.Add(emprunt);
-            //        }
-            //        listToReturn = listTemp;
-            //    }
-            //    //else throw new EL.CstmError(11); // " Aucun résultat ne correspond à cette recherche !"
-            //}
-            //catch (Exception ex)
-            //{
-            //    int DefaultError = 7; //"Problème à la récupération des données !"
-            //    throw new EL.CstmError(DefaultError, ex);
-            //}
+                        convertedEmprunt.Id = vEmprunt.IdEmprunt;
+                        convertedEmprunt.CardNum = vEmprunt.CardNum;
+                        convertedEmprunt.LibraryId = vEmprunt.Library_Id;
+                        convertedEmprunt.LibraryName = vEmprunt.NameLibrary;
+                        convertedEmprunt.VolumeTitle = vEmprunt.Title;
+                        convertedEmprunt.ItemCode = vEmprunt.Code;
+                        convertedEmprunt.ItemId = vEmprunt.Item_Id;
+                        convertedEmprunt.TarifName = vEmprunt.NameTarif;
+                        convertedEmprunt.Fee = vEmprunt.Fee;
+                        convertedEmprunt.DailyPenalty = vEmprunt.DailyPenalty;
+                        convertedEmprunt.Duration = vEmprunt.Duration;
+                        convertedEmprunt.StartDate = vEmprunt.StartDate;
+                        convertedEmprunt.ReturnDte = vEmprunt.ReturnDate ?? DateTime.Now;
+                        convertedEmprunt.LastModified = vEmprunt.LastModified ?? DateTime.Now;
+                        //   convertedEmprunt.Isbn = vEmprunt.;
+                        //   convertedEmprunt.Cover = vEmprunt.;
+                        //   convertedEmprunt.Authors = DalAuthor.GetAllAuthorsNames(vEmprunt.);
+
+                        listToReturn.Add((convertedEmprunt));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    int DefaultError = 7; //"Problème à la récupération des données !"
+                    throw new EL.CstmError(DefaultError, ex);
+                }
+            }
         }
-
+        //TODO FAIRE RETARDS du lecteur (+ RETARDS PAR LIBS?)
         /// <summary>
         /// Retourne tous les retards d'une librairie.
         /// </summary>
         /// <param name="LibId"></param>
         /// <param name="listToReturn"></param>
-        public static void GetRetardsByLib(int LibId, ref List<vEmpruntDetail> listToReturn)
+        public static void GetRetardsByLib(int LibId, ref List<Emprunt> listToReturn) //ref List<vEmpruntDetail>
         {
             throw new NotImplementedException();
-            //DataTable dataTemp = new DataTable();
+            StringBuilder sLog = new StringBuilder();
 
-            //using (SqlConnection connection = UtilsDAL.GetConnection())
-            //{
-            //    StringBuilder sLog = new StringBuilder();
-            //    try
-            //    {
-            //        using (SqlCommand command = new SqlCommand("[SchAdmin].[GetRetardByLib]", connection))
-            //        {
+            listToReturn.Clear();
+            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+            {
+                try
+                {
+                    foreach (GetEmpruntByAffiliate_Result vEmprunt in dbEntity.GetEmpruntByAffiliate(cardNum, SelectClosed)) //vEmpruntDetail
+                    {
+                        Emprunt convertedEmprunt = new Emprunt();
 
-            //            SqlParameter param1 = new SqlParameter("@Id", LibId);
-            //            command.CommandType = CommandType.StoredProcedure;
-            //            command.Parameters.Add(param1);
-            //            SqlDataAdapter datadapt = new SqlDataAdapter(command);
-            //            sLog.Append("Open");
-            //            connection.Open();
-            //            sLog.Append("Fill");
-            //            datadapt.Fill(dataTemp);
-            //        }
-            //    }
-            //    catch (SqlException sqlEx)
-            //    {
-            //        sqlEx.Data.Add("Log", sLog);
-            //        int DefaultSqlError = 6; //"Erreur SQL non traitée !" L'exception sera relancée.
-            //        switch (sqlEx.Number)
-            //        {
-            //            case 4060:
-            //                throw new EL.CstmError(1, sqlEx); //"Mauvaise base de données"
-            //            case 18456:
-            //                throw new EL.CstmError(2, sqlEx); //"Mauvais mot de passe"
-            //            default:
-            //                throw new EL.CstmError(DefaultSqlError, sqlEx); //"Erreur SQL non traitée !" L'exception sera relancée.
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        int DefaultError = 7; //"Problème à la récupération des données !"
-            //        throw new EL.CstmError(DefaultError, ex);
-            //    }
-            //}
-            //try
-            //{
-            //    if (dataTemp.Rows.Count != 0)
-            //    {
-            //        List<vEmpruntDetail> listTemp = new List<vEmpruntDetail>();
-            //        foreach (DataRowView row in dataTemp.DefaultView)
-            //        {
-            //            Emprunt emprunt = new Emprunt();
-            //            emprunt.Id = (int)row["IdEmprunt"];
-            //            emprunt.CardNum = (int)row["CardNum"];
-            //            emprunt.ItemId = (int)row["Item_Id"];
-            //            emprunt.ItemCode = row["Code"].ToString();
-            //            emprunt.LibraryId = (int)row["Item_Id"];
-            //            emprunt.LibraryName = row["NameLibrary"].ToString();
-            //            emprunt.TarifName = row["NameTarif"].ToString();
-            //            emprunt.VolumeTitle = row["Title"].ToString();
-            //            emprunt.StartDate = (DateTime)row["StartDate"];
-            //            emprunt.Duration = int.Parse(row["Duration"].ToString());
-            //            if (row["ReturnDate"] != DBNull.Value) emprunt.ReturnDte = (DateTime)row["ReturnDate"];
-            //            emprunt.Fee = (decimal)row["Fee"];
-            //            emprunt.DailyPenalty = (decimal)row["DailyPenalty"];
-            //            emprunt.LastModified = (DateTime)row["LastModified"];
-            //            listTemp.Add(emprunt);
-            //        }
-            //        listToReturn = listTemp;
-            //    }
-            //    //else throw new EL.CstmError(11); // " Aucun résultat ne correspond à cette recherche !"
-            //}
-            //catch (Exception ex)
-            //{
-            //    int DefaultError = 7; //"Problème à la récupération des données !"
-            //    throw new EL.CstmError(DefaultError, ex);
-            //}
+                        convertedEmprunt.Id = vEmprunt.IdEmprunt;
+                        convertedEmprunt.CardNum = vEmprunt.CardNum;
+                        convertedEmprunt.LibraryId = vEmprunt.Library_Id;
+                        convertedEmprunt.LibraryName = vEmprunt.NameLibrary;
+                        convertedEmprunt.VolumeTitle = vEmprunt.Title;
+                        convertedEmprunt.ItemCode = vEmprunt.Code;
+                        convertedEmprunt.ItemId = vEmprunt.Item_Id;
+                        convertedEmprunt.TarifName = vEmprunt.NameTarif;
+                        convertedEmprunt.Fee = vEmprunt.Fee;
+                        convertedEmprunt.DailyPenalty = vEmprunt.DailyPenalty;
+                        convertedEmprunt.Duration = vEmprunt.Duration;
+                        convertedEmprunt.StartDate = vEmprunt.StartDate;
+                        convertedEmprunt.ReturnDte = vEmprunt.ReturnDate ?? DateTime.Now;
+                        convertedEmprunt.LastModified = vEmprunt.LastModified ?? DateTime.Now;
+                        //   convertedEmprunt.Isbn = vEmprunt.;
+                        //   convertedEmprunt.Cover = vEmprunt.;
+                        //   convertedEmprunt.Authors = DalAuthor.GetAllAuthorsNames(vEmprunt.);
+
+                        listToReturn.Add((convertedEmprunt));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    int DefaultError = 7; //"Problème à la récupération des données !"
+                    throw new EL.CstmError(DefaultError, ex);
+                }
+            }
         }
 
+
+        // A SUPPRIMER ?
         /// <summary>
         /// Retourne un emprunt par le code de l'exemplaire emprunté.
         /// </summary>

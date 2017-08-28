@@ -60,7 +60,6 @@
     <Compile Include="DAL\DalEmprunt.cs" />
     <Compile Include="DAL\DalItem.cs" />
     <Compile Include="DAL\DalLibrary.cs" />
-    <Compile Include="DAL\DalReader.cs" />
     <Compile Include="DAL\DalVolume.cs" />
     <Compile Include="DAL\Globals.cs" />
     <Compile Include="DAL\UtilsDAL.cs" />
