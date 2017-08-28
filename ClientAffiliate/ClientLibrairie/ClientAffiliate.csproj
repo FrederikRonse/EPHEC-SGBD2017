@@ -119,6 +119,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\ServiceReference\BusinessObjects.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Item.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Tarif.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vAffiliate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -126,6 +135,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vLibrary.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Volume.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vVolume.datasource">

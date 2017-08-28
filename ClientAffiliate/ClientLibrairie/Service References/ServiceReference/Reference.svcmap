@@ -26,6 +26,7 @@
     <MetadataFile FileName="service22.xsd" MetadataType="Schema" ID="1f810514-b8a8-493f-b81a-751edcd94994" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfBLAffiliate/Service1/mex" />
     <MetadataFile FileName="service23.xsd" MetadataType="Schema" ID="1058dfc8-900c-4684-bb8d-c03fccb1faa2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfBLAffiliate/Service1/mex" />
     <MetadataFile FileName="WcfBLAffiliate1.xsd" MetadataType="Schema" ID="50ed0b2b-4671-478d-9e38-a04c0ad58fed" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfBLAffiliate/Service1/mex" />
+    <MetadataFile FileName="BusinessObjects.xsd" MetadataType="Schema" ID="2295a83b-0185-4847-a330-0a02b6ef7d1c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfBLAffiliate/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

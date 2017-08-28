@@ -638,6 +638,474 @@ namespace ClientLibrairie.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item", Namespace="http://schemas.datacontract.org/2004/07/BusinessObjects")]
+    [System.SerializableAttribute()]
+    public partial class Item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime BuyDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateEmpruntField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LibraryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocalisationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int VolumeIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime BuyDate {
+            get {
+                return this.BuyDateField;
+            }
+            set {
+                if ((this.BuyDateField.Equals(value) != true)) {
+                    this.BuyDateField = value;
+                    this.RaisePropertyChanged("BuyDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateEmprunt {
+            get {
+                return this.DateEmpruntField;
+            }
+            set {
+                if ((this.DateEmpruntField.Equals(value) != true)) {
+                    this.DateEmpruntField = value;
+                    this.RaisePropertyChanged("DateEmprunt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LibraryId {
+            get {
+                return this.LibraryIdField;
+            }
+            set {
+                if ((this.LibraryIdField.Equals(value) != true)) {
+                    this.LibraryIdField = value;
+                    this.RaisePropertyChanged("LibraryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Localisation {
+            get {
+                return this.LocalisationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocalisationField, value) != true)) {
+                    this.LocalisationField = value;
+                    this.RaisePropertyChanged("Localisation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int VolumeId {
+            get {
+                return this.VolumeIdField;
+            }
+            set {
+                if ((this.VolumeIdField.Equals(value) != true)) {
+                    this.VolumeIdField = value;
+                    this.RaisePropertyChanged("VolumeId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Volume", Namespace="http://schemas.datacontract.org/2004/07/BusinessObjects")]
+    [System.SerializableAttribute()]
+    public partial class Volume : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientLibrairie.ServiceReference.Author[] AuthorsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CoverField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsbnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClientLibrairie.ServiceReference.Author[] Authors {
+            get {
+                return this.AuthorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorsField, value) != true)) {
+                    this.AuthorsField = value;
+                    this.RaisePropertyChanged("Authors");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Cover {
+            get {
+                return this.CoverField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CoverField, value) != true)) {
+                    this.CoverField = value;
+                    this.RaisePropertyChanged("Cover");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Isbn {
+            get {
+                return this.IsbnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsbnField, value) != true)) {
+                    this.IsbnField = value;
+                    this.RaisePropertyChanged("Isbn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Author", Namespace="http://schemas.datacontract.org/2004/07/BusinessObjects")]
+    [System.SerializableAttribute()]
+    public partial class Author : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PersIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PersId {
+            get {
+                return this.PersIdField;
+            }
+            set {
+                if ((this.PersIdField.Equals(value) != true)) {
+                    this.PersIdField = value;
+                    this.RaisePropertyChanged("PersId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tarif", Namespace="http://schemas.datacontract.org/2004/07/BusinessObjects")]
+    [System.SerializableAttribute()]
+    public partial class Tarif : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal DailyPenaltyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DurationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal FeeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LibraryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int YearField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal DailyPenalty {
+            get {
+                return this.DailyPenaltyField;
+            }
+            set {
+                if ((this.DailyPenaltyField.Equals(value) != true)) {
+                    this.DailyPenaltyField = value;
+                    this.RaisePropertyChanged("DailyPenalty");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Duration {
+            get {
+                return this.DurationField;
+            }
+            set {
+                if ((this.DurationField.Equals(value) != true)) {
+                    this.DurationField = value;
+                    this.RaisePropertyChanged("Duration");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Fee {
+            get {
+                return this.FeeField;
+            }
+            set {
+                if ((this.FeeField.Equals(value) != true)) {
+                    this.FeeField = value;
+                    this.RaisePropertyChanged("Fee");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LibraryId {
+            get {
+                return this.LibraryIdField;
+            }
+            set {
+                if ((this.LibraryIdField.Equals(value) != true)) {
+                    this.LibraryIdField = value;
+                    this.RaisePropertyChanged("LibraryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Year {
+            get {
+                return this.YearField;
+            }
+            set {
+                if ((this.YearField.Equals(value) != true)) {
+                    this.YearField = value;
+                    this.RaisePropertyChanged("Year");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IAffiliateService")]
     public interface IAffiliateService {
@@ -697,6 +1165,48 @@ namespace ClientLibrairie.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetAllVolumes", ReplyAction="http://tempuri.org/IAffiliateService/GetAllVolumesResponse")]
         System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.vVolume[]> GetAllVolumesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetItemsByVolume", ReplyAction="http://tempuri.org/IAffiliateService/GetItemsByVolumeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetItemsByVolumeCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        ClientLibrairie.ServiceReference.Item[] GetItemsByVolume(int volumeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetItemsByVolume", ReplyAction="http://tempuri.org/IAffiliateService/GetItemsByVolumeResponse")]
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Item[]> GetItemsByVolumeAsync(int volumeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumeDetails", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumeDetailsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        ClientLibrairie.ServiceReference.Volume GetVolumeDetails(int volumeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumeDetails", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumeDetailsResponse")]
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume> GetVolumeDetailsAsync(int volumeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbn", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbnResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbnCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        ClientLibrairie.ServiceReference.Volume GetVolumeDetailsByIsbn(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbn", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbnResponse")]
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume> GetVolumeDetailsByIsbnAsync(string isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumeByTitle", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumeByTitleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetVolumeByTitleCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        ClientLibrairie.ServiceReference.Volume GetVolumeByTitle(string titleLike);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumeByTitle", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumeByTitleResponse")]
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume> GetVolumeByTitleAsync(string titleLike);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumesByTitle", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumesByTitleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetVolumesByTitleCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        ClientLibrairie.ServiceReference.Volume[] GetVolumesByTitle(string titleLike);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetVolumesByTitle", ReplyAction="http://tempuri.org/IAffiliateService/GetVolumesByTitleResponse")]
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume[]> GetVolumesByTitleAsync(string titleLike);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetTarifsByLib", ReplyAction="http://tempuri.org/IAffiliateService/GetTarifsByLibResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetTarifsByLibCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        ClientLibrairie.ServiceReference.Tarif[] GetTarifsByLib(int libraryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetTarifsByLib", ReplyAction="http://tempuri.org/IAffiliateService/GetTarifsByLibResponse")]
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Tarif[]> GetTarifsByLibAsync(int libraryId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -788,6 +1298,54 @@ namespace ClientLibrairie.ServiceReference {
         
         public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.vVolume[]> GetAllVolumesAsync() {
             return base.Channel.GetAllVolumesAsync();
+        }
+        
+        public ClientLibrairie.ServiceReference.Item[] GetItemsByVolume(int volumeId) {
+            return base.Channel.GetItemsByVolume(volumeId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Item[]> GetItemsByVolumeAsync(int volumeId) {
+            return base.Channel.GetItemsByVolumeAsync(volumeId);
+        }
+        
+        public ClientLibrairie.ServiceReference.Volume GetVolumeDetails(int volumeId) {
+            return base.Channel.GetVolumeDetails(volumeId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume> GetVolumeDetailsAsync(int volumeId) {
+            return base.Channel.GetVolumeDetailsAsync(volumeId);
+        }
+        
+        public ClientLibrairie.ServiceReference.Volume GetVolumeDetailsByIsbn(string isbn) {
+            return base.Channel.GetVolumeDetailsByIsbn(isbn);
+        }
+        
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume> GetVolumeDetailsByIsbnAsync(string isbn) {
+            return base.Channel.GetVolumeDetailsByIsbnAsync(isbn);
+        }
+        
+        public ClientLibrairie.ServiceReference.Volume GetVolumeByTitle(string titleLike) {
+            return base.Channel.GetVolumeByTitle(titleLike);
+        }
+        
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume> GetVolumeByTitleAsync(string titleLike) {
+            return base.Channel.GetVolumeByTitleAsync(titleLike);
+        }
+        
+        public ClientLibrairie.ServiceReference.Volume[] GetVolumesByTitle(string titleLike) {
+            return base.Channel.GetVolumesByTitle(titleLike);
+        }
+        
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Volume[]> GetVolumesByTitleAsync(string titleLike) {
+            return base.Channel.GetVolumesByTitleAsync(titleLike);
+        }
+        
+        public ClientLibrairie.ServiceReference.Tarif[] GetTarifsByLib(int libraryId) {
+            return base.Channel.GetTarifsByLib(libraryId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Tarif[]> GetTarifsByLibAsync(int libraryId) {
+            return base.Channel.GetTarifsByLibAsync(libraryId);
         }
     }
 }

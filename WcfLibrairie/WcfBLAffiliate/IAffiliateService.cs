@@ -47,29 +47,29 @@ namespace WcfBLAffiliate
         [FaultContract(typeof(CustomFault))]
         List<vVolume> GetAllVolumes( );
 
-        //[OperationContract]
-        //[FaultContract(typeof(CustomFault))]
-        //List<Item> GetItemsByVolume(int volumeId);
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        List<Item> GetItemsByVolume(int volumeId);
 
-        //[OperationContract]
-        //[FaultContract(typeof(CustomFault))]
-        //Volume GetVolumeDetails(int volumeId);
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        Volume GetVolumeDetails(int volumeId);
 
-        //[OperationContract]
-        //[FaultContract(typeof(CustomFault))]
-        //Volume GetVolumeDetailsByIsbn(string isbn);
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        Volume GetVolumeDetailsByIsbn(string isbn);
 
-        //[OperationContract]
-        //[FaultContract(typeof(CustomFault))]
-        //Volume GetVolumeByTitle(string titleLike);
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        Volume GetVolumeByTitle(string titleLike);
 
-        //[OperationContract]
-        //[FaultContract(typeof(CustomFault))]
-        //List<Volume> GetVolumesByTitle(string titleLike);
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        List<Volume> GetVolumesByTitle(string titleLike);
 
-        //[OperationContract]
-        //[FaultContract(typeof(CustomFault))]
-        //List<Tarif> GetTarifsByLib(int libraryId);
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        List<Tarif> GetTarifsByLib(int libraryId);
 
         //[OperationContract]
         //[FaultContract(typeof(CustomFault))]

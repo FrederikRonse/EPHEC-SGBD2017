@@ -11,40 +11,27 @@ namespace WcfBLAffiliate
 {
     public static class DalAuthor
     {
-        public static void GetAllAuthorsNames(ref DataTable tableToFill)
-        {
-            SqlDataAdapter datadapt = new SqlDataAdapter();
 
-            using (SqlConnection connection = UtilsDAL.GetConnection())
+        public static List<Author> GetAllAuthorsNames(string isbn)
+        {
+            StringBuilder sLog = new StringBuilder();
+
+            List<Author> listToReturn = new List<Author>();
+            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
             {
-                StringBuilder sLog = new StringBuilder();
                 try
                 {
-                    using (SqlCommand command = new SqlCommand("[SchAdmin].[GetAllAuthors]", connection))
+                    foreach (var author in dbEntity.GetAuthorByVolumeIsbn(isbn).ToList())
                     {
-                        DataTable dataTemp = new DataTable();
-                        command.CommandType = CommandType.StoredProcedure;
-                        sLog.Append("Open");
-                        connection.Open();
-                        datadapt.SelectCommand = command;
-                        sLog.Append("Fill");
-                        datadapt.Fill(dataTemp);
-                        tableToFill = dataTemp;
+                        Author convertedAuthor = new Author();
+
+                        convertedAuthor.PersId = author.Pers_Id;
+                        convertedAuthor.FirstName = author.FirstName;
+                        convertedAuthor.LastName = author.LastName;
+
+                        listToReturn.Add((convertedAuthor));
                     }
-                }
-                catch (SqlException sqlEx)
-                {
-                    sqlEx.Data.Add("Log", sLog);
-                    int DefaultSqlError = 6; //"Erreur SQL non traitée !" L'exception sera relancée.
-                    switch (sqlEx.Number)
-                    {
-                        case 4060:
-                            throw new EL.CstmError(1, sqlEx); //"Mauvaise base de données"
-                        case 18456:
-                            throw new EL.CstmError(2, sqlEx); //"Mauvais mot de passe"
-                        default:
-                            throw new EL.CstmError(DefaultSqlError, sqlEx); //"Erreur SQL non traitée !" L'exception sera relancée.
-                    }
+                    return listToReturn;
                 }
                 catch (Exception ex)
                 {
@@ -53,6 +40,5 @@ namespace WcfBLAffiliate
                 }
             }
         }
-
     }
 }

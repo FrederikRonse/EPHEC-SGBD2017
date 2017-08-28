@@ -5,6 +5,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BusinessObjects" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAffiliateService_CheckIn_InputMessage">
@@ -79,6 +80,60 @@
   <wsdl:message name="IAffiliateService_GetAllVolumes_CustomFaultFault_FaultMessage">
     <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q8:CustomFault" />
   </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetItemsByVolume_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsByVolume" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetItemsByVolume_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsByVolumeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetItemsByVolume_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q9:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetails" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeDetails_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q10:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeDetailsByIsbn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetailsByIsbn" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeDetailsByIsbn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeDetailsByIsbnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeDetailsByIsbn_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q11:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeByTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeByTitle" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeByTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumeByTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumeByTitle_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q12:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumesByTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumesByTitle" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumesByTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolumesByTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetVolumesByTitle_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q13:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetTarifsByLib_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTarifsByLib" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetTarifsByLib_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTarifsByLibResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetTarifsByLib_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q14:CustomFault" />
+  </wsdl:message>
   <wsdl:portType name="IAffiliateService">
     <wsdl:operation name="CheckIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/CheckIn" message="tns:IAffiliateService_CheckIn_InputMessage" />
@@ -119,6 +174,36 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetAllVolumes" message="tns:IAffiliateService_GetAllVolumes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetAllVolumesResponse" message="tns:IAffiliateService_GetAllVolumes_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetAllVolumesCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetAllVolumes_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsByVolume">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetItemsByVolume" message="tns:IAffiliateService_GetItemsByVolume_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetItemsByVolumeResponse" message="tns:IAffiliateService_GetItemsByVolume_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetItemsByVolumeCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetItemsByVolume_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeDetails" message="tns:IAffiliateService_GetVolumeDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsResponse" message="tns:IAffiliateService_GetVolumeDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetVolumeDetails_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetailsByIsbn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbn" message="tns:IAffiliateService_GetVolumeDetailsByIsbn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbnResponse" message="tns:IAffiliateService_GetVolumeDetailsByIsbn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbnCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetVolumeDetailsByIsbn_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeByTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeByTitle" message="tns:IAffiliateService_GetVolumeByTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeByTitleResponse" message="tns:IAffiliateService_GetVolumeByTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumeByTitleCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetVolumeByTitle_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumesByTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumesByTitle" message="tns:IAffiliateService_GetVolumesByTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumesByTitleResponse" message="tns:IAffiliateService_GetVolumesByTitle_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetVolumesByTitleCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetVolumesByTitle_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTarifsByLib">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetTarifsByLib" message="tns:IAffiliateService_GetTarifsByLib_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetTarifsByLibResponse" message="tns:IAffiliateService_GetTarifsByLib_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetTarifsByLibCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetTarifsByLib_CustomFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAffiliateService" type="tns:IAffiliateService">
@@ -209,6 +294,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllVolumes">
       <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetAllVolumes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsByVolume">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetItemsByVolume" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetails">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetVolumeDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeDetailsByIsbn">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetVolumeDetailsByIsbn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumeByTitle">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetVolumeByTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolumesByTitle">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetVolumesByTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTarifsByLib">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetTarifsByLib" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

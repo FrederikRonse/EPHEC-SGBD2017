@@ -163,6 +163,88 @@ namespace WcfBLAffiliate
             }
         }
 
+        public List<Tarif> GetTarifsByLib(int LibraryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Retourne un volume par son ID.
+        /// </summary>
+        /// <param name="volumeId"></param>
+        /// <returns></returns>
+        public Volume GetVolumeDetails(int volumeId)
+        {
+
+            Volume VolToReturn = null;
+            try
+            {
+                vVolume volTemp = new vVolume();
+                DalVolume.GetVolumeById(volumeId, ref volTemp);
+                //VolToReturn.Authors = vol
+                //VolToReturn = volTemp;
+                return VolToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+        /// <summary>
+        /// Retourne un volume d'après son ISBN.
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <returns></returns>
+        public Volume GetVolumeDetailsByIsbn(string isbn)
+        {
+            Volume volumeToReturn = new Volume();
+            try
+            {
+     //           DalVolume.GetVolumeByIsbn(isbn, ref volumeToReturn);
+                return volumeToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+        /// <summary>
+        /// Retourne le premier volume dont le titre s'approche
+        /// du string de recherche.
+        /// </summary>
+        /// <param name="titleLike"></param>
+        /// <returns></returns>
+        public Volume GetVolumeByTitle(string titleLike)
+        {
+            Volume volumeToReturn = new Volume();
+            try
+            {
+      //          DAL.DalVolume.GetVolumeByTitle(titleLike, ref volumeToReturn);
+                return volumeToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+        public List<Volume> GetVolumesByTitle(string titleLike)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public List<vVolume> GetAllVolumes()
         {
@@ -182,6 +264,10 @@ namespace WcfBLAffiliate
                 }
             }
 
+        public List<Item> GetItemsByVolume(int VolumeId)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// Retourne les retards d'une librairie.
         /// la date n'est pas utilisée.
