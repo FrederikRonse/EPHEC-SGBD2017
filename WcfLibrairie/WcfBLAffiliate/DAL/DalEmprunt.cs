@@ -118,44 +118,44 @@ namespace WcfBLAffiliate
         public static void GetRetardsByLib(int LibId, ref List<Emprunt> listToReturn) //ref List<vEmpruntDetail>
         {
             throw new NotImplementedException();
-            StringBuilder sLog = new StringBuilder();
+            //StringBuilder sLog = new StringBuilder();
 
-            listToReturn.Clear();
-            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
-            {
-                try
-                {
-                    foreach (GetEmpruntByAffiliate_Result vEmprunt in dbEntity.GetEmpruntByAffiliate(cardNum, SelectClosed)) //vEmpruntDetail
-                    {
-                        Emprunt convertedEmprunt = new Emprunt();
+            //listToReturn.Clear();
+            //using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+            //{
+            //    try
+            //    {
+            //        foreach (GetEmpruntByAffiliate_Result vEmprunt in dbEntity.GetEmpruntByAffiliate(cardNum, SelectClosed)) //vEmpruntDetail
+            //        {
+            //            Emprunt convertedEmprunt = new Emprunt();
 
-                        convertedEmprunt.Id = vEmprunt.IdEmprunt;
-                        convertedEmprunt.CardNum = vEmprunt.CardNum;
-                        convertedEmprunt.LibraryId = vEmprunt.Library_Id;
-                        convertedEmprunt.LibraryName = vEmprunt.NameLibrary;
-                        convertedEmprunt.VolumeTitle = vEmprunt.Title;
-                        convertedEmprunt.ItemCode = vEmprunt.Code;
-                        convertedEmprunt.ItemId = vEmprunt.Item_Id;
-                        convertedEmprunt.TarifName = vEmprunt.NameTarif;
-                        convertedEmprunt.Fee = vEmprunt.Fee;
-                        convertedEmprunt.DailyPenalty = vEmprunt.DailyPenalty;
-                        convertedEmprunt.Duration = vEmprunt.Duration;
-                        convertedEmprunt.StartDate = vEmprunt.StartDate;
-                        convertedEmprunt.ReturnDte = vEmprunt.ReturnDate ?? DateTime.Now;
-                        convertedEmprunt.LastModified = vEmprunt.LastModified ?? DateTime.Now;
-                        //   convertedEmprunt.Isbn = vEmprunt.;
-                        //   convertedEmprunt.Cover = vEmprunt.;
-                        //   convertedEmprunt.Authors = DalAuthor.GetAllAuthorsNames(vEmprunt.);
+            //            convertedEmprunt.Id = vEmprunt.IdEmprunt;
+            //            convertedEmprunt.CardNum = vEmprunt.CardNum;
+            //            convertedEmprunt.LibraryId = vEmprunt.Library_Id;
+            //            convertedEmprunt.LibraryName = vEmprunt.NameLibrary;
+            //            convertedEmprunt.VolumeTitle = vEmprunt.Title;
+            //            convertedEmprunt.ItemCode = vEmprunt.Code;
+            //            convertedEmprunt.ItemId = vEmprunt.Item_Id;
+            //            convertedEmprunt.TarifName = vEmprunt.NameTarif;
+            //            convertedEmprunt.Fee = vEmprunt.Fee;
+            //            convertedEmprunt.DailyPenalty = vEmprunt.DailyPenalty;
+            //            convertedEmprunt.Duration = vEmprunt.Duration;
+            //            convertedEmprunt.StartDate = vEmprunt.StartDate;
+            //            convertedEmprunt.ReturnDte = vEmprunt.ReturnDate ?? DateTime.Now;
+            //            convertedEmprunt.LastModified = vEmprunt.LastModified ?? DateTime.Now;
+            //            //   convertedEmprunt.Isbn = vEmprunt.;
+            //            //   convertedEmprunt.Cover = vEmprunt.;
+            //            //   convertedEmprunt.Authors = DalAuthor.GetAllAuthorsNames(vEmprunt.);
 
-                        listToReturn.Add((convertedEmprunt));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    int DefaultError = 7; //"Problème à la récupération des données !"
-                    throw new EL.CstmError(DefaultError, ex);
-                }
-            }
+            //            listToReturn.Add((convertedEmprunt));
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        int DefaultError = 7; //"Problème à la récupération des données !"
+            //        throw new EL.CstmError(DefaultError, ex);
+            //    }
+            //}
         }
 
 

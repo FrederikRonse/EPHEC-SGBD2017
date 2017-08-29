@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DAL\DalAffiliate.cs" />
     <Compile Include="DAL\DalAuthor.cs" />
+    <Compile Include="DAL\DalWishList.cs" />
     <Compile Include="DAL\DalEmprunt.cs" />
     <Compile Include="DAL\DalItem.cs" />
     <Compile Include="DAL\DalLibrary.cs" />

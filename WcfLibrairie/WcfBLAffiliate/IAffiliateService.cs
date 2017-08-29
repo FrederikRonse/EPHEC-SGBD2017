@@ -21,31 +21,34 @@ namespace WcfBLAffiliate
         /// Operations "Get"
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-         vAffiliate GetAffiliateById(int lectId);
+         Affiliate GetAffiliateById(int lectId);
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        vAffiliate GetAffiliateByName(string FirstName, string lastName);
+        Affiliate GetAffiliateByName(string FirstName, string lastName);
+
+        [OperationContract]
+        List<WishListItem> GetWishListByCardNum(int cardNum);
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        List<vEmpruntDetail> GetEmpruntsByAffiliate(int lectId);
+        List<Emprunt> GetEmpruntsByAffiliate(int lectId);
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        vEmpruntDetail GetEmpruntByCode(string code);
+        Emprunt GetEmpruntByCode(string code);
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        List<vEmpruntDetail> GetRetards(DateTime date, int libId);
+        List<Emprunt> GetRetards(DateTime date, int libId);
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        List<vLibrary> GetLibraries();
+        List<Library> GetLibraries();
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        List<vVolume> GetAllVolumes( );
+        List<Volume> GetAllVolumes( );
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]

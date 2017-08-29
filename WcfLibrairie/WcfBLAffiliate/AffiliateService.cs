@@ -25,7 +25,7 @@ namespace WcfBLAffiliate
         {
             bool userChecked = false;
             try
-            { 
+            {
                 userChecked = UtilsDAL.Check(login, password);
                 return userChecked;
             }
@@ -40,13 +40,41 @@ namespace WcfBLAffiliate
         }
 
         /// <summary>
+        /// Renvoie la liste de toutes les librairies.
+        /// </summary>
+        /// <returns></returns>
+        public List<Library> GetLibraries()
+        {
+            List<Library> listToReturn = new List<Library>();
+            try
+            {
+                List<Library> newList = new List<Library>();
+                DalLibrary.GetAllLibraries(ref newList);
+                //if (listToReturn != null)
+                //{
+                //    if (listToReturn.Count != 0)
+                //    {
+                return listToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+
+        /// <summary>
         /// Retourne un lecteur par son Id.
         /// </summary>
         /// <param name="lectId"></param>
         /// <returns></returns>
-        public vAffiliate GetAffiliateById(int lectId)
+        public Affiliate GetAffiliateById(int lectId)
         {
-            vAffiliate affToReturn = new vAffiliate();
+            Affiliate affToReturn = new Affiliate();
             try
             {
                 DalAffiliate.GetAffiliateById(lectId, ref affToReturn);
@@ -68,9 +96,9 @@ namespace WcfBLAffiliate
         /// <param name="FirstName"></param>
         /// <param name="lastName"></param>
         /// <returns></returns>
-        public vAffiliate GetAffiliateByName(string FirstName, string lastName)
+        public Affiliate GetAffiliateByName(string FirstName, string lastName)
         {
-            vAffiliate affToReturn = new vAffiliate();
+            Affiliate affToReturn = new Affiliate();
             try
             {
                 DalAffiliate.GetAffiliateByName(FirstName, lastName, ref affToReturn);
@@ -87,13 +115,36 @@ namespace WcfBLAffiliate
         }
 
         /// <summary>
+        /// Retourne les livres souhaités (wishlist) du lecteur.
+        /// </summary>
+        /// <param name="cardNum"></param>
+        /// <returns></returns>
+        public List<WishListItem> GetWishListByCardNum(int cardNum)
+        {
+            List<WishListItem> listToReturn = new List<WishListItem>();
+            try
+            {
+                DalWishList.GetWishListByCardNum(cardNum, ref listToReturn);
+                return listToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+        /// <summary>
         /// Retourne la liste d'emprunts actifs d'un lecteur.
         /// </summary>
         /// <param name="lectId"></param>
         /// <returns></returns>
-        public List<vEmpruntDetail> GetEmpruntsByAffiliate(int lectId)
+        public List<Emprunt> GetEmpruntsByAffiliate(int lectId)
         {
-            List<vEmpruntDetail> listToReturn = new List<vEmpruntDetail>();
+            List<Emprunt> listToReturn = new List<Emprunt>();
             try
             {
                 DalEmprunt.GetEmpruntsByCardNum(lectId, false, ref listToReturn);
@@ -110,47 +161,18 @@ namespace WcfBLAffiliate
         }
 
         /// <summary>
-        /// Retourne un emprunt par le code de l'exemplaire emprunté.
+        /// Retourne les retards d'une librairie.
+        /// la date n'est pas utilisée.
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="date"></param>
+        /// <param name="libId"></param>
         /// <returns></returns>
-        public vEmpruntDetail GetEmpruntByCode(string code)
+        public List<Emprunt> GetRetards(DateTime date, int libId) //List<vEmpruntDetail>
         {
-            vEmpruntDetail EmpruntToReturn = new vEmpruntDetail();
+            List<Emprunt> listToReturn = new List<Emprunt>();
             try
             {
-                DalEmprunt.GetEmpruntByCode(code, false, ref EmpruntToReturn);
-                return EmpruntToReturn;
-            }
-            catch (CstmError ex)
-            {
-                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
-            }
-        }
-        public List<vLibrary> GetLibraries()
-        {
-            List<vLibrary> listToReturn = new List<vLibrary>();
-            try
-            {
-                DataTable temp = DalLibrary.GetAllLibraries();
-                if (temp != null)
-                {
-                    if (temp.Rows.Count != 0)
-                    {
-                        foreach (DataRowView row in temp.DefaultView)
-                        {
-                            vLibrary library = new vLibrary();
-                            library.IdLibrary = (int)row["IdLibrary"];
-                            library.NameLibrary = row["NameLibrary"].ToString();
-                            library.CodeIdLibrary = row["CodeIdLibrary"].ToString();
-                            listToReturn.Add(library);
-                        }
-                    }
-                }
+                DalEmprunt.GetRetardsByLib(libId, ref listToReturn);
                 return listToReturn;
             }
             catch (CstmError ex)
@@ -163,9 +185,50 @@ namespace WcfBLAffiliate
             }
         }
 
-        public List<Tarif> GetTarifsByLib(int LibraryId)
+        /// <summary>
+        /// Retourne un emprunt par le code de l'exemplaire emprunté. [PAS UTILISE]
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public Emprunt GetEmpruntByCode(string code)
         {
-            throw new NotImplementedException();
+            Emprunt EmpruntToReturn = new Emprunt();
+            try
+            {
+                //       DalEmprunt.GetEmpruntByCode(code, false, ref EmpruntToReturn);
+                return EmpruntToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+
+        /// <summary>
+        /// Renvoie la liste de tous les livres.
+        /// </summary>
+        /// <returns></returns>
+        public List<Volume> GetAllVolumes()
+        {
+            List<Volume> listToReturn = new List<Volume>();
+            try
+            {
+                DalVolume.GetAllVolumes(ref listToReturn);
+                return listToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
         }
 
         /// <summary>
@@ -179,7 +242,7 @@ namespace WcfBLAffiliate
             Volume VolToReturn = null;
             try
             {
-                vVolume volTemp = new vVolume();
+                Volume volTemp = new Volume();
                 DalVolume.GetVolumeById(volumeId, ref volTemp);
                 //VolToReturn.Authors = vol
                 //VolToReturn = volTemp;
@@ -204,7 +267,7 @@ namespace WcfBLAffiliate
             Volume volumeToReturn = new Volume();
             try
             {
-     //           DalVolume.GetVolumeByIsbn(isbn, ref volumeToReturn);
+                DalVolume.GetVolumeByIsbn(isbn, ref volumeToReturn);
                 return volumeToReturn;
             }
             catch (CstmError ex)
@@ -227,7 +290,7 @@ namespace WcfBLAffiliate
             Volume volumeToReturn = new Volume();
             try
             {
-      //          DAL.DalVolume.GetVolumeByTitle(titleLike, ref volumeToReturn);
+                DalVolume.GetVolumeByTitle(titleLike, ref volumeToReturn);
                 return volumeToReturn;
             }
             catch (CstmError ex)
@@ -240,58 +303,26 @@ namespace WcfBLAffiliate
             }
         }
 
+
+
+        #region A Supprimer?
+
+        // A SUPPRIMER?
         public List<Volume> GetVolumesByTitle(string titleLike)
         {
             throw new NotImplementedException();
         }
 
-
-        public List<vVolume> GetAllVolumes()
+        // A SUPPRIMER?
+        public List<Tarif> GetTarifsByLib(int LibraryId)
         {
-            List<vVolume> listToReturn = new List<vVolume>();
-                try
-                {
-                    DalVolume.GetAllVolumes( ref listToReturn);
-                    return listToReturn;
-                }
-                catch (CstmError ex)
-                {
-                    throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
-                }
-                catch (Exception ex)
-                {
-                    throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
-                }
-            }
-
+            throw new NotImplementedException();
+        }
+        // A SUPPRIMER ?
         public List<Item> GetItemsByVolume(int VolumeId)
         {
             throw new NotImplementedException();
         }
-        /// <summary>
-        /// Retourne les retards d'une librairie.
-        /// la date n'est pas utilisée.
-        /// </summary>
-        /// <param name="date"></param>
-        /// <param name="libId"></param>
-        /// <returns></returns>
-        public List<vEmpruntDetail> GetRetards(DateTime date, int libId)
-        {
-
-            List<vEmpruntDetail> listToReturn = new List<vEmpruntDetail>();
-            try
-            {
-                DalEmprunt.GetRetardsByLib(libId, ref listToReturn);
-                return listToReturn;
-            }
-            catch (CstmError ex)
-            {
-                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
-            }
-        }
+        #endregion A Supprimer?
     }
 }
