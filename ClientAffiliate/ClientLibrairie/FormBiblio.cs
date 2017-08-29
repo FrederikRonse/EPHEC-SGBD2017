@@ -11,17 +11,20 @@ using EL;
 
 
 
+
 namespace ClientLibrairie
 {
     public partial class FormBiblio : Form
     {
-        private List<ServiceReference.vLibrary> _libraries;
-        private ServiceReference.vLibrary _currentLibrary;
-        private ServiceReference.vVolume _currentVolume = null;
-        //private List<ServiceReference.Author> _dBAuthors;
-        //private List<ServiceReference.Author> _newAuthors = new List<ServiceReference.Author>();
-        private bool searchMode = true;
+        private MainForm _parentForm;
+        private ServiceReference.Affiliate _user;
+        private List<ServiceReference.Library> _libraries;
+        private ServiceReference.Library _currentLibrary;
+        private List<ServiceReference.Volume> _volumes;
+        private ServiceReference.Volume _currentVolume = null;
+        private bool toWishList = true;
 
+        
 
         private BindingSource _bsCurrentLib = new BindingSource();
         private BindingSource _bsDataGridView = new BindingSource();
@@ -30,12 +33,18 @@ namespace ClientLibrairie
         {
             InitializeComponent();
         }
+        public FormBiblio(MainForm parent)
+        {
+            InitializeComponent();
+            _parentForm = parent;
+            _user = _parentForm._CurrentAffiliate ?? null;
+        }
 
         private void FormBiblio_Load(object sender, EventArgs e)
         {
             SetAllLibraries();
             if (_libraries != null) _currentLibrary = _libraries.First();
-            //SetAllAuthors();
+            if (_user.FirstName != null) this.Text = string.Format("Bienvenue {0} !", _user.FirstName);
             BindAndSet();
         }
 
@@ -48,7 +57,7 @@ namespace ClientLibrairie
             ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
             try
             {
-                List<ServiceReference.vLibrary> libraries = sClient.GetLibraries().ToList();
+                List<ServiceReference.Library> libraries = sClient.GetLibraries().ToList();
                 if (libraries.Count() >= 1) _libraries = libraries;
                 else
                 {
@@ -77,49 +86,44 @@ namespace ClientLibrairie
             }
         }
 
+
         /// <summary>
-        /// Charge la liste des auteurs déjà existants dans la DB pour choix
-        /// lors d'ajout d'un volume. 
+        /// retorune tous les livres (juste pour cet exercice).
         /// </summary>
-        //private void SetAllAuthors()
-        //{
-        //    ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
-
-        //    try
-        //    {
-        //        List<ServiceReference.> authors = sClient.GetAllAuthorsNames().ToList();
-        //        if (authors != null)
-        //        {
-        //            _dBAuthors = authors;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("La liste des auteurs n'a pas pu être récupérée !", "Une erreur est survenue",
-        //                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //        }
-        //    }
-        //    catch (System.ServiceModel.EndpointNotFoundException endpointEx)
-        //    {
-        //        int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
-        //        CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
-        //        CstmError.Display(cstmError);
-        //    }
-        //    catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
-        //    {
-        //        CstmError.Display(Fault.Message);
-        //    }
-        //    catch (CstmError cstmError)
-        //    {
-        //        CstmError.Display(cstmError);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(string.Format("Une exception s'est produite à la récupération des données : \n {0}", e.Message),"Erreur",
-        //         MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-
+        private void GetAllVolumes()
+        {
+            ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
+            try
+            {
+                List<ServiceReference.Volume> volumes = sClient.GetAllVolumes().ToList();
+                if (volumes.Count() >= 1) _volumes = volumes;
+                else
+                {
+                    int cstmErrorN = 11; //"Aucun résultat ne correspond à cette recherche !"
+                    throw new CstmError(cstmErrorN);
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
+                CstmError.Display(cstmError);
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Une exception s'est produite à la récupération des données !", "Erreur",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    
         /// <summary>
         /// Retourne un volume par son ISBN et l'assigne comme volume courant.
         /// </summary>
@@ -129,7 +133,7 @@ namespace ClientLibrairie
             ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
             try
             {
-                ServiceReference.vVolume volume = sClient.GetVolumeDetailsByIsbn(tbIsbnSearch.Text);
+                ServiceReference.Volume volume = sClient.GetVolumeDetailsByIsbn(tbIsbnSearch.Text);
                 if (volume.Id != null)
                 {
                     _currentVolume = volume;
@@ -162,6 +166,7 @@ namespace ClientLibrairie
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         /// <summary>
         /// Retourne un volume par son titre.
         /// </summary>
@@ -249,17 +254,17 @@ namespace ClientLibrairie
         }
 
         /// <summary>
-        /// Ajoute un volume à la base de données.
+        /// 
         /// </summary>
-        /// <param name="volume"></param>
-        private void AddVolume(ServiceReference.Volume volume)
+        /// <param name="volumeId"></param>
+        private void Emprunter(int volumeId)
         {
             ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
 
             try
             {
-                sClient.AddVolume(volume);
-                SetMessage("Volume ajouté !");
+                sClient.wi(item);
+                SetMessage("Exemplaire ajouté !");
             }
             catch (System.ServiceModel.EndpointNotFoundException endpointEx)
             {
@@ -283,16 +288,16 @@ namespace ClientLibrairie
         }
 
         /// <summary>
-        /// Ajoute un exemplaire à la base de données.
+        /// Ajoute un livre à la Wishlist.
         /// </summary>
-        /// <param name="item"></param>
-        private void AddItem(ServiceReference.Item item)
+        /// <param name="volumeId"></param>
+        private void AddToWishList(ServiceReference.WishListItem wishitem)
         {
             ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
 
             try
             {
-                sClient.AddItem(item);
+                sClient.(item);
                 SetMessage("Exemplaire ajouté !");
             }
             catch (System.ServiceModel.EndpointNotFoundException endpointEx)
@@ -330,25 +335,20 @@ namespace ClientLibrairie
             dgvBiblioInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             _bsDataGridView.DataSource = null;
-            _bsDataGridView.DataSource = _newAuthors;
+            _bsDataGridView.DataSource = _volumes;
             dgvItems.DataSource = null;
             dgvItems.DataSource = _bsDataGridView;
             dgvItems.ColumnHeadersVisible = false;
-            dgvItems.Columns["PersId"].Visible = false;
+         //   dgvItems.Columns["PersId"].Visible = false;
             dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             comboBoxLibChoice.DataSource = _libraries;
             comboBoxLibChoice.DisplayMember = "Name";
             comboBoxLibChoice.ValueMember = "Id";
 
-            listBoxAuthor.DataSource = _dBAuthors;
-            listBoxAuthor.ValueMember = "PersId";
-            listBoxAuthor.Visible = false;
-            //listViewAuthors.
-
-            rbAddVolume.Hide();
-            rbAddItem.Hide();
-            btAddAction.Hide();
+            rbWish.Show();
+            rbEmprunt.Show();
+            btAddAction.Show();
             pictureBox1.ImageLocation = @"C:\Users\Murad\documents\Exam SGBD 2016-17\Images\book-cover_template.jpg";
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             SetVolInfoBox(true);
@@ -382,15 +382,11 @@ namespace ClientLibrairie
             if (display == true && _currentVolume != null)
             {
                 tbTitleSearch.Text = _currentVolume.Title;
-                tbFirstName.Text = string.Empty;
-                tbLastName.Text = string.Empty;
                 tbIsbnSearch.Text = _currentVolume.Isbn;
             }
             else
             {
                 tbTitleSearch.Text = string.Empty;
-                tbFirstName.Text = string.Empty;
-                tbLastName.Text = string.Empty;
                 tbIsbnSearch.Text = string.Empty;
             }
         }
@@ -437,7 +433,7 @@ namespace ClientLibrairie
         }
 
         /// <summary>
-        /// En mode "recherche", lance la recherche d'un volume d'après son ISBN
+        /// Lance la recherche d'un volume d'après son ISBN
         /// lorsque l'utilisateur relache la touche enter.
         /// Vérifie chaque touches relachées.
         /// </summary>
@@ -445,27 +441,29 @@ namespace ClientLibrairie
         /// <param name="e"></param>
         private void tbIsbnSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            if (searchMode = true && e.KeyCode == Keys.Enter && CheckInputStrg.Check(CheckInputStrg.InputType.Isbn, tbIsbnSearch.Text) == true)
+            if ( e.KeyCode == Keys.Enter && CheckInputStrg.Check(CheckInputStrg.InputType.Isbn, tbIsbnSearch.Text) == true) //searchMode = true &&
             {
                 GetVolumeDetailsByIsbn(tbIsbnSearch.Text);
             }
         }
 
         /// <summary>
-        /// En mode "recherche",recherche un ouvrage d'après son titre.
+        /// Recherche un ouvrage d'après son titre.
         /// Eventuellement parmis une liste de plusieurs retours.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void tbTitleSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            if (searchMode = true && e.KeyCode == Keys.Enter && CheckInputStrg.Check(CheckInputStrg.InputType.Title, tbTitleSearch.Text) == true)
+            if (true && e.KeyCode == Keys.Enter && CheckInputStrg.Check(CheckInputStrg.InputType.Title, tbTitleSearch.Text) == true)  //searchMode = true &&
             {
 
                 GetVolumeDetailsByTitle(tbTitleSearch.Text);
             }
         }
 
+
+        //Rétuliser ?
         /// <summary>
         /// Switch entre le mode recherche de volume
         /// et autoriser l'ajout de volumes ou d'exemplaires.
@@ -473,54 +471,54 @@ namespace ClientLibrairie
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btAddVolume_Click(object sender, EventArgs e)
-        {
-            if (searchMode == true)
-            {
-                searchMode = false;
-                btAddMenu.BackColor = Color.Gray;
-                labelSearch.Hide();
-                btAddAction.Show();
-                rbAddVolume.Show();
-                rbAddItem.Enabled = false;
-                rbAddItem.Show();
-                btAddAuthor.Enabled = false;
-                listBoxAuthor.Visible = true;
+        { throw new NotImplementedException();
+            //  if (searchMode == true)
+            //  {
+            //      searchMode = false;
+            //  //    btAddMenu.BackColor = Color.Gray;
+            //      labelSearch.Hide();
+            //      btAddAction.Show();
+            //      rbWish.Show();
+            //      rbEmprunt.Enabled = false;
+            //      rbEmprunt.Show();
+            ////      btAddAuthor.Enabled = false;
+            //      listBoxAuthor.Visible = true;
 
-                if (_currentVolume != null)
-                {
-                    SetVolSrchInfos(true);
-                    rbAddItem.Enabled = true;
-                    rbAddItem.Select();
-                    listBoxAuthor.Visible = false;
-                }
-                else
-                {
-                    rbAddVolume.Select();
-                }
-            }
-            else
-            {
-                searchMode = true;
-                SetVolSrchInfos(true);
-                btAddMenu.BackColor = Color.LightGray;
-                labelSearch.Show();
-                btAddAction.Hide();
-                rbAddVolume.Hide();
-                rbAddItem.Hide();
-                btAddAction.Enabled = true;
-                btAddAuthor.Enabled = true;
-                listBoxAuthor.Visible = false;
-                _newAuthors.Clear();
-                _bsDataGridView.ResetBindings(false);
-            }
+            //      if (_currentVolume != null)
+            //      {
+            //          SetVolSrchInfos(true);
+            //          rbEmprunt.Enabled = true;
+            //          rbEmprunt.Select();
+            //          listBoxAuthor.Visible = false;
+            //        }
+            //        else
+            //        {
+            //            rbWish.Select();
+            //        }
+            //    }
+            //    else
+            //    {
+            //        searchMode = true;
+            //        SetVolSrchInfos(true);
+            //       // btAddMenu.BackColor = Color.LightGray;
+            //        labelSearch.Show();
+            //        btAddAction.Hide();
+            //        rbWish.Hide();
+            //        rbEmprunt.Hide();
+            //        btAddAction.Enabled = true;
+            //       // btAddAuthor.Enabled = true;
+            //        listBoxAuthor.Visible = false;
+            //       // _newAuthors.Clear();
+            //        _bsDataGridView.ResetBindings(false);
+            //    }
         }
 
         /// <summary>
-        /// Prépare l'ajout d'un volume ou d'un exemplaire, selon le choix de l'utilisateur.
+        /// Prépare un ajout à la wishlist ou une réservation, selon choix utilisateur.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rbAddVolume_CheckedChanged(object sender, EventArgs e)
+        private void RadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             foreach (Control control in this.panelRadioButton.Controls)
             {
@@ -531,35 +529,36 @@ namespace ClientLibrairie
                     {
                         switch (radio.Name)
                         {
-                            case "rbAddVolume":
+                            case "rbAddEmprunt":
+                                toWishList = false;
                                 // Mise en forme visuelle.
+                                btAddAction.Text = "Emprunter";
+                                
+
                                 panelAddItem.BorderStyle = BorderStyle.None;
                                 panelAddItem.Hide();
-                                listBoxAuthor.Visible = true;
-                                SetVolSrchInfos(false);
+                                //listBoxAuthor.Visible = true;
+                              //  SetVolSrchInfos(false);
 
                                 tbIsbnSearch.ReadOnly = false;
                                 tbTitleSearch.ReadOnly = false;
-                                tbFirstName.ReadOnly = false;
-                                tbLastName.ReadOnly = false;
-                                tbCoverPath.ReadOnly = false;
 
                                 break;
 
-                            case "rbAddItem":
+                            case "rbAddWish":
+                                toWishList = true;
                                 // Mise en forme visuelle.
+                                btAddAction.Text = "Ajouter à votre WishList";
+                                
                                 panelAddItem.BorderStyle = BorderStyle.FixedSingle;
                                 panelAddItem.Show();
-                                listBoxAuthor.Visible = false;
-
-                                tbItemCode.ReadOnly = true;
-                                tbCoverPath.ReadOnly = true;
-                                dateTimePickerItem.Hide();
+                            //    listBoxAuthor.Visible = false;
 
                                 //Logique 
                                 if (_currentVolume != null)
                                 {
                                     SetVolSrchInfos(true);
+
                                     //(Ne devrait pas arriver, sécurité).
                                     //Si les infos affichéees sont celles du volume en cours, on 
                                     //locke les textboxes Volume, sinon on propose de sauver le volume actuel.
@@ -569,11 +568,6 @@ namespace ClientLibrairie
                                         // Lock le volume
                                         tbIsbnSearch.ReadOnly = true;
                                         tbTitleSearch.ReadOnly = true;
-                                        tbFirstName.ReadOnly = true;
-                                        tbLastName.ReadOnly = true;
-                                        //Unlock l'item
-                                        tbItemCode.ReadOnly = false;
-                                        dateTimePickerItem.Show();
                                     }
                                     // Ou on propose de sauver le volume actuel.
                                     else
@@ -583,24 +577,20 @@ namespace ClientLibrairie
                                         if (dr == DialogResult.Yes)
                                         {// test et save
                                             if (
-                                            CheckInputStrg.Check(CheckInputStrg.InputType.Isbn, tbIsbnSearch.Text) == true &&
-                                            CheckInputStrg.Check(CheckInputStrg.InputType.Title, tbTitleSearch.Text) == true &&
-                                            _newAuthors != null
-                                            )
+                                            CheckInputStrg.Check(CheckInputStrg.InputType.Isbn, tbIsbnSearch.Text) == true)
                                             {
                                                 ServiceReference.Volume newVolume = new ServiceReference.Volume();
                                                 newVolume.Isbn = tbIsbnSearch.Text;
                                                 newVolume.Title = tbTitleSearch.Text;
-                                                newVolume.Authors = _newAuthors.ToArray<ServiceReference.Author>();
-                                                newVolume.Cover = tbCoverPath.Text;
-                                                AddVolume(newVolume);
+                                                //newVolume.Authors = _newAuthors.ToArray<ServiceReference.Author>();
+                                                //newVolume.Cover = tbCoverPath.Text;
+                                                //AddVolume(newVolume);
                                             }
                                             this.Close();
                                         }
                                         else if (dr == DialogResult.No)
                                         {
                                             this.Close();
-                                            searchMode = true;
                                             _currentVolume = null;
                                             SetVolSrchInfos(true);
                                             SetVolInfoBox(true);
@@ -623,36 +613,29 @@ namespace ClientLibrairie
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btAddAction_Click(object sender, EventArgs e)
-        {   // Si ajout de volume.
-            if (rbAddVolume.Checked == true)
+        {   // Si ajout dans la wishlist.
+            if (rbWish.Checked == true)
             {
-                // test et save
-                if (
-                CheckInputStrg.Check(CheckInputStrg.InputType.Isbn, tbIsbnSearch.Text) == true &&
-                CheckInputStrg.Check(CheckInputStrg.InputType.Title, tbTitleSearch.Text) == true &&
-                _newAuthors != null
-                )
+                if (_user != null && _currentVolume  != null)
                 {
-                    ServiceReference.Volume newVolume = new ServiceReference.Volume();
-                    newVolume.Isbn = tbIsbnSearch.Text;
-                    newVolume.Title = tbTitleSearch.Text;
-                    newVolume.Authors = _newAuthors.ToArray<ServiceReference.Author>();
-                    newVolume.Cover = tbCoverPath.Text;
-                    AddVolume(newVolume);
-                    _newAuthors.Clear();
+                    ServiceReference.WishListItem wishItem = new ServiceReference.WishListItem();
+                    wishItem.CardNum = _user.CardNum;
+                    wishItem.Volume_Id = (int) _currentVolume.Id;
+                    AddToWishList(wishItem);
+                    
                     _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
-                    GetVolumeDetailsByIsbn(newVolume.Isbn); //Pour rafraîchir et avoir l'Id.
+           //         GetVolumeDetailsByIsbn(_currentVolume.Isbn); //Pour rafraîchir et avoir l'Id.
                     SetVolInfoBox(true);
                 }
             }
-            // Si ajout d'exemplaire.
+            // Sinon, emprunt.
             // test et save
-            if (
-                CheckInputStrg.Check(CheckInputStrg.InputType.ItemCode, tbItemCode.Text) == true &&
-                _currentVolume != null &&
-                _currentLibrary != null
-                )
+            if (_user != null && _currentVolume != null)
             {
+                FormEmprunt formEmprunt = new FormEmprunt(this._parentForm, _user, _currentVolume);
+                formEmprunt.MdiParent = this._parentForm;
+                formEmprunt.Show();
+
                 ServiceReference.Item newItem = new ServiceReference.Item();
                 newItem.Code = tbItemCode.Text;
                 newItem.LibraryId = _currentLibrary.Id;
@@ -662,32 +645,26 @@ namespace ClientLibrairie
                 //      GetVolumeDetailsByIsbn(_currentVolume.Isbn);
             }
             else
-                MessageBox.Show("Veuillez remplir les champs !", "Informations manquantes",
+                MessageBox.Show("Veuillez d'abord choisir un ouvrage !", "Informations manquantes",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
 
-
         /// <summary>
-        /// Rajoute un auteur à la liste provisoire.
+        /// Selectionne le volume courant.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btAddAuthor_Click(object sender, EventArgs e)
+        private void dgvItems_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if
-                (
-            CheckInputStrg.Check(CheckInputStrg.InputType.Name, tbFirstName.Text) == true &&
-            CheckInputStrg.Check(CheckInputStrg.InputType.Name, tbLastName.Text)
-                )
+             int?  SlctdVolumeId = (int)dgvItems.SelectedRows[0].Cells["Id"].Value;   //     _newAuthors.SingleOrDefault(a => a.PersId == (int)dgvItems.SelectedRows[0].Cells["PersId"].Value);
+            if (SlctdVolumeId != null)
             {
-                ServiceReference.Author newAuthor = new ServiceReference.Author();
-                newAuthor.FirstName = tbFirstName.Text;
-                newAuthor.LastName = tbLastName.Text;
-                _newAuthors.Add(newAuthor);
+                ServiceReference.Volume newSlctdVolume = ServiceReference.IAffiliateService 
+                _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
             }
-
         }
+
 
         /// <summary>
         /// Filtre les touches pressées dans le txtbox isbn 
@@ -731,6 +708,10 @@ namespace ClientLibrairie
 
             e.Value = lastName + " " + firstName;
         }
+
+
+        #region non utilisé (pour autres forms)
+
         /// <summary>
         /// Ajoute l'auteur à la liste des auteurs du nouveau volume. 
         /// </summary>
@@ -738,24 +719,12 @@ namespace ClientLibrairie
         /// <param name="e"></param>
         private void listBoxAuthor_DoubleClick(object sender, EventArgs e)
         {
-            if (!_newAuthors.Contains((ServiceReference.Author)listBoxAuthor.SelectedItem))
-                _newAuthors.Add((ServiceReference.Author)listBoxAuthor.SelectedItem);
-            _bsDataGridView.ResetBindings(false); // Sinon ne mets pas l'affichage à jour.
+            //if (!_newAuthors.Contains((ServiceReference.Author)listBoxAuthor.SelectedItem))
+            //    _newAuthors.Add((ServiceReference.Author)listBoxAuthor.SelectedItem);
+            //_bsDataGridView.ResetBindings(false); // Sinon ne mets pas l'affichage à jour.
         }
 
-        /// <summary>
-        /// Supprime l'auteur de la liste des auteurs du nouveau volume.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvItems_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            ServiceReference.Author authorToRemove = _newAuthors.SingleOrDefault(a => a.PersId == (int)dgvItems.SelectedRows[0].Cells["PersId"].Value);
-            if (authorToRemove != null)
-            {
-                _newAuthors.Remove(authorToRemove);
-                _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
-            }
-        }
+        #endregion non utilisé (pour autres forms)
+
     }
 }

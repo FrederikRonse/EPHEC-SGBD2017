@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/BusinessObjects" />
   <xs:element name="CheckIn">
     <xs:complexType>
@@ -27,7 +26,7 @@
   <xs:element name="GetAffiliateByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetAffiliateByIdResult" nillable="true" type="q1:vAffiliate" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetAffiliateByIdResult" nillable="true" type="q1:Affiliate" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -42,7 +41,21 @@
   <xs:element name="GetAffiliateByNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetAffiliateByNameResult" nillable="true" type="q2:vAffiliate" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetAffiliateByNameResult" nillable="true" type="q2:Affiliate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWishListByCardNum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cardNum" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWishListByCardNumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetWishListByCardNumResult" nillable="true" type="q3:ArrayOfWishListItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,7 +69,7 @@
   <xs:element name="GetEmpruntsByAffiliateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetEmpruntsByAffiliateResult" nillable="true" type="q3:ArrayOfvEmpruntDetail" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetEmpruntsByAffiliateResult" nillable="true" type="q4:ArrayOfEmprunt" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -70,7 +83,7 @@
   <xs:element name="GetEmpruntByCodeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetEmpruntByCodeResult" nillable="true" type="q4:vEmpruntDetail" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetEmpruntByCodeResult" nillable="true" type="q5:Emprunt" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -85,7 +98,7 @@
   <xs:element name="GetRetardsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetRetardsResult" nillable="true" type="q5:ArrayOfvEmpruntDetail" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetRetardsResult" nillable="true" type="q6:ArrayOfEmprunt" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -97,7 +110,7 @@
   <xs:element name="GetLibrariesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetLibrariesResult" nillable="true" type="q6:ArrayOfvLibrary" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetLibrariesResult" nillable="true" type="q7:ArrayOfLibrary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -109,7 +122,7 @@
   <xs:element name="GetAllVolumesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" minOccurs="0" name="GetAllVolumesResult" nillable="true" type="q7:ArrayOfvVolume" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetAllVolumesResult" nillable="true" type="q8:ArrayOfVolume" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -123,7 +136,7 @@
   <xs:element name="GetItemsByVolumeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetItemsByVolumeResult" nillable="true" type="q8:ArrayOfItem" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetItemsByVolumeResult" nillable="true" type="q9:ArrayOfItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -137,7 +150,7 @@
   <xs:element name="GetVolumeDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumeDetailsResult" nillable="true" type="q9:Volume" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumeDetailsResult" nillable="true" type="q10:Volume" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -151,7 +164,7 @@
   <xs:element name="GetVolumeDetailsByIsbnResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumeDetailsByIsbnResult" nillable="true" type="q10:Volume" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumeDetailsByIsbnResult" nillable="true" type="q11:Volume" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -165,7 +178,7 @@
   <xs:element name="GetVolumeByTitleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumeByTitleResult" nillable="true" type="q11:Volume" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumeByTitleResult" nillable="true" type="q12:Volume" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -179,7 +192,7 @@
   <xs:element name="GetVolumesByTitleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumesByTitleResult" nillable="true" type="q12:ArrayOfVolume" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetVolumesByTitleResult" nillable="true" type="q13:ArrayOfVolume" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -193,7 +206,7 @@
   <xs:element name="GetTarifsByLibResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetTarifsByLibResult" nillable="true" type="q13:ArrayOfTarif" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/BusinessObjects" minOccurs="0" name="GetTarifsByLibResult" nillable="true" type="q14:ArrayOfTarif" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

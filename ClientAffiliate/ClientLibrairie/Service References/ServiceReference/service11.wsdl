@@ -35,6 +35,12 @@
   <wsdl:message name="IAffiliateService_GetAffiliateByName_CustomFaultFault_FaultMessage">
     <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q3:CustomFault" />
   </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetWishListByCardNum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWishListByCardNum" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetWishListByCardNum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWishListByCardNumResponse" />
+  </wsdl:message>
   <wsdl:message name="IAffiliateService_GetEmpruntsByAffiliate_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliate" />
   </wsdl:message>
@@ -150,6 +156,10 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByNameResponse" message="tns:IAffiliateService_GetAffiliateByName_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetAffiliateByNameCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetAffiliateByName_CustomFaultFault_FaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetWishListByCardNum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetWishListByCardNum" message="tns:IAffiliateService_GetWishListByCardNum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetWishListByCardNumResponse" message="tns:IAffiliateService_GetWishListByCardNum_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetEmpruntsByAffiliate">
       <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliate" message="tns:IAffiliateService_GetEmpruntsByAffiliate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliateResponse" message="tns:IAffiliateService_GetEmpruntsByAffiliate_OutputMessage" />
@@ -243,6 +253,15 @@
       <wsdl:fault name="CustomFaultFault">
         <soap:fault use="literal" name="CustomFaultFault" namespace="" />
       </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetWishListByCardNum">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetWishListByCardNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEmpruntsByAffiliate">
       <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliate" style="document" />

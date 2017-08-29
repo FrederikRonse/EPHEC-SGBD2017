@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.bibliothèquesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lecteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.retardsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmprunterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmpruntsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,46 +39,48 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bibliothèquesToolStripMenuItem,
-            this.lecteursToolStripMenuItem,
-            this.retardsToolStripMenuItem});
+            this.EmprunterToolStripMenuItem,
+            this.WishToolStripMenuItem,
+            this.EmpruntsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1276, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(957, 29);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // bibliothèquesToolStripMenuItem
+            // EmprunterToolStripMenuItem
             // 
-            this.bibliothèquesToolStripMenuItem.Name = "bibliothèquesToolStripMenuItem";
-            this.bibliothèquesToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
-            this.bibliothèquesToolStripMenuItem.Text = "&Bibliothèques";
-            this.bibliothèquesToolStripMenuItem.Click += new System.EventHandler(this.bibliothèquesToolStripMenuItem_Click);
+            this.EmprunterToolStripMenuItem.Name = "EmprunterToolStripMenuItem";
+            this.EmprunterToolStripMenuItem.Size = new System.Drawing.Size(96, 25);
+            this.EmprunterToolStripMenuItem.Text = "&Emprunter";
+            this.EmprunterToolStripMenuItem.Click += new System.EventHandler(this.bibliothèquesToolStripMenuItem_Click);
             // 
-            // lecteursToolStripMenuItem
+            // WishToolStripMenuItem
             // 
-            this.lecteursToolStripMenuItem.Name = "lecteursToolStripMenuItem";
-            this.lecteursToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
-            this.lecteursToolStripMenuItem.Text = "&Lecteurs";
-            this.lecteursToolStripMenuItem.Click += new System.EventHandler(this.lecteursToolStripMenuItem_Click);
+            this.WishToolStripMenuItem.Name = "WishToolStripMenuItem";
+            this.WishToolStripMenuItem.Size = new System.Drawing.Size(135, 25);
+            this.WishToolStripMenuItem.Text = "Livres &Souhaités";
+            this.WishToolStripMenuItem.Click += new System.EventHandler(this.lecteursToolStripMenuItem_Click);
             // 
-            // retardsToolStripMenuItem
+            // EmpruntsToolStripMenuItem
             // 
-            this.retardsToolStripMenuItem.Name = "retardsToolStripMenuItem";
-            this.retardsToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
-            this.retardsToolStripMenuItem.Text = "&Retards";
-            this.retardsToolStripMenuItem.Click += new System.EventHandler(this.retardsToolStripMenuItem_Click);
+            this.EmpruntsToolStripMenuItem.Name = "EmpruntsToolStripMenuItem";
+            this.EmpruntsToolStripMenuItem.Size = new System.Drawing.Size(122, 25);
+            this.EmpruntsToolStripMenuItem.Text = "&Mes Emprunts";
+            this.EmpruntsToolStripMenuItem.Click += new System.EventHandler(this.retardsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 953);
+            this.ClientSize = new System.Drawing.Size(957, 774);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
-            this.Text = "Admin Client";
+            this.Text = "Bienvenue";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -89,9 +91,9 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem bibliothèquesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lecteursToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem retardsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EmprunterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem WishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EmpruntsToolStripMenuItem;
     }
 }
 

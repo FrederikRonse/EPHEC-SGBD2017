@@ -122,25 +122,25 @@
     <None Include="Service References\ServiceReference\BusinessObjects.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Affiliate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Emprunt.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Item.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Library.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Tarif.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vAffiliate.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vEmpruntDetail.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vLibrary.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.Volume.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.vVolume.datasource">
+    <None Include="Service References\ServiceReference\ClientLibrairie.ServiceReference.WishListItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\service11.wsdl" />

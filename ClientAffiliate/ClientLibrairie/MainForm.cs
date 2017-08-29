@@ -13,12 +13,15 @@ namespace ClientLibrairie
 {
     public partial class MainForm : Form
     {
-        private List<ServiceReference.Library> _libraries;
-
+        internal List<ServiceReference.Library> _libraries;
+        internal ServiceReference.Affiliate _CurrentAffiliate;
+        ///Pour test
+        int userid = 1;
         public MainForm()
         {
             InitializeComponent();
             SetAllLibraries();
+            GetCurrentUser(userid);  //pour tests
         }
         /// <summary>
         /// Charge toutes les librairies pour le choix de la librairie active.
@@ -58,9 +61,51 @@ namespace ClientLibrairie
         }
         private void bibliothèquesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormBiblio formBiblio = new FormBiblio();
+            FormBiblio formBiblio = new FormBiblio(this);
             formBiblio.MdiParent = this;
             formBiblio.Show();
+        }
+
+        /// <summary>
+        /// Retourne le lecteur connecté par son id (N° de carte).
+        /// </summary>
+        /// <param name="cardNum"></param>
+        private void GetCurrentUser(int cardNum)
+        {
+            ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
+            try
+            {
+                ServiceReference.Affiliate user = sClient.GetAffiliateById(cardNum);
+                if (user != null)
+                {
+                    _CurrentAffiliate = user;
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("le numéro de lecteur {0}\n n'a rien retourné !", cardNum), "Désolé",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                if (user.FirstName != null) this.Text = string.Format("Bienvenue {0} !", user.FirstName);
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
+                CstmError.Display(cstmError);
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Une exception s'est produite à la récupération des données !", "Erreur",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void lecteursToolStripMenuItem_Click(object sender, EventArgs e)
