@@ -109,6 +109,34 @@ namespace WcfBLAffiliate
                 }
             }
         }
+
+
+        /// <summary>
+        /// Insère un nouvel emprunt.
+        /// La date de départ est crée dans la base de données.
+        /// </summary>
+        /// <param name="CardNum"></param>
+        /// <param name="Item_Id"></param>
+        /// <param name="Tarif_Id"></param>
+        public static void InsertEmprunt(int cardNum, int item_Id, int tarif_Id)
+        {
+            StringBuilder sLog = new StringBuilder();
+
+            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+            {
+                try
+                {
+                    dbEntity.InsertEmprunt(cardNum, item_Id, tarif_Id);
+                }
+                catch (Exception ex)
+                {
+                    int DefaultError = 12; //" Un problème est survenu à l'ajout !"
+                    throw new EL.CstmError(DefaultError, ex);
+                }
+            }
+        }
+
+
         //TODO FAIRE RETARDS du lecteur (+ RETARDS PAR LIBS?)
         /// <summary>
         /// Retourne tous les retards d'une librairie.

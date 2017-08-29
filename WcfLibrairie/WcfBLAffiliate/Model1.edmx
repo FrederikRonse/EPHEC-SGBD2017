@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ExamSGBD2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ExamSGBD2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vAffiliate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vAffiliate">
@@ -112,12 +112,16 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vVolume' does not have a
             <PropertyRef Name="Isbn" />
             <PropertyRef Name="Title" />
             <PropertyRef Name="Pers_Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Isbn" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cover" Type="varchar" MaxLength="50" />
           <Property Name="Pers_Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -136,8 +140,14 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cover" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Function Name="DeleteEmprunt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="emprunt_Id" Type="int" Mode="In" />
+        </Function>
         <Function Name="DeleteWishById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
           <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteWishItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="wish_Id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetAffiliateByCardNum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
           <Parameter Name="number" Type="int" Mode="In" />
@@ -162,6 +172,10 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <Parameter Name="Id" Type="int" Mode="In" />
           <Parameter Name="SelectClosed" Type="bit" Mode="In" />
         </Function>
+        <Function Name="GetItemByLibAndVol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Idlib" Type="int" Mode="In" />
+          <Parameter Name="Idvol" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetItemByVol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
           <Parameter Name="Idvol" Type="int" Mode="In" />
         </Function>
@@ -177,6 +191,11 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
         </Function>
         <Function Name="GetWishlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
           <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertEmprunt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="CardNum" Type="int" Mode="In" />
+          <Parameter Name="Item_Id" Type="int" Mode="In" />
+          <Parameter Name="Tarif_Id" Type="int" Mode="In" />
         </Function>
         <Function Name="InsertWish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
           <Parameter Name="CardNum" Type="int" Mode="In" />
@@ -247,7 +266,9 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
     [vVolume].[Isbn] AS [Isbn], 
     [vVolume].[Title] AS [Title], 
     [vVolume].[Cover] AS [Cover], 
-    [vVolume].[Pers_Id] AS [Pers_Id]
+    [vVolume].[Pers_Id] AS [Pers_Id], 
+    [vVolume].[FirstName] AS [FirstName], 
+    [vVolume].[LastName] AS [LastName]
     FROM [SchAffiliate].[vVolume] AS [vVolume]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vWishlist" EntityType="Self.vWishlist" store:Type="Views" store:Schema="SchAffiliate">
@@ -261,8 +282,7 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
     FROM [SchAffiliate].[vWishlist] AS [vWishlist]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ExamSGBD2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -361,12 +381,16 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
             <PropertyRef Name="Isbn" />
             <PropertyRef Name="Title" />
             <PropertyRef Name="Pers_Id" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Pers_Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vWishlist">
           <Key>
@@ -392,10 +416,10 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <EntitySet Name="vVolumes" EntityType="Self.vVolume" />
           <EntitySet Name="vWishlists" EntityType="Self.vWishlist" />
           <FunctionImport Name="DeleteWishById">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAffiliateByCardNum" ReturnType="Collection(ExamSGBD2017Model.GetAffiliateByCardNum_Result)">
-            <Parameter Name="number" Mode="In" Type="Int32" />
+          <Parameter Name="number" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAffiliateByName" ReturnType="Collection(ExamSGBD2017Model.GetAffiliateByName_Result)">
             <Parameter Name="firstName" Mode="In" Type="String" />
@@ -403,7 +427,7 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           </FunctionImport>
           <FunctionImport Name="GetAllVolumes" ReturnType="Collection(ExamSGBD2017Model.GetAllVolumes_Result)" />
           <FunctionImport Name="GetAuthorByVolumeIsbn" ReturnType="Collection(ExamSGBD2017Model.GetAuthorByVolumeIsbn_Result)">
-            <Parameter Name="VolumeIsbn" Mode="In" Type="String" />
+          <Parameter Name="VolumeIsbn" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetEmpruntByAffiliate" ReturnType="Collection(ExamSGBD2017Model.GetEmpruntByAffiliate_Result)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
@@ -418,24 +442,39 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
             <Parameter Name="SelectClosed" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="GetItemByVol" ReturnType="Collection(ExamSGBD2017Model.GetItemByVol_Result)">
-            <Parameter Name="Idvol" Mode="In" Type="Int32" />
+          <Parameter Name="Idvol" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetLibraries" ReturnType="Collection(ExamSGBD2017Model.GetLibraries_Result)" />
           <FunctionImport Name="GetVolumeById" ReturnType="Collection(ExamSGBD2017Model.GetVolumeById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetVolumeByIsbn" ReturnType="Collection(ExamSGBD2017Model.GetVolumeByIsbn_Result)">
-            <Parameter Name="isbn" Mode="In" Type="String" />
+          <Parameter Name="isbn" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetVolumeByTitle" ReturnType="Collection(ExamSGBD2017Model.GetVolumeByTitle_Result)">
-            <Parameter Name="title" Mode="In" Type="String" />
+          <Parameter Name="title" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetWishlist" ReturnType="Collection(ExamSGBD2017Model.GetWishlist_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InsertWish">
             <Parameter Name="CardNum" Mode="In" Type="Int32" />
             <Parameter Name="Volume_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEmprunt">
+          <Parameter Name="emprunt_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteWishItem">
+          <Parameter Name="wish_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetItemByLibAndVol" ReturnType="Collection(ExamSGBD2017Model.GetItemByLibAndVol_Result)">
+            <Parameter Name="Idlib" Mode="In" Type="Int32" />
+            <Parameter Name="Idvol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertEmprunt">
+            <Parameter Name="CardNum" Mode="In" Type="Int32" />
+            <Parameter Name="Item_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Tarif_Id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAffiliateByCardNum_Result">
@@ -557,6 +596,17 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
           <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="GetItemByLibAndVol_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Library_Id" Nullable="false" />
+          <Property Type="Int32" Name="Volume_Id" Nullable="false" />
+          <Property Type="DateTime" Name="BuyDate" Nullable="true" />
+          <Property Type="String" Name="Localisation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -634,6 +684,8 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <EntitySetMapping Name="vVolumes">
             <EntityTypeMapping TypeName="ExamSGBD2017Model.vVolume">
               <MappingFragment StoreEntitySet="vVolume">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Isbn" ColumnName="Isbn" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -827,6 +879,24 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertWish" FunctionName="ExamSGBD2017Model.Store.InsertWish" />
+          <FunctionImportMapping FunctionImportName="DeleteEmprunt" FunctionName="ExamSGBD2017Model.Store.DeleteEmprunt" />
+          <FunctionImportMapping FunctionImportName="DeleteWishItem" FunctionName="ExamSGBD2017Model.Store.DeleteWishItem" />
+          <FunctionImportMapping FunctionImportName="GetItemByLibAndVol" FunctionName="ExamSGBD2017Model.Store.GetItemByLibAndVol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetItemByLibAndVol_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="Volume_Id" ColumnName="Volume_Id" />
+                <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+                <ScalarProperty Name="Localisation" ColumnName="Localisation" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertEmprunt" FunctionName="ExamSGBD2017Model.Store.InsertEmprunt" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

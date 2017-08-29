@@ -14,6 +14,10 @@ namespace WcfBLAffiliate
 {
     public class AffiliateService : IAffiliateService
     {
+
+
+      
+
         /// <summary>
         /// Relicat du système d'identification.
         /// Utilisé pour établir la connection avec la BD.
@@ -31,13 +35,15 @@ namespace WcfBLAffiliate
             }
             catch (CstmError ex)
             {
-                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à l'authentification !"), new FaultReason(ex.GetMsg));
             }
             catch (Exception ex)
             {
                 throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
             }
         }
+
+        #region Opérations "Get"
 
         /// <summary>
         /// Renvoie la liste de toutes les librairies.
@@ -114,6 +120,7 @@ namespace WcfBLAffiliate
             }
         }
 
+
         /// <summary>
         /// Retourne les livres souhaités (wishlist) du lecteur.
         /// </summary>
@@ -136,6 +143,7 @@ namespace WcfBLAffiliate
                 throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
             }
         }
+
 
         /// <summary>
         /// Retourne la liste d'emprunts actifs d'un lecteur.
@@ -303,6 +311,66 @@ namespace WcfBLAffiliate
             }
         }
 
+        #endregion Opérations "Get"
+
+        #region Opérations "Set"
+
+        public void AddWishListItem(int cardNum, int volumeId)
+        {
+            try
+            {
+                DalWishList.AddWishListItem(cardNum, volumeId);
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à l'ajout du volume souhaité !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+        public void DeleteWishListItem(int wishId)
+        {
+            try
+            {
+                DalWishList.DeleteWishListItem(wishId);
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la suppression des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+        /// <summary>
+        /// Insère un nouvel emprunt.
+        /// La date de départ est crée dans la base de données.
+        /// </summary>
+        /// <param name="CardNum"></param>
+        /// <param name="Item_Id"></param>
+        /// <param name="Tarif_Id"></param>
+        public void StartEmprunt(int cardNum,int item_Id,int tarif_Id)
+        {
+            try
+            {
+                DalEmprunt.InsertEmprunt(cardNum,  item_Id,  tarif_Id);
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à l'enregistrement de l'emprunt !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
+        #endregion Opérations "Set"
 
 
         #region A Supprimer?
@@ -323,6 +391,7 @@ namespace WcfBLAffiliate
         {
             throw new NotImplementedException();
         }
+
         #endregion A Supprimer?
     }
 }

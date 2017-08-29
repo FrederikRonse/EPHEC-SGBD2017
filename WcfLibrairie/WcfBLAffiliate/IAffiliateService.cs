@@ -8,7 +8,6 @@ using BusinessObjects;
 
 namespace WcfBLAffiliate
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IAffiliateService
     {
@@ -18,7 +17,7 @@ namespace WcfBLAffiliate
 
 
 
-        /// Operations "Get"
+        #region Operations "Get"
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
          Affiliate GetAffiliateById(int lectId);
@@ -27,8 +26,12 @@ namespace WcfBLAffiliate
         [FaultContract(typeof(CustomFault))]
         Affiliate GetAffiliateByName(string FirstName, string lastName);
 
+
         [OperationContract]
+        [FaultContract(typeof(CustomFault))]
         List<WishListItem> GetWishListByCardNum(int cardNum);
+
+     
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
@@ -77,10 +80,26 @@ namespace WcfBLAffiliate
         //[OperationContract]
         //[FaultContract(typeof(CustomFault))]
         //List<Author> GetAllAuthorsNames();
+        #endregion Operations "Get"
 
-
-
+        #region Operations "Set"
         ///// Operations "Set"
+
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        void AddWishListItem(int cardNum, int volumeId);
+
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        void DeleteWishListItem(int wishId);
+
+        [OperationContract]
+        [FaultContract(typeof(CustomFault))]
+        void StartEmprunt(int cardNum, int item_Id, int tarif_Id);
+
+        #endregion Operations "Set"
+
+        #region non utilisé
         //[OperationContract]
         //[FaultContract(typeof(CustomFault))]
         //void AddVolume(Volume volumeToAdd);
@@ -108,6 +127,8 @@ namespace WcfBLAffiliate
         //[OperationContract]
         //[FaultContract(typeof(CustomFault))]
         //void CloseEmprunt(int EmpruntToCloseID, DateTime LastModified);
+        
+        #endregion non utilisé
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

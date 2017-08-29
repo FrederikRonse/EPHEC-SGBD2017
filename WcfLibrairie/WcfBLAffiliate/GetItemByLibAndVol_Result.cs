@@ -10,16 +10,17 @@
 namespace WcfBLAffiliate
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class vVolume
+    public partial class GetItemByLibAndVol_Result
     {
         public int Id { get; set; }
+        public string Code { get; set; }
+        public int Library_Id { get; set; }
+        public int Volume_Id { get; set; }
+        public Nullable<System.DateTime> BuyDate { get; set; }
+        public string Localisation { get; set; }
         public string Isbn { get; set; }
         public string Title { get; set; }
         public string Cover { get; set; }
-        public int Pers_Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

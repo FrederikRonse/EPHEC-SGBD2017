@@ -181,5 +181,53 @@ namespace WcfBLAffiliate
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertWish", cardNumParameter, volume_IdParameter);
         }
+    
+        public virtual int DeleteEmprunt(Nullable<int> emprunt_Id)
+        {
+            var emprunt_IdParameter = emprunt_Id.HasValue ?
+                new ObjectParameter("emprunt_Id", emprunt_Id) :
+                new ObjectParameter("emprunt_Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteEmprunt", emprunt_IdParameter);
+        }
+    
+        public virtual int DeleteWishItem(Nullable<int> wish_Id)
+        {
+            var wish_IdParameter = wish_Id.HasValue ?
+                new ObjectParameter("wish_Id", wish_Id) :
+                new ObjectParameter("wish_Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteWishItem", wish_IdParameter);
+        }
+    
+        public virtual ObjectResult<GetItemByLibAndVol_Result> GetItemByLibAndVol(Nullable<int> idlib, Nullable<int> idvol)
+        {
+            var idlibParameter = idlib.HasValue ?
+                new ObjectParameter("Idlib", idlib) :
+                new ObjectParameter("Idlib", typeof(int));
+    
+            var idvolParameter = idvol.HasValue ?
+                new ObjectParameter("Idvol", idvol) :
+                new ObjectParameter("Idvol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetItemByLibAndVol_Result>("GetItemByLibAndVol", idlibParameter, idvolParameter);
+        }
+    
+        public virtual int InsertEmprunt(Nullable<int> cardNum, Nullable<int> item_Id, Nullable<int> tarif_Id)
+        {
+            var cardNumParameter = cardNum.HasValue ?
+                new ObjectParameter("CardNum", cardNum) :
+                new ObjectParameter("CardNum", typeof(int));
+    
+            var item_IdParameter = item_Id.HasValue ?
+                new ObjectParameter("Item_Id", item_Id) :
+                new ObjectParameter("Item_Id", typeof(int));
+    
+            var tarif_IdParameter = tarif_Id.HasValue ?
+                new ObjectParameter("Tarif_Id", tarif_Id) :
+                new ObjectParameter("Tarif_Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertEmprunt", cardNumParameter, item_IdParameter, tarif_IdParameter);
+        }
     }
 }
