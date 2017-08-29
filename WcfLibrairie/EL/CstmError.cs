@@ -110,7 +110,7 @@ namespace EL
                         sMessage = " La modification n'a pas pu être effectuée ! \n Veuillez réessayer.";
                         break;
                     case 14:
-                        sMessage = " !";
+                        sMessage = " Un problème est survenu à la suppression ! ";
                         break;
                     case 15:
                         sMessage = " !";

@@ -34,7 +34,7 @@ namespace WcfBLAffiliate
                         wishListItem.CardNum = vWish.CardNum;
                         wishListItem.Volume_Id = vWish.Volume_Id;
                         wishListItem.Isbn = vWish.Isbn;
-                      //  wishListItem.Title = vWish. ;
+                        //  wishListItem.Title = vWish. ;
                         wishListItem.Cover = vWish.Cover;
 
                         listToReturn.Add((wishListItem));
@@ -45,9 +45,45 @@ namespace WcfBLAffiliate
                     int DefaultError = 7; //"Problème à la récupération des données !"
                     throw new EL.CstmError(DefaultError, ex);
                 }
-
             }
         }
+
+        public static void AddWishListItem(int cardNum, int volumeId)
+        {
+            StringBuilder sLog = new StringBuilder();
+
+            try
+            {
+                using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+                {
+                   dbEntity.InsertWish(cardNum, volumeId);
+                }
+            }
+            catch (Exception ex)
+            {
+                int DefaultError = 12; //" Un problème est survenu à l'ajout !"
+                throw new EL.CstmError(DefaultError, ex);
+            }
+        }
+
+        public static void DeleteWishListItem(int WishId)
+        {
+            StringBuilder sLog = new StringBuilder();
+
+            try
+            {
+                using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+                {
+                    dbEntity.DeleteWishById(WishId);
+                }
+            }
+            catch (Exception ex)
+            {
+                int DefaultError = 10; " Un problème est survenu à la modification des données !"
+                throw new EL.CstmError(DefaultError, ex);
+            }
+        }
+
     }
 }
 
