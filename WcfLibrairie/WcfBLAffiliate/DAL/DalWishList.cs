@@ -48,6 +48,11 @@ namespace WcfBLAffiliate
             }
         }
 
+        /// <summary>
+        /// Ajout d'une "réservation" dans la wishlist.
+        /// </summary>
+        /// <param name="cardNum"></param>
+        /// <param name="volumeId"></param>
         public static void AddWishListItem(int cardNum, int volumeId)
         {
             StringBuilder sLog = new StringBuilder();
@@ -66,6 +71,10 @@ namespace WcfBLAffiliate
             }
         }
 
+        /// <summary>
+        /// Suppresion d'un volume de la wishlist.
+        /// </summary>
+        /// <param name="WishId"></param>
         public static void DeleteWishListItem(int WishId)
         {
             StringBuilder sLog = new StringBuilder();
@@ -79,7 +88,7 @@ namespace WcfBLAffiliate
             }
             catch (Exception ex)
             {
-                int DefaultError = 10; " Un problème est survenu à la modification des données !"
+                int DefaultError = 10; //" Un problème est survenu à la modification des données !"
                 throw new EL.CstmError(DefaultError, ex);
             }
         }
