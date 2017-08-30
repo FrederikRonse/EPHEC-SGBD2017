@@ -344,44 +344,6 @@ namespace ClientLibrairie
             }
         }
 
-        /// <summary>
-        /// Clôture un emprunt.
-        /// </summary>
-        /// <param name="XtdEmpruntToClose"></param>
-        private void EndEmprunt(EmpruntXtd XtdEmpruntToClose)
-        {
-            //ServiceReference.Emprunt EmpruntToClose = new ServiceReference.Emprunt();
-            //EmpruntToClose.Id = XtdEmpruntToClose.Id;
-            //EmpruntToClose.ReturnDte = DateTime.Now.Date;
-            ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
-
-            try
-            {
-                sClient.CloseEmprunt(XtdEmpruntToClose.Id, XtdEmpruntToClose.LastModified);
-                SetMessage("Emprunt clôturé !");
-                _emprunts.Remove(XtdEmpruntToClose);
-                _bsDgvEmprunts.ResetBindings(false);
-            }
-            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
-            {
-                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
-                CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
-                CstmError.Display(cstmError);
-            }
-            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
-            {
-                CstmError.Display(Fault.Message);
-            }
-            catch (CstmError cstmError)
-            {
-                CstmError.Display(cstmError);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(string.Format("Une exception s'est produite à la clôture de l'emprunt ! : \n {0}", e.Message), "Erreur",
-                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
 
         /// <summary>
@@ -535,7 +497,7 @@ namespace ClientLibrairie
         {
             if (dgvEmprunts.SelectedRows != null)
             {
-                EndEmprunt(_emprunts.Find(x => x.Id == (int)dgvEmprunts.SelectedRows[0].Cells["Id"].Value));
+            //    EndEmprunt(_emprunts.Find(x => x.Id == (int)dgvEmprunts.SelectedRows[0].Cells["Id"].Value));
 
             }
         }
@@ -572,5 +534,47 @@ namespace ClientLibrairie
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+
+
+        /// <summary>
+        /// Clôture un emprunt.
+        /// </summary>
+        /// <param name="XtdEmpruntToClose"></param>
+        //private void EndEmprunt(EmpruntXtd XtdEmpruntToClose)
+        //{
+        //    //ServiceReference.Emprunt EmpruntToClose = new ServiceReference.Emprunt();
+        //    //EmpruntToClose.Id = XtdEmpruntToClose.Id;
+        //    //EmpruntToClose.ReturnDte = DateTime.Now.Date;
+        //    ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
+
+        //    try
+        //    {
+        //        sClient.CloseEmprunt(XtdEmpruntToClose.Id, XtdEmpruntToClose.LastModified);
+        //        SetMessage("Emprunt clôturé !");
+        //        _emprunts.Remove(XtdEmpruntToClose);
+        //        _bsDgvEmprunts.ResetBindings(false);
+        //    }
+        //    catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+        //    {
+        //        int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+        //        CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
+        //        CstmError.Display(cstmError);
+        //    }
+        //    catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+        //    {
+        //        CstmError.Display(Fault.Message);
+        //    }
+        //    catch (CstmError cstmError)
+        //    {
+        //        CstmError.Display(cstmError);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show(string.Format("Une exception s'est produite à la clôture de l'emprunt ! : \n {0}", e.Message), "Erreur",
+        //         MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
     }
 }

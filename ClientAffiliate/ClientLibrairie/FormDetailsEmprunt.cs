@@ -71,6 +71,8 @@ namespace ClientLibrairie
         /// <summary>
         /// Etabli la liste des preemprunts
         /// en récupérant les exemplaires et des infos supplémentaires.
+        /// [!] .ItemCode est utilisé pour stocker l'Id du tarif
+        /// pour la méthode d'enregistrement d'un emprunt.
         /// </summary>
         private void SetPreEmpList()
         {
@@ -84,23 +86,53 @@ namespace ClientLibrairie
             }
             //Création et remplissage des preemps. 
             // Récupération des noms de bibliothèques et des tarifs correspondants.
+            // .ItemCode est utilisé pour stocker l'Id du tarif pour la méthode d'enregistrement d'un emprunt.
             foreach (Item item in _exemplaires)
             {
                 Emprunt preEmp = new Emprunt();
                 Library empLib = _parentForm._libraries.SingleOrDefault(l => l.Id == item.LibraryId);
                 Tarif empTarif = DAL.getTarif(empLib.Id);
                 preEmp.LibraryName = empLib.Name.ToString();
+                preEmp.ItemCode = empTarif.Id.ToString(); 
                 preEmp.TarifName = empTarif.Name;
                 preEmp.Fee = empTarif.Fee;
                 preEmp.DailyPenalty = empTarif.DailyPenalty;
                 //      preEmp.Duration =   empTarif.Duration;
             }
-
         }
 
-        private void dgvItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Enregistre un emprunt.
+        /// .ItemCode est utilisé pour stocker l'Id du tarif pour la méthode d'enregistrement d'un emprunt.
+        /// </summary>
+        private void StartEmprunt( )
         {
+            int cardNum = _currentUser.CardNum;
+            int item_Id = _CurrentEmprunt.ItemId;
+            int tarif_Id =int.Parse(_CurrentEmprunt.ItemCode);
+            DAL.StartEmprunt(cardNum,  item_Id,  tarif_Id);
+        }
 
+
+        /// <summary>
+        /// Selectionne le pre-emprunt courant.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvItems_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            _CurrentEmprunt = _LstPreEmprunts.SingleOrDefault(em => em.Id == (int)dgvItems.SelectedRows[0].Cells["Id"].Value) ?? _CurrentEmprunt;
+            _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
+        }
+
+        /// <summary>
+        /// Appelle la méthode d'enregistrement d'un emprunt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btEmprunter_Click(object sender, EventArgs e)
+        {
+            StartEmprunt();
         }
     }
 }

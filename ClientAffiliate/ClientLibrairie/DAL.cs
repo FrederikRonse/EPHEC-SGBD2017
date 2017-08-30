@@ -120,5 +120,38 @@ namespace ClientLibrairie
             }
         }
 
+        /// <summary>
+        /// Ajout d'une "réservation".
+        /// </summary>
+        /// <param name="cardNum"></param>
+        /// <param name="volume_Id"></param>
+        internal static void AddToWishList(int cardNum,int volume_Id)
+        {
+            try
+            {
+                using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
+                {
+                    _sClient.AddWishListItem(cardNum, volume_Id);
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError.Display(new CstmError(cstmErrorN, endpointEx));
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                CstmError.Display(new CstmError(12, e)); // "erreur à l'ajout..."
+            }
+        }
+
     }
 }

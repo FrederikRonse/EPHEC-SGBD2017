@@ -157,6 +157,7 @@
             this.btEmprunter.TabIndex = 0;
             this.btEmprunter.Text = "Emprunter";
             this.btEmprunter.UseVisualStyleBackColor = true;
+            this.btEmprunter.Click += new System.EventHandler(this.btEmprunter_Click);
             // 
             // dgvItems
             // 
@@ -171,7 +172,7 @@
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItems.Size = new System.Drawing.Size(406, 372);
             this.dgvItems.TabIndex = 21;
-            this.dgvItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellContentClick);
+            this.dgvItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvItems_MouseDoubleClick);
             // 
             // FormDetailsEmprunt
             // 
