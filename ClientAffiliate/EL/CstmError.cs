@@ -109,7 +109,7 @@ namespace EL
                         sMessage = " Un problème est survenu à la suppression ! ";
                         break;
                     case 15:
-                        sMessage = " !";
+                        sMessage = " Cet ouvrage n'a pas d'exemplaire !";
                         break;
                     case 16:
                         sMessage = " !";

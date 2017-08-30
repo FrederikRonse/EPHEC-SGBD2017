@@ -17,9 +17,9 @@ namespace ClientLibrairie
         private MainForm _parentForm = null;
         private Affiliate _currentUser = null;
         private Volume _volume = null;
-        private List<Item> _exemplaires = null;
+        private List<Item> _exemplaires = new List<Item>();
         private List<Emprunt> _LstPreEmprunts = null;
-        private Emprunt _CurrentEmprunt = null;
+        private Emprunt _CurrentPreEmprunt = null;
         //  private FormLect.EmpruntXtd _emprunt;
 
         private BindingSource _bsDataGridView = new BindingSource();
@@ -30,6 +30,7 @@ namespace ClientLibrairie
             InitializeComponent();
             _parentForm = parentForm;
             _currentUser = currentUser;
+            _volume=volume;
         }
 
 
@@ -37,7 +38,7 @@ namespace ClientLibrairie
         {
             SetPreEmpList();
             SetDgvPreEmps();
-            _CurrentEmprunt = _LstPreEmprunts.First();
+            if (_LstPreEmprunts !=null && _LstPreEmprunts.Count >0) _CurrentPreEmprunt = _LstPreEmprunts.First();
             RefreshDetails();
         }
 
@@ -46,11 +47,11 @@ namespace ClientLibrairie
         /// </summary>
         private void RefreshDetails()
         {
-            textBoxTitle.Text = _CurrentEmprunt.VolumeTitle;
-            textBoxLibrary.Text = _CurrentEmprunt.LibraryName;
-            textBoxDailyPenalty.Text = _CurrentEmprunt.DailyPenalty.ToString();
-            textBoxFee.Text = _CurrentEmprunt.Fee.ToString();
-            textBoxTarif.Text = _CurrentEmprunt.TarifName;
+            textBoxTitle.Text = _CurrentPreEmprunt.VolumeTitle;
+            textBoxLibrary.Text = _CurrentPreEmprunt.LibraryName;
+            textBoxDailyPenalty.Text = _CurrentPreEmprunt.DailyPenalty.ToString();
+            textBoxFee.Text = _CurrentPreEmprunt.Fee.ToString();
+            textBoxTarif.Text = _CurrentPreEmprunt.TarifName;
         }
         /// <summary>
         /// Remplissage de la liste des exemplaires.
@@ -81,7 +82,7 @@ namespace ClientLibrairie
             if (items.Count() >= 1) _exemplaires = items;
             else
             {
-                int cstmErrorN = 11; //"Aucun résultat ne correspond à cette recherche !"
+                int cstmErrorN = 15; //" Cet ouvrage n'a pas d'exemplaire !"
                 CstmError.Display(new CstmError(cstmErrorN));
             }
             //Création et remplissage des preemps. 
@@ -108,8 +109,8 @@ namespace ClientLibrairie
         private void StartEmprunt( )
         {
             int cardNum = _currentUser.CardNum;
-            int item_Id = _CurrentEmprunt.ItemId;
-            int tarif_Id =int.Parse(_CurrentEmprunt.ItemCode);
+            int item_Id = _CurrentPreEmprunt.ItemId;
+            int tarif_Id =int.Parse(_CurrentPreEmprunt.ItemCode);
             DAL.StartEmprunt(cardNum,  item_Id,  tarif_Id);
         }
 
@@ -121,7 +122,7 @@ namespace ClientLibrairie
         /// <param name="e"></param>
         private void dgvItems_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _CurrentEmprunt = _LstPreEmprunts.SingleOrDefault(em => em.Id == (int)dgvItems.SelectedRows[0].Cells["Id"].Value) ?? _CurrentEmprunt;
+            _CurrentPreEmprunt = _LstPreEmprunts.SingleOrDefault(em => em.Id == (int)dgvItems.SelectedRows[0].Cells["Id"].Value) ?? _CurrentPreEmprunt;
             _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
         }
 

@@ -19,6 +19,41 @@ namespace ClientLibrairie
     /// </summary>
     static internal class DAL
     {
+     
+        /// <summary>
+        /// Retourne tous les volumes.
+        /// </summary>
+        /// <returns></returns>
+        internal static List<Volume> GetAllVolumes()
+        {
+            List<Volume> _volumes = new List<Volume>();
+            try
+            {
+                using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
+                {
+                    _volumes = _sClient.GetAllVolumes().ToList();
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError.Display(new CstmError(cstmErrorN, endpointEx));
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                CstmError.Display(new CstmError(7, e)); //Un problème est survenu à la récupération des données !
+            }
+            return _volumes;
+        }
+
         /// <summary>
         /// Retourne la liste des exemplaires d'un livre.
         /// </summary>

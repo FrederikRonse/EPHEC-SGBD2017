@@ -307,6 +307,28 @@ namespace WcfBLAffiliate
                 throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
             }
         }
+        /// <summary>
+        /// Retourne tous les exemplaires d'un volume.
+        /// </summary>
+        /// <param name="VolumeId"></param>
+        /// <returns></returns>
+        public List<Item> GetItemsByVolume(int VolumeId)
+        {
+            List<Item> _listToReturn = new List<Item>();
+            try
+            {
+                DalItem.GetItemsByVOlume(VolumeId, ref _listToReturn);
+                return _listToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
 
         #endregion Opérations "Get"
 
@@ -383,11 +405,8 @@ namespace WcfBLAffiliate
         {
             throw new NotImplementedException();
         }
-        // A SUPPRIMER ?
-        public List<Item> GetItemsByVolume(int VolumeId)
-        {
-            throw new NotImplementedException();
-        }
+
+    
 
         #endregion A Supprimer?
     }

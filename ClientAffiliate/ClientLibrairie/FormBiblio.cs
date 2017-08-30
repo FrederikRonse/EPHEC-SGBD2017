@@ -22,7 +22,7 @@ namespace ClientLibrairie
         private ServiceReference.Library _currentLibrary;
         private List<ServiceReference.Volume> _volumes;
         private ServiceReference.Volume _currentVolume = null;
-        private bool toWishList = true;
+        private bool _toWishList = true;
 
 
 
@@ -45,7 +45,9 @@ namespace ClientLibrairie
             SetAllLibraries();
             if (_libraries != null) _currentLibrary = _libraries.First();
             if (_user.FirstName != null) this.Text = string.Format("Bienvenue {0} !", _user.FirstName);
+            GetAllVolumes();
             BindAndSet();
+
         }
 
 
@@ -92,10 +94,9 @@ namespace ClientLibrairie
         /// </summary>
         private void GetAllVolumes()
         {
-            ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
             try
             {
-                List<ServiceReference.Volume> volumes = sClient.GetAllVolumes().ToList();
+                List<Volume> volumes = DAL.GetAllVolumes().ToList();
                 if (volumes.Count() >= 1) _volumes = volumes;
                 else
                 {
@@ -412,57 +413,6 @@ namespace ClientLibrairie
         }
 
 
-        //Rétuliser ?
-        /// <summary>
-        /// Switch entre le mode recherche de volume
-        /// et autoriser l'ajout de volumes ou d'exemplaires.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btAddVolume_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-            //  if (searchMode == true)
-            //  {
-            //      searchMode = false;
-            //  //    btAddMenu.BackColor = Color.Gray;
-            //      labelSearch.Hide();
-            //      btAddAction.Show();
-            //      rbWish.Show();
-            //      rbEmprunt.Enabled = false;
-            //      rbEmprunt.Show();
-            ////      btAddAuthor.Enabled = false;
-            //      listBoxAuthor.Visible = true;
-
-            //      if (_currentVolume != null)
-            //      {
-            //          SetVolSrchInfos(true);
-            //          rbEmprunt.Enabled = true;
-            //          rbEmprunt.Select();
-            //          listBoxAuthor.Visible = false;
-            //        }
-            //        else
-            //        {
-            //            rbWish.Select();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        searchMode = true;
-            //        SetVolSrchInfos(true);
-            //       // btAddMenu.BackColor = Color.LightGray;
-            //        labelSearch.Show();
-            //        btAddAction.Hide();
-            //        rbWish.Hide();
-            //        rbEmprunt.Hide();
-            //        btAddAction.Enabled = true;
-            //       // btAddAuthor.Enabled = true;
-            //        listBoxAuthor.Visible = false;
-            //       // _newAuthors.Clear();
-            //        _bsDataGridView.ResetBindings(false);
-            //    }
-        }
-
         /// <summary>
         /// Prépare un ajout à la wishlist ou une réservation, selon choix utilisateur.
         /// </summary>
@@ -479,74 +429,16 @@ namespace ClientLibrairie
                     {
                         switch (radio.Name)
                         {
-                            case "rbAddEmprunt":
-                                toWishList = false;
+                            case "rbEmprunt":
+                                _toWishList = false;
                                 // Mise en forme visuelle.
                                 btAddAction.Text = "Emprunter";
-
-
-                                panelAddItem.BorderStyle = BorderStyle.None;
-                                panelAddItem.Hide();
-                                //listBoxAuthor.Visible = true;
-                                //  SetVolSrchInfos(false);
-
-                                tbIsbnSearch.ReadOnly = false;
-                                tbTitleSearch.ReadOnly = false;
-
                                 break;
 
-                            case "rbAddWish":
-                                toWishList = true;
+                            case "rbWish":
+                                _toWishList = true;
                                 // Mise en forme visuelle.
                                 btAddAction.Text = "Ajouter à votre WishList";
-
-                                panelAddItem.BorderStyle = BorderStyle.FixedSingle;
-                                panelAddItem.Show();
-                                //    listBoxAuthor.Visible = false;
-
-                                //Logique 
-                                if (_currentVolume != null)
-                                {
-                                    SetVolSrchInfos(true);
-
-                                    //(Ne devrait pas arriver, sécurité).
-                                    //Si les infos affichéees sont celles du volume en cours, on 
-                                    //locke les textboxes Volume, sinon on propose de sauver le volume actuel.
-                                    if (tbIsbnSearch.Text == _currentVolume.Isbn
-                                        && tbTitleSearch.Text == _currentVolume.Title)
-                                    {
-                                        // Lock le volume
-                                        tbIsbnSearch.ReadOnly = true;
-                                        tbTitleSearch.ReadOnly = true;
-                                    }
-                                    // Ou on propose de sauver le volume actuel.
-                                    else
-                                    {
-                                        DialogResult dr = MessageBox.Show(" Choisisez un volume avant de créer un exemplaire !\n" +
-                                                 "Voulez vous créer un volume sur base des données rentrées ?", "Warning", MessageBoxButtons.YesNo);
-                                        if (dr == DialogResult.Yes)
-                                        {// test et save
-                                            if (
-                                            CheckInputStrg.Check(CheckInputStrg.InputType.Isbn, tbIsbnSearch.Text) == true)
-                                            {
-                                                ServiceReference.Volume newVolume = new ServiceReference.Volume();
-                                                newVolume.Isbn = tbIsbnSearch.Text;
-                                                newVolume.Title = tbTitleSearch.Text;
-                                                //newVolume.Authors = _newAuthors.ToArray<ServiceReference.Author>();
-                                                //newVolume.Cover = tbCoverPath.Text;
-                                                //AddVolume(newVolume);
-                                            }
-                                            this.Close();
-                                        }
-                                        else if (dr == DialogResult.No)
-                                        {
-                                            this.Close();
-                                            _currentVolume = null;
-                                            SetVolSrchInfos(true);
-                                            SetVolInfoBox(true);
-                                        }
-                                    }
-                                }
                                 break;
 
                             default:
@@ -594,8 +486,9 @@ namespace ClientLibrairie
             int? SlctdVolumeId = (int)dgvItems.SelectedRows[0].Cells["Id"].Value;   //     _newAuthors.SingleOrDefault(a => a.PersId == (int)dgvItems.SelectedRows[0].Cells["PersId"].Value);
             if (SlctdVolumeId != null)
             {
-                _currentVolume = _volumes.SingleOrDefault(v => v.Id == SlctdVolumeId);
-            //   _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
+                _currentVolume = _volumes.FirstOrDefault(v => v.Id == SlctdVolumeId);
+                SetVolInfoBox(true);
+                //   _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
             }
         }
 

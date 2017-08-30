@@ -854,6 +854,12 @@ namespace ClientLibrairie.ServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int VolumeIdField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VolumeIsbnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VolumeTitleField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -951,6 +957,32 @@ namespace ClientLibrairie.ServiceReference {
                 if ((this.VolumeIdField.Equals(value) != true)) {
                     this.VolumeIdField = value;
                     this.RaisePropertyChanged("VolumeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VolumeIsbn {
+            get {
+                return this.VolumeIsbnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VolumeIsbnField, value) != true)) {
+                    this.VolumeIsbnField = value;
+                    this.RaisePropertyChanged("VolumeIsbn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VolumeTitle {
+            get {
+                return this.VolumeTitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VolumeTitleField, value) != true)) {
+                    this.VolumeTitleField = value;
+                    this.RaisePropertyChanged("VolumeTitle");
                 }
             }
         }

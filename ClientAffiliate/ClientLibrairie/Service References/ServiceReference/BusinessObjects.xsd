@@ -112,6 +112,8 @@
       <xs:element minOccurs="0" name="LibraryId" type="xs:int" />
       <xs:element minOccurs="0" name="Localisation" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="VolumeId" type="xs:int" />
+      <xs:element minOccurs="0" name="VolumeIsbn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VolumeTitle" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Item" nillable="true" type="tns:Item" />
