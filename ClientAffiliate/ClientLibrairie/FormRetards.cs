@@ -50,6 +50,10 @@ namespace ClientLibrairie
             SetMessage(string.Format("Vos emprunts, {0} .",_parentForm._CurrentAffiliate.FirstName));
         }
 
+        /// <summary>
+        /// Formate les messages affichés.
+        /// </summary>
+        /// <param name="message"></param>
         private void SetMessage(string message)
         {
             tbInfo.Text = string.Format("     " + (DateTime.Now.ToString() + "  :  " + message));
@@ -57,14 +61,14 @@ namespace ClientLibrairie
 
 
         /// <summary>
-        /// Retourne les retards d'une librairie
+        /// Retourne les retards .
         /// </summary>
         /// <param name="libId"></param>
         /// <param name="referenceDate"></param>
-        private void GetRetardsByLib(int libId, DateTime referenceDate = default(DateTime))
+        private void GetRetardsAff(int afffID) //, DateTime referenceDate = default(DateTime
         {
-            if (referenceDate == default(DateTime)) referenceDate = DateTime.Now.Date;
-            _emprunts = DAL.GetRetards(libId, referenceDate);
+       //     if (referenceDate == default(DateTime)) referenceDate = DateTime.Now.Date;
+            _emprunts = DAL.GetRetards(afffID);
         }
 
         /// <summary>
@@ -102,5 +106,10 @@ namespace ClientLibrairie
             _bsDataGridView.ResetBindings(false);
         }
 
+        private void btRetards_Click(object sender, EventArgs e)
+        {
+            GetRetardsAff(_parentForm._CurrentAffiliate.CardNum);
+            SetandBind();
+        }
     }
 }

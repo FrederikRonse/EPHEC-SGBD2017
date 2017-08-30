@@ -30,12 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.tbInfo = new System.Windows.Forms.TextBox();
             this.comboBoxLibChoice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.empruntFullBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btRetards = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empruntFullBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -44,6 +45,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btRetards);
             this.panel1.Controls.Add(this.tbInfo);
             this.panel1.Controls.Add(this.comboBoxLibChoice);
             this.panel1.Controls.Add(this.label1);
@@ -52,17 +54,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(590, 62);
             this.panel1.TabIndex = 0;
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(257, 298);
-            this.buttonClear.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(118, 19);
-            this.buttonClear.TabIndex = 18;
-            this.buttonClear.Text = "Vider la liste";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // tbInfo
             // 
@@ -96,6 +87,17 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Bibliothèque : ";
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(257, 298);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(118, 19);
+            this.buttonClear.TabIndex = 18;
+            this.buttonClear.Text = "Vider la liste";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -107,6 +109,16 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(590, 200);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // btRetards
+            // 
+            this.btRetards.Location = new System.Drawing.Point(478, 34);
+            this.btRetards.Name = "btRetards";
+            this.btRetards.Size = new System.Drawing.Size(75, 23);
+            this.btRetards.TabIndex = 18;
+            this.btRetards.Text = "Retards";
+            this.btRetards.UseVisualStyleBackColor = true;
+            this.btRetards.Click += new System.EventHandler(this.btRetards_Click);
             // 
             // FormEmprunts
             // 
@@ -146,5 +158,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn toPayDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource empruntFullBindingSource;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btRetards;
     }
 }

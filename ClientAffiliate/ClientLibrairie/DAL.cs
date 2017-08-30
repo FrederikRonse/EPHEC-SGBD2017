@@ -199,7 +199,7 @@ namespace ClientLibrairie
         /// <param name="libId"></param>
         /// <param name="referenceDate"></param>
         /// <returns></returns>
-        internal static List<Emprunt> GetRetards(int affId, DateTime referenceDate = default(DateTime) )
+        internal static List<Emprunt> GetRetards(int affId ) //, DateTime referenceDate = default(DateTime)
         {
             List<Emprunt> _Retards = new List<Emprunt>();
             try
