@@ -70,18 +70,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(254, 20);
+            this.label1.Location = new System.Drawing.Point(190, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bibliothèque : ";
             // 
             // lblNumCarte
             // 
             this.lblNumCarte.AutoSize = true;
-            this.lblNumCarte.Location = new System.Drawing.Point(13, 11);
+            this.lblNumCarte.Location = new System.Drawing.Point(10, 9);
+            this.lblNumCarte.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumCarte.Name = "lblNumCarte";
-            this.lblNumCarte.Size = new System.Drawing.Size(92, 17);
+            this.lblNumCarte.Size = new System.Drawing.Size(70, 13);
             this.lblNumCarte.TabIndex = 1;
             this.lblNumCarte.Text = "N° de carte : ";
             // 
@@ -99,16 +101,18 @@
             this.panelLecteur.Controls.Add(this.lblPrenom);
             this.panelLecteur.Controls.Add(this.lblNom);
             this.panelLecteur.Controls.Add(this.lblNumCarte);
-            this.panelLecteur.Location = new System.Drawing.Point(12, 54);
+            this.panelLecteur.Location = new System.Drawing.Point(9, 44);
+            this.panelLecteur.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLecteur.Name = "panelLecteur";
-            this.panelLecteur.Size = new System.Drawing.Size(540, 151);
+            this.panelLecteur.Size = new System.Drawing.Size(406, 123);
             this.panelLecteur.TabIndex = 2;
             // 
             // tbCardNum
             // 
-            this.tbCardNum.Location = new System.Drawing.Point(106, 11);
+            this.tbCardNum.Location = new System.Drawing.Point(80, 9);
+            this.tbCardNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbCardNum.Name = "tbCardNum";
-            this.tbCardNum.Size = new System.Drawing.Size(86, 22);
+            this.tbCardNum.Size = new System.Drawing.Size(66, 20);
             this.tbCardNum.TabIndex = 16;
             this.tbCardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCardNum_KeyPress);
             this.tbCardNum.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbCardNum_KeyUp);
@@ -116,33 +120,37 @@
             // lblBiblioPr
             // 
             this.lblBiblioPr.AutoSize = true;
-            this.lblBiblioPr.Location = new System.Drawing.Point(13, 123);
+            this.lblBiblioPr.Location = new System.Drawing.Point(10, 100);
+            this.lblBiblioPr.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBiblioPr.Name = "lblBiblioPr";
-            this.lblBiblioPr.Size = new System.Drawing.Size(164, 17);
+            this.lblBiblioPr.Size = new System.Drawing.Size(123, 13);
             this.lblBiblioPr.TabIndex = 14;
             this.lblBiblioPr.Text = "Bibliothèque Principale : ";
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(360, 42);
+            this.tbFirstName.Location = new System.Drawing.Point(270, 34);
+            this.tbFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(154, 22);
+            this.tbFirstName.Size = new System.Drawing.Size(116, 20);
             this.tbFirstName.TabIndex = 13;
             this.tbFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(359, 11);
+            this.tbLastName.Location = new System.Drawing.Point(269, 9);
+            this.tbLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(154, 22);
+            this.tbLastName.Size = new System.Drawing.Size(116, 20);
             this.tbLastName.TabIndex = 12;
             this.tbLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             // 
             // btSearch
             // 
-            this.btSearch.Location = new System.Drawing.Point(405, 123);
+            this.btSearch.Location = new System.Drawing.Point(304, 100);
+            this.btSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(112, 23);
+            this.btSearch.Size = new System.Drawing.Size(84, 19);
             this.btSearch.TabIndex = 4;
             this.btSearch.Text = "R&echercher";
             this.btSearch.UseVisualStyleBackColor = true;
@@ -151,45 +159,50 @@
             // lblNaiss
             // 
             this.lblNaiss.AutoSize = true;
-            this.lblNaiss.Location = new System.Drawing.Point(286, 76);
+            this.lblNaiss.Location = new System.Drawing.Point(214, 62);
+            this.lblNaiss.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNaiss.Name = "lblNaiss";
-            this.lblNaiss.Size = new System.Drawing.Size(138, 17);
+            this.lblNaiss.Size = new System.Drawing.Size(105, 13);
             this.lblNaiss.TabIndex = 6;
             this.lblNaiss.Text = "Date de naissance : ";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(13, 76);
+            this.lblType.Location = new System.Drawing.Point(10, 62);
+            this.lblType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(52, 17);
+            this.lblType.Size = new System.Drawing.Size(40, 13);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type : ";
             // 
             // lblValid
             // 
             this.lblValid.AutoSize = true;
-            this.lblValid.Location = new System.Drawing.Point(13, 45);
+            this.lblValid.Location = new System.Drawing.Point(10, 37);
+            this.lblValid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblValid.Name = "lblValid";
-            this.lblValid.Size = new System.Drawing.Size(66, 17);
+            this.lblValid.Size = new System.Drawing.Size(50, 13);
             this.lblValid.TabIndex = 4;
             this.lblValid.Text = "Validité : ";
             // 
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(286, 45);
+            this.lblPrenom.Location = new System.Drawing.Point(214, 37);
+            this.lblPrenom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(69, 17);
+            this.lblPrenom.Size = new System.Drawing.Size(52, 13);
             this.lblPrenom.TabIndex = 3;
             this.lblPrenom.Text = "Prénom : ";
             // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(286, 11);
+            this.lblNom.Location = new System.Drawing.Point(214, 9);
+            this.lblNom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(49, 17);
+            this.lblNom.Size = new System.Drawing.Size(38, 13);
             this.lblNom.TabIndex = 2;
             this.lblNom.Text = "Nom : ";
             // 
@@ -199,9 +212,10 @@
             this.comboBoxLibChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLibChoice.FormattingEnabled = true;
             this.comboBoxLibChoice.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBoxLibChoice.Location = new System.Drawing.Point(368, 17);
+            this.comboBoxLibChoice.Location = new System.Drawing.Point(276, 14);
+            this.comboBoxLibChoice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxLibChoice.Name = "comboBoxLibChoice";
-            this.comboBoxLibChoice.Size = new System.Drawing.Size(250, 24);
+            this.comboBoxLibChoice.Size = new System.Drawing.Size(188, 21);
             this.comboBoxLibChoice.TabIndex = 15;
             this.comboBoxLibChoice.SelectedIndexChanged += new System.EventHandler(this.comboBoxLibChoice_SelectedIndexChanged);
             // 
@@ -209,9 +223,10 @@
             // 
             this.panelEmprunts.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelEmprunts.Controls.Add(this.dgvEmprunts);
-            this.panelEmprunts.Location = new System.Drawing.Point(12, 304);
+            this.panelEmprunts.Location = new System.Drawing.Point(9, 247);
+            this.panelEmprunts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelEmprunts.Name = "panelEmprunts";
-            this.panelEmprunts.Size = new System.Drawing.Size(608, 197);
+            this.panelEmprunts.Size = new System.Drawing.Size(457, 161);
             this.panelEmprunts.TabIndex = 2;
             // 
             // dgvEmprunts
@@ -230,13 +245,14 @@
             this.dgvEmprunts.DataSource = this.empruntBindingSource;
             this.dgvEmprunts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEmprunts.Location = new System.Drawing.Point(0, 0);
+            this.dgvEmprunts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvEmprunts.MultiSelect = false;
             this.dgvEmprunts.Name = "dgvEmprunts";
             this.dgvEmprunts.ReadOnly = true;
             this.dgvEmprunts.RowHeadersVisible = false;
             this.dgvEmprunts.RowTemplate.Height = 24;
             this.dgvEmprunts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmprunts.Size = new System.Drawing.Size(604, 193);
+            this.dgvEmprunts.Size = new System.Drawing.Size(453, 157);
             this.dgvEmprunts.TabIndex = 0;
             this.dgvEmprunts.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmprunts_CellContentDoubleClick);
             // 
@@ -275,9 +291,10 @@
             // 
             // btRetards
             // 
-            this.btRetards.Location = new System.Drawing.Point(418, 221);
+            this.btRetards.Location = new System.Drawing.Point(314, 180);
+            this.btRetards.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btRetards.Name = "btRetards";
-            this.btRetards.Size = new System.Drawing.Size(75, 23);
+            this.btRetards.Size = new System.Drawing.Size(56, 19);
             this.btRetards.TabIndex = 3;
             this.btRetards.Text = "Retards";
             this.btRetards.UseVisualStyleBackColor = true;
@@ -285,70 +302,79 @@
             // LblOverdueN
             // 
             this.LblOverdueN.AutoSize = true;
-            this.LblOverdueN.Location = new System.Drawing.Point(508, 227);
+            this.LblOverdueN.Location = new System.Drawing.Point(381, 184);
+            this.LblOverdueN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblOverdueN.Name = "LblOverdueN";
-            this.LblOverdueN.Size = new System.Drawing.Size(18, 17);
+            this.LblOverdueN.Size = new System.Drawing.Size(13, 13);
             this.LblOverdueN.TabIndex = 4;
             this.LblOverdueN.Text = "--";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 227);
+            this.label2.Location = new System.Drawing.Point(9, 184);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Emprunts";
             // 
             // lblEmpruntsN
             // 
             this.lblEmpruntsN.AutoSize = true;
-            this.lblEmpruntsN.Location = new System.Drawing.Point(86, 227);
+            this.lblEmpruntsN.Location = new System.Drawing.Point(64, 184);
+            this.lblEmpruntsN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmpruntsN.Name = "lblEmpruntsN";
-            this.lblEmpruntsN.Size = new System.Drawing.Size(18, 17);
+            this.lblEmpruntsN.Size = new System.Drawing.Size(13, 13);
             this.lblEmpruntsN.TabIndex = 6;
             this.lblEmpruntsN.Text = "--";
             // 
             // tbInfo
             // 
-            this.tbInfo.Location = new System.Drawing.Point(29, 276);
+            this.tbInfo.Location = new System.Drawing.Point(22, 224);
+            this.tbInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbInfo.Name = "tbInfo";
             this.tbInfo.ReadOnly = true;
-            this.tbInfo.Size = new System.Drawing.Size(498, 22);
+            this.tbInfo.Size = new System.Drawing.Size(374, 20);
             this.tbInfo.TabIndex = 7;
             // 
             // btNew
             // 
-            this.btNew.Location = new System.Drawing.Point(351, 519);
+            this.btNew.Location = new System.Drawing.Point(400, 422);
+            this.btNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btNew.Name = "btNew";
-            this.btNew.Size = new System.Drawing.Size(86, 58);
+            this.btNew.Size = new System.Drawing.Size(64, 47);
             this.btNew.TabIndex = 7;
             this.btNew.Text = "&Nouvel Emprunt";
             this.btNew.UseVisualStyleBackColor = true;
+            this.btNew.Visible = false;
             // 
             // lblTotalN
             // 
             this.lblTotalN.AutoSize = true;
-            this.lblTotalN.Location = new System.Drawing.Point(215, 227);
+            this.lblTotalN.Location = new System.Drawing.Point(161, 184);
+            this.lblTotalN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalN.Name = "lblTotalN";
-            this.lblTotalN.Size = new System.Drawing.Size(18, 17);
+            this.lblTotalN.Size = new System.Drawing.Size(13, 13);
             this.lblTotalN.TabIndex = 9;
             this.lblTotalN.Text = "--";
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(141, 227);
+            this.lblTotal.Location = new System.Drawing.Point(106, 184);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(64, 17);
+            this.lblTotal.Size = new System.Drawing.Size(49, 13);
             this.lblTotal.TabIndex = 8;
             this.lblTotal.Text = "Total € : ";
             // 
             // btRestitution
             // 
-            this.btRestitution.Location = new System.Drawing.Point(119, 519);
+            this.btRestitution.Location = new System.Drawing.Point(193, 422);
+            this.btRestitution.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btRestitution.Name = "btRestitution";
-            this.btRestitution.Size = new System.Drawing.Size(86, 58);
+            this.btRestitution.Size = new System.Drawing.Size(83, 47);
             this.btRestitution.TabIndex = 10;
             this.btRestitution.Text = "&Restitution";
             this.btRestitution.UseVisualStyleBackColor = true;
@@ -356,9 +382,10 @@
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(119, 17);
+            this.textBoxCode.Location = new System.Drawing.Point(89, 14);
+            this.textBoxCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(86, 22);
+            this.textBoxCode.Size = new System.Drawing.Size(66, 20);
             this.textBoxCode.TabIndex = 18;
             this.textBoxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCode_KeyPress);
             this.textBoxCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCode_KeyUp);
@@ -366,17 +393,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 19);
+            this.label3.Location = new System.Drawing.Point(0, 15);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 17);
+            this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 17;
             this.label3.Text = "Code Exemplaire : ";
             // 
             // FormLect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 600);
+            this.ClientSize = new System.Drawing.Size(527, 488);
             this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.btRestitution);
             this.Controls.Add(this.label3);
@@ -392,6 +420,7 @@
             this.Controls.Add(this.panelEmprunts);
             this.Controls.Add(this.panelLecteur);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormLect";
             this.Text = "Gestion Lecteurs";
             this.Load += new System.EventHandler(this.FormLect_Load);

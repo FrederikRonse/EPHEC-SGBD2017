@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btRetards = new System.Windows.Forms.Button();
             this.tbInfo = new System.Windows.Forms.TextBox();
             this.comboBoxLibChoice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.empruntFullBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btRetards = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empruntFullBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -54,6 +54,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(590, 62);
             this.panel1.TabIndex = 0;
+            // 
+            // btRetards
+            // 
+            this.btRetards.Location = new System.Drawing.Point(478, 34);
+            this.btRetards.Name = "btRetards";
+            this.btRetards.Size = new System.Drawing.Size(75, 23);
+            this.btRetards.TabIndex = 18;
+            this.btRetards.Text = "Retards";
+            this.btRetards.UseVisualStyleBackColor = true;
+            this.btRetards.Click += new System.EventHandler(this.btRetards_Click);
             // 
             // tbInfo
             // 
@@ -109,16 +119,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(590, 200);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // btRetards
-            // 
-            this.btRetards.Location = new System.Drawing.Point(478, 34);
-            this.btRetards.Name = "btRetards";
-            this.btRetards.Size = new System.Drawing.Size(75, 23);
-            this.btRetards.TabIndex = 18;
-            this.btRetards.Text = "Retards";
-            this.btRetards.UseVisualStyleBackColor = true;
-            this.btRetards.Click += new System.EventHandler(this.btRetards_Click);
             // 
             // FormEmprunts
             // 
