@@ -35,7 +35,6 @@
             this.comboBoxLibChoice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.empruntFullBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.listView1 = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empruntFullBindingSource)).BeginInit();
@@ -45,19 +44,18 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.buttonClear);
             this.panel1.Controls.Add(this.tbInfo);
             this.panel1.Controls.Add(this.comboBoxLibChoice);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(10, 11);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 62);
+            this.panel1.Size = new System.Drawing.Size(590, 62);
             this.panel1.TabIndex = 0;
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(764, 29);
+            this.buttonClear.Location = new System.Drawing.Point(257, 298);
             this.buttonClear.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(118, 19);
@@ -68,7 +66,7 @@
             // 
             // tbInfo
             // 
-            this.tbInfo.Location = new System.Drawing.Point(255, 40);
+            this.tbInfo.Location = new System.Drawing.Point(17, 38);
             this.tbInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tbInfo.Name = "tbInfo";
             this.tbInfo.ReadOnly = true;
@@ -98,33 +96,25 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Bibliothèque : ";
             // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(57, 241);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(772, 268);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(123, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 93);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(658, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(590, 200);
             this.dataGridView1.TabIndex = 3;
             // 
             // FormEmprunts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 609);
+            this.ClientSize = new System.Drawing.Size(641, 343);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormEmprunts";
@@ -155,7 +145,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lateDaysDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn toPayDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource empruntFullBindingSource;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

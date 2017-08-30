@@ -97,7 +97,8 @@ namespace ClientLibrairie
         /// <param name="e"></param>
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            _emprunts.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
             _bsDataGridView.ResetBindings(false);
         }
 
