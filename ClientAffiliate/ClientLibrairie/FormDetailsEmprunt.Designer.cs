@@ -44,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btEmprunter = new System.Windows.Forms.Button();
             this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
@@ -81,17 +82,17 @@
             // textBoxLibrary
             // 
             this.textBoxLibrary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLibrary.Location = new System.Drawing.Point(10, 69);
+            this.textBoxLibrary.Location = new System.Drawing.Point(110, 45);
             this.textBoxLibrary.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxLibrary.Name = "textBoxLibrary";
             this.textBoxLibrary.ReadOnly = true;
-            this.textBoxLibrary.Size = new System.Drawing.Size(266, 13);
+            this.textBoxLibrary.Size = new System.Drawing.Size(168, 13);
             this.textBoxLibrary.TabIndex = 4;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(282, 175);
+            this.label8.Location = new System.Drawing.Point(282, 133);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 13);
@@ -101,7 +102,7 @@
             // textBoxDailyPenalty
             // 
             this.textBoxDailyPenalty.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxDailyPenalty.Location = new System.Drawing.Point(397, 179);
+            this.textBoxDailyPenalty.Location = new System.Drawing.Point(397, 137);
             this.textBoxDailyPenalty.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDailyPenalty.Name = "textBoxDailyPenalty";
             this.textBoxDailyPenalty.ReadOnly = true;
@@ -121,7 +122,7 @@
             // textBoxTarif
             // 
             this.textBoxTarif.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTarif.Location = new System.Drawing.Point(284, 69);
+            this.textBoxTarif.Location = new System.Drawing.Point(319, 45);
             this.textBoxTarif.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTarif.Name = "textBoxTarif";
             this.textBoxTarif.ReadOnly = true;
@@ -131,7 +132,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(282, 145);
+            this.label10.Location = new System.Drawing.Point(282, 103);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(94, 13);
@@ -141,7 +142,7 @@
             // textBoxFee
             // 
             this.textBoxFee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxFee.Location = new System.Drawing.Point(397, 145);
+            this.textBoxFee.Location = new System.Drawing.Point(397, 103);
             this.textBoxFee.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxFee.Name = "textBoxFee";
             this.textBoxFee.ReadOnly = true;
@@ -151,6 +152,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.textBoxMessage);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textBoxDurée);
             this.panel1.Controls.Add(this.label2);
@@ -165,13 +167,13 @@
             this.panel1.Controls.Add(this.textBoxTarif);
             this.panel1.Location = new System.Drawing.Point(2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 203);
+            this.panel1.Size = new System.Drawing.Size(528, 188);
             this.panel1.TabIndex = 20;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(361, 113);
+            this.label4.Location = new System.Drawing.Point(361, 71);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
@@ -181,7 +183,7 @@
             // textBoxDurée
             // 
             this.textBoxDurée.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxDurée.Location = new System.Drawing.Point(331, 113);
+            this.textBoxDurée.Location = new System.Drawing.Point(331, 71);
             this.textBoxDurée.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDurée.Name = "textBoxDurée";
             this.textBoxDurée.ReadOnly = true;
@@ -192,7 +194,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 113);
+            this.label2.Location = new System.Drawing.Point(282, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
@@ -201,7 +203,7 @@
             // 
             // btEmprunter
             // 
-            this.btEmprunter.Location = new System.Drawing.Point(130, 112);
+            this.btEmprunter.Location = new System.Drawing.Point(131, 103);
             this.btEmprunter.Name = "btEmprunter";
             this.btEmprunter.Size = new System.Drawing.Size(96, 46);
             this.btEmprunter.TabIndex = 0;
@@ -213,16 +215,25 @@
             // 
             this.dgvItems.AllowUserToAddRows = false;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Location = new System.Drawing.Point(55, 211);
+            this.dgvItems.Location = new System.Drawing.Point(55, 196);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(2);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowTemplate.Height = 24;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(406, 352);
+            this.dgvItems.Size = new System.Drawing.Size(406, 367);
             this.dgvItems.TabIndex = 21;
             this.dgvItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvItems_MouseDoubleClick);
+            // 
+            // textBoxMessage
+            // 
+            this.textBoxMessage.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxMessage.Location = new System.Drawing.Point(11, 154);
+            this.textBoxMessage.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxMessage.Name = "textBoxMessage";
+            this.textBoxMessage.Size = new System.Drawing.Size(500, 20);
+            this.textBoxMessage.TabIndex = 23;
             // 
             // FormDetailsEmprunt
             // 
@@ -263,5 +274,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxDurée;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxMessage;
     }
 }

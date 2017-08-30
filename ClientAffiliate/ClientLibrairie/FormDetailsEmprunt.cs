@@ -123,6 +123,7 @@ namespace ClientLibrairie
             int item_Id = _CurrentPreEmprunt.ItemId;
             int tarif_Id =int.Parse(_CurrentPreEmprunt.ItemCode);
             DAL.StartEmprunt(cardNum,  item_Id,  tarif_Id);
+            SetMessage("Votre emprunt est enregistré");
         }
 
 
@@ -135,6 +136,16 @@ namespace ClientLibrairie
         {
             _CurrentPreEmprunt = _LstPreEmprunts.SingleOrDefault(em => em.ItemId == (int)dgvItems.SelectedRows[0].Cells["ItemId"].Value) ?? _CurrentPreEmprunt;
             _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
+        }
+
+
+        /// <summary>
+        /// Formatage des messages (ajouts réussis,...) pour le textbox d'info.
+        /// </summary>
+        /// <param name="message"></param>
+        private void SetMessage(string message)
+        {
+            textBoxMessage.Text = string.Format("     " + (DateTime.Now.ToString() + "  :  " + message));
         }
 
         /// <summary>
