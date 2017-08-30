@@ -1132,6 +1132,7 @@ namespace ClientLibrairie.ServiceReference {
         System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Affiliate> GetAffiliateByNameAsync(string FirstName, string lastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetWishListByCardNum", ReplyAction="http://tempuri.org/IAffiliateService/GetWishListByCardNumResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetWishListByCardNumCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
         ClientLibrairie.ServiceReference.WishListItem[] GetWishListByCardNum(int cardNum);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetWishListByCardNum", ReplyAction="http://tempuri.org/IAffiliateService/GetWishListByCardNumResponse")]
@@ -1213,6 +1214,27 @@ namespace ClientLibrairie.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetTarifsByLib", ReplyAction="http://tempuri.org/IAffiliateService/GetTarifsByLibResponse")]
         System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Tarif[]> GetTarifsByLibAsync(int libraryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/AddWishListItem", ReplyAction="http://tempuri.org/IAffiliateService/AddWishListItemResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/AddWishListItemCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        void AddWishListItem(int cardNum, int volumeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/AddWishListItem", ReplyAction="http://tempuri.org/IAffiliateService/AddWishListItemResponse")]
+        System.Threading.Tasks.Task AddWishListItemAsync(int cardNum, int volumeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/DeleteWishListItem", ReplyAction="http://tempuri.org/IAffiliateService/DeleteWishListItemResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/DeleteWishListItemCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        void DeleteWishListItem(int wishId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/DeleteWishListItem", ReplyAction="http://tempuri.org/IAffiliateService/DeleteWishListItemResponse")]
+        System.Threading.Tasks.Task DeleteWishListItemAsync(int wishId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/StartEmprunt", ReplyAction="http://tempuri.org/IAffiliateService/StartEmpruntResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/StartEmpruntCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
+        void StartEmprunt(int cardNum, int item_Id, int tarif_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/StartEmprunt", ReplyAction="http://tempuri.org/IAffiliateService/StartEmpruntResponse")]
+        System.Threading.Tasks.Task StartEmpruntAsync(int cardNum, int item_Id, int tarif_Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1360,6 +1382,30 @@ namespace ClientLibrairie.ServiceReference {
         
         public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Tarif[]> GetTarifsByLibAsync(int libraryId) {
             return base.Channel.GetTarifsByLibAsync(libraryId);
+        }
+        
+        public void AddWishListItem(int cardNum, int volumeId) {
+            base.Channel.AddWishListItem(cardNum, volumeId);
+        }
+        
+        public System.Threading.Tasks.Task AddWishListItemAsync(int cardNum, int volumeId) {
+            return base.Channel.AddWishListItemAsync(cardNum, volumeId);
+        }
+        
+        public void DeleteWishListItem(int wishId) {
+            base.Channel.DeleteWishListItem(wishId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteWishListItemAsync(int wishId) {
+            return base.Channel.DeleteWishListItemAsync(wishId);
+        }
+        
+        public void StartEmprunt(int cardNum, int item_Id, int tarif_Id) {
+            base.Channel.StartEmprunt(cardNum, item_Id, tarif_Id);
+        }
+        
+        public System.Threading.Tasks.Task StartEmpruntAsync(int cardNum, int item_Id, int tarif_Id) {
+            return base.Channel.StartEmpruntAsync(cardNum, item_Id, tarif_Id);
         }
     }
 }

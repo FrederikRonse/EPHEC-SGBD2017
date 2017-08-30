@@ -41,6 +41,9 @@
   <wsdl:message name="IAffiliateService_GetWishListByCardNum_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetWishListByCardNumResponse" />
   </wsdl:message>
+  <wsdl:message name="IAffiliateService_GetWishListByCardNum_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q4:CustomFault" />
+  </wsdl:message>
   <wsdl:message name="IAffiliateService_GetEmpruntsByAffiliate_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliate" />
   </wsdl:message>
@@ -48,7 +51,7 @@
     <wsdl:part name="parameters" element="tns:GetEmpruntsByAffiliateResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetEmpruntsByAffiliate_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q4:CustomFault" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q5:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetEmpruntByCode_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmpruntByCode" />
@@ -57,7 +60,7 @@
     <wsdl:part name="parameters" element="tns:GetEmpruntByCodeResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetEmpruntByCode_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q5:CustomFault" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q6:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetRetards_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRetards" />
@@ -66,7 +69,7 @@
     <wsdl:part name="parameters" element="tns:GetRetardsResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetRetards_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q6:CustomFault" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q7:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetLibraries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLibraries" />
@@ -75,7 +78,7 @@
     <wsdl:part name="parameters" element="tns:GetLibrariesResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetLibraries_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q7:CustomFault" />
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q8:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetAllVolumes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllVolumes" />
@@ -84,7 +87,7 @@
     <wsdl:part name="parameters" element="tns:GetAllVolumesResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetAllVolumes_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q8:CustomFault" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q9:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetItemsByVolume_InputMessage">
     <wsdl:part name="parameters" element="tns:GetItemsByVolume" />
@@ -93,7 +96,7 @@
     <wsdl:part name="parameters" element="tns:GetItemsByVolumeResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetItemsByVolume_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q9:CustomFault" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q10:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumeDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVolumeDetails" />
@@ -102,7 +105,7 @@
     <wsdl:part name="parameters" element="tns:GetVolumeDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumeDetails_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q10:CustomFault" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q11:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumeDetailsByIsbn_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVolumeDetailsByIsbn" />
@@ -111,7 +114,7 @@
     <wsdl:part name="parameters" element="tns:GetVolumeDetailsByIsbnResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumeDetailsByIsbn_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q11:CustomFault" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q12:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumeByTitle_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVolumeByTitle" />
@@ -120,7 +123,7 @@
     <wsdl:part name="parameters" element="tns:GetVolumeByTitleResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumeByTitle_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q12:CustomFault" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q13:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumesByTitle_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVolumesByTitle" />
@@ -129,7 +132,7 @@
     <wsdl:part name="parameters" element="tns:GetVolumesByTitleResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetVolumesByTitle_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q13:CustomFault" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q14:CustomFault" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetTarifsByLib_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTarifsByLib" />
@@ -138,7 +141,34 @@
     <wsdl:part name="parameters" element="tns:GetTarifsByLibResponse" />
   </wsdl:message>
   <wsdl:message name="IAffiliateService_GetTarifsByLib_CustomFaultFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q14:CustomFault" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q15:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_AddWishListItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWishListItem" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_AddWishListItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWishListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_AddWishListItem_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q16:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_DeleteWishListItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWishListItem" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_DeleteWishListItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWishListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_DeleteWishListItem_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q17:CustomFault" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_StartEmprunt_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartEmprunt" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_StartEmprunt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartEmpruntResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAffiliateService_StartEmprunt_CustomFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/WcfBLAffiliate" name="detail" element="q18:CustomFault" />
   </wsdl:message>
   <wsdl:portType name="IAffiliateService">
     <wsdl:operation name="CheckIn">
@@ -159,6 +189,7 @@
     <wsdl:operation name="GetWishListByCardNum">
       <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetWishListByCardNum" message="tns:IAffiliateService_GetWishListByCardNum_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetWishListByCardNumResponse" message="tns:IAffiliateService_GetWishListByCardNum_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetWishListByCardNumCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetWishListByCardNum_CustomFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmpruntsByAffiliate">
       <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliate" message="tns:IAffiliateService_GetEmpruntsByAffiliate_InputMessage" />
@@ -215,6 +246,21 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/GetTarifsByLibResponse" message="tns:IAffiliateService_GetTarifsByLib_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/GetTarifsByLibCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_GetTarifsByLib_CustomFaultFault_FaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddWishListItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/AddWishListItem" message="tns:IAffiliateService_AddWishListItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/AddWishListItemResponse" message="tns:IAffiliateService_AddWishListItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/AddWishListItemCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_AddWishListItem_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWishListItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/DeleteWishListItem" message="tns:IAffiliateService_DeleteWishListItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/DeleteWishListItemResponse" message="tns:IAffiliateService_DeleteWishListItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/DeleteWishListItemCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_DeleteWishListItem_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartEmprunt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAffiliateService/StartEmprunt" message="tns:IAffiliateService_StartEmprunt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAffiliateService/StartEmpruntResponse" message="tns:IAffiliateService_StartEmprunt_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IAffiliateService/StartEmpruntCustomFaultFault" name="CustomFaultFault" message="tns:IAffiliateService_StartEmprunt_CustomFaultFault_FaultMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAffiliateService" type="tns:IAffiliateService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -262,6 +308,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetEmpruntsByAffiliate">
       <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetEmpruntsByAffiliate" style="document" />
@@ -385,6 +434,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetTarifsByLib">
       <soap:operation soapAction="http://tempuri.org/IAffiliateService/GetTarifsByLib" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddWishListItem">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/AddWishListItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWishListItem">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/DeleteWishListItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomFaultFault">
+        <soap:fault use="literal" name="CustomFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="StartEmprunt">
+      <soap:operation soapAction="http://tempuri.org/IAffiliateService/StartEmprunt" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EL;
-
+using ClientLibrairie.ServiceReference;
 
 
 
@@ -253,39 +253,7 @@ namespace ClientLibrairie
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="volumeId"></param>
-        private void Emprunter(int volumeId)
-        {
-            ServiceReference.AffiliateServiceClient sClient = new ServiceReference.AffiliateServiceClient();
-
-            try
-            {
-                sClient.wi(item);
-                SetMessage("Exemplaire ajouté !");
-            }
-            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
-            {
-                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
-                CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
-                CstmError.Display(cstmError);
-            }
-            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
-            {
-                CstmError.Display(Fault.Message);
-            }
-            catch (CstmError cstmError)
-            {
-                CstmError.Display(cstmError);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(string.Format("Une exception s'est produite à l'ajout : \n {0}", e.Message), "Erreur",
-                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+      
 
         /// <summary>
         /// Ajoute un livre à la Wishlist.
@@ -608,7 +576,8 @@ namespace ClientLibrairie
         }
 
         /// <summary>
-        /// Créé un volume ou un item et appelle la méthode d'ajout.
+        /// Ajoute un volume dans la wishlist 
+        /// ou ouvre la fenêtre de selection pour emprunt.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -618,31 +587,23 @@ namespace ClientLibrairie
             {
                 if (_user != null && _currentVolume  != null)
                 {
-                    ServiceReference.WishListItem wishItem = new ServiceReference.WishListItem();
+                    WishListItem wishItem = new WishListItem();
                     wishItem.CardNum = _user.CardNum;
                     wishItem.Volume_Id = (int) _currentVolume.Id;
                     AddToWishList(wishItem);
                     
                     _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
-           //         GetVolumeDetailsByIsbn(_currentVolume.Isbn); //Pour rafraîchir et avoir l'Id.
+                    //GetVolumeDetailsByIsbn(_currentVolume.Isbn); //Pour rafraîchir et avoir l'Id.
                     SetVolInfoBox(true);
                 }
             }
             // Sinon, emprunt.
-            // test et save
+          
             if (_user != null && _currentVolume != null)
             {
-                FormEmprunt formEmprunt = new FormEmprunt(this._parentForm, _user, _currentVolume);
+                FormDetailsEmprunt formEmprunt = new FormDetailsEmprunt(this._parentForm, _user, _currentVolume);
                 formEmprunt.MdiParent = this._parentForm;
                 formEmprunt.Show();
-
-                ServiceReference.Item newItem = new ServiceReference.Item();
-                newItem.Code = tbItemCode.Text;
-                newItem.LibraryId = _currentLibrary.Id;
-                newItem.VolumeId = (Int32)_currentVolume.Id;
-                newItem.BuyDate = dateTimePickerItem.Value;
-                AddItem(newItem);
-                //      GetVolumeDetailsByIsbn(_currentVolume.Isbn);
             }
             else
                 MessageBox.Show("Veuillez d'abord choisir un ouvrage !", "Informations manquantes",

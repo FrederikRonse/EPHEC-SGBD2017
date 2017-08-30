@@ -78,35 +78,35 @@ namespace EL
                         sMessage = "pas de ConnectionString disponible !";
                         break;
                     case 5:
-                        sMessage = "Erreur SQL : violation d'unicité d'index !";
+                        sMessage = "Cet enregistrement existe déjà !"; //Erreur SQL : violation d'unicité d'index !
                         break;
                     case 6:
                         sMessage = "Erreur SQL non traitée !";
                         if (_e != null) throw _e;
                         break;
                     case 7:
-                        sMessage = "Problème à la récupération des données par la DAL !";
+                        sMessage = "Un problème est survenu à la récupération des données !";
                         break;
                     case 8:
-                        sMessage = "Une erreur est survenue dans la business layer !";
+                        sMessage = "Une erreur est survenue au niveau du serveur !";
                         break;
                     case 9:
                         sMessage = " End point not found! Vérifiez que le serveur est lancé.";
                         break;
                     case 10:
-                        sMessage = " Problème à la récupération des données !";
+                        sMessage = " Un problème est survenu à la modification des données !";
                         break;
                     case 11:
                         sMessage = " Aucun résultat ne correspond à cette recherche !";
                         break;
                     case 12:
-                        sMessage = " !";
+                        sMessage = " Un problème est survenu à l'ajout !";
                         break;
                     case 13:
-                        sMessage = " !";
+                        sMessage = " La modification n'a pas pu être effectuée ! \n Veuillez réessayer.";
                         break;
                     case 14:
-                        sMessage = " !";
+                        sMessage = " Un problème est survenu à la suppression ! ";
                         break;
                     case 15:
                         sMessage = " !";
