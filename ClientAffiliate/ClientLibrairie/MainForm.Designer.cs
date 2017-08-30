@@ -32,6 +32,7 @@
             this.EmprunterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EmpruntsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +42,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.EmprunterToolStripMenuItem,
             this.WishToolStripMenuItem,
-            this.EmpruntsToolStripMenuItem});
+            this.EmpruntsToolStripMenuItem,
+            this.ProfilToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -61,7 +63,7 @@
             this.WishToolStripMenuItem.Name = "WishToolStripMenuItem";
             this.WishToolStripMenuItem.Size = new System.Drawing.Size(135, 25);
             this.WishToolStripMenuItem.Text = "Livres &Souhaités";
-            this.WishToolStripMenuItem.Click += new System.EventHandler(this.lecteursToolStripMenuItem_Click);
+            this.WishToolStripMenuItem.Click += new System.EventHandler(this.whishListToolStripMenuItem_Click);
             // 
             // EmpruntsToolStripMenuItem
             // 
@@ -69,6 +71,13 @@
             this.EmpruntsToolStripMenuItem.Size = new System.Drawing.Size(122, 25);
             this.EmpruntsToolStripMenuItem.Text = "&Mes Emprunts";
             this.EmpruntsToolStripMenuItem.Click += new System.EventHandler(this.retardsToolStripMenuItem_Click);
+            // 
+            // ProfilToolStripMenuItem
+            // 
+            this.ProfilToolStripMenuItem.Name = "ProfilToolStripMenuItem";
+            this.ProfilToolStripMenuItem.Size = new System.Drawing.Size(95, 25);
+            this.ProfilToolStripMenuItem.Text = "Mon &Profil";
+            this.ProfilToolStripMenuItem.Click += new System.EventHandler(this.ProfilToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -78,7 +87,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Bienvenue";
             this.menuStrip1.ResumeLayout(false);
@@ -94,6 +103,7 @@
         private System.Windows.Forms.ToolStripMenuItem EmprunterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem WishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EmpruntsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ProfilToolStripMenuItem;
     }
 }
 

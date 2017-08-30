@@ -54,12 +54,9 @@ namespace WcfBLAffiliate
             List<Library> listToReturn = new List<Library>();
             try
             {
-                List<Library> newList = new List<Library>();
-                DalLibrary.GetAllLibraries(ref newList);
-                //if (listToReturn != null)
-                //{
-                //    if (listToReturn.Count != 0)
-                //    {
+                List<Library> _newList = new List<Library>();
+                DalLibrary.GetAllLibraries(ref _newList);
+                listToReturn = _newList;
                 return listToReturn;
             }
             catch (CstmError ex)

@@ -109,18 +109,25 @@ namespace ClientLibrairie
             }
         }
 
-        private void lecteursToolStripMenuItem_Click(object sender, EventArgs e)
+        private void whishListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormLect formlecteur = new FormLect();
-            formlecteur.MdiParent = this;
-            formlecteur.Show();
-          }
+            FormRetards formRetards = new FormRetards(this);
+            formRetards.MdiParent = this;
+            formRetards.Show();
+        }
 
         private void retardsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormRetards formRetards = new FormRetards(_libraries);
+            FormRetards formRetards = new FormRetards(this);
             formRetards.MdiParent = this;
             formRetards.Show();
+        }
+
+        private void ProfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLect formLect = new FormLect(this);
+            formLect.MdiParent = this;
+            formLect.Show();
         }
     }
     //Code prof pour google api

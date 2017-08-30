@@ -14,8 +14,8 @@ namespace ClientLibrairie
 {
     public partial class FormDetails : Form
     {
-        private FormLect.EmpruntXtd _currentEmprunt = null;
-        public FormDetails(FormLect.EmpruntXtd emprunt)
+        private EmpruntXtd _currentEmprunt = null;  
+        public FormDetails(EmpruntXtd emprunt)  
         {
             InitializeComponent();
             _currentEmprunt = emprunt;

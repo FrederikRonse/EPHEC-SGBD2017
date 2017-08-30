@@ -11,14 +11,16 @@ using EL;
 
 namespace ClientLibrairie
 {
+ 
+    
     /// <summary>
     /// Regroupe les transferts de données vers et depuis le WCF.
     /// pour plus de clarté dans les Froms.
     /// </summary>
-   static internal class DAL
+    static internal class DAL
     {
         /// <summary>
-        /// Retourne 
+        /// Retourne la liste des exemplaires d'un livre.
         /// </summary>
         /// <param name="volumeId"></param>
         internal static List<Item> GetItems( int volumeId)
@@ -83,6 +85,44 @@ namespace ClientLibrairie
                 CstmError.Display(new CstmError(7, e)); //Un problème est survenu à la récupération des données !
             }
             return _tarifToReturn;
+        }
+
+        //PAS BON, VERSION ADMIN (par bibliothèque)
+        /// <summary>
+        /// Récupère les retards.
+        /// (par bibliothèque)
+        /// </summary>
+        /// <param name="libId"></param>
+        /// <param name="referenceDate"></param>
+        /// <returns></returns>
+        internal static List<Emprunt> GetRetards(int libId, DateTime referenceDate = default(DateTime) )
+        {
+            List<Emprunt> _Retards = new List<Emprunt>();
+            try
+            {
+                using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
+                {
+                    _Retards = _sClient.GetRetards(referenceDate, libId).ToList();
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError.Display(new CstmError(cstmErrorN, endpointEx));
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                CstmError.Display(new CstmError(7, e)); //Un problème est survenu à la récupération des données !
+            }
+            return _Retards;
         }
 
         /// <summary>
@@ -152,6 +192,79 @@ namespace ClientLibrairie
                 CstmError.Display(new CstmError(12, e)); // "erreur à l'ajout..."
             }
         }
-
     }
+
+
+    /// <summary>
+    /// Classe étendant le BO "Emprunt" pour plus de facilité.
+    /// </summary>
+    public class EmpruntXtd : Emprunt
+    {
+        public EmpruntXtd() { }
+        public EmpruntXtd(ServiceReference.Emprunt empruntToConvert)
+        {
+            this.Id = empruntToConvert.Id;
+            this.CardNum = empruntToConvert.CardNum;
+            this.ItemId = empruntToConvert.ItemId;
+            this.ItemCode = empruntToConvert.ItemCode;
+            this.LibraryId = empruntToConvert.LibraryId;
+            this.LibraryName = empruntToConvert.LibraryName;
+            this.TarifName = empruntToConvert.TarifName;
+            this.VolumeTitle = empruntToConvert.VolumeTitle;
+            this.StartDate = empruntToConvert.StartDate;
+            this.Duration = empruntToConvert.Duration;
+            this.ReturnDte = empruntToConvert.ReturnDte;
+            this.Fee = empruntToConvert.Fee;
+            this.DailyPenalty = empruntToConvert.DailyPenalty;
+            this.LastModified = empruntToConvert.LastModified;
+        }
+
+        public DateTime PlannedRtnDte
+        {
+            get
+            {
+                return StartDate.AddDays(Duration);
+            }
+        }
+
+        public int LateDays
+        {
+            get
+            {
+                int compRslt = DateTime.Compare(DateTime.Today, PlannedRtnDte);
+
+                if (compRslt < 0)
+                {
+                    return -1;
+                }
+                if (compRslt == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    int daysDiff = new int();
+                    for (DateTime i = PlannedRtnDte; i < DateTime.Today; i = i.AddDays(1))
+                    {
+                        if (i.DayOfWeek != DayOfWeek.Sunday)
+                        {
+                            daysDiff++;
+                        }
+                    }
+                    return daysDiff;
+                }
+            }
+        }
+
+        public decimal ToPay
+        {
+            get
+            {
+                if (LateDays < 0) return 0;
+                if (LateDays <= 0) return Fee;
+                else return (Fee + LateDays * DailyPenalty);
+            }
+        }
+    }
+
 }

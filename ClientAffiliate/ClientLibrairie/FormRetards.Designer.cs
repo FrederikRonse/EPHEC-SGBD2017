@@ -133,7 +133,7 @@
             // 
             // empruntFullBindingSource
             // 
-            this.empruntFullBindingSource.DataSource = typeof(ClientLibrairie.FormRetards.EmpruntFull);
+           // this.empruntFullBindingSource.DataSource = typeof(ClientLibrairie.FormRetards.EmpruntFull);
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
