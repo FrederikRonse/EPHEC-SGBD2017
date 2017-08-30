@@ -268,6 +268,7 @@ namespace ClientLibrairie
                 wishItem.CardNum = _user.CardNum;
                 wishItem.Volume_Id = (int)_currentVolume.Id;
                 DAL.AddToWishList(wishItem.CardNum, wishItem.Volume_Id);
+                SetMessage("Ce volume a été rajouté à votre liste de souhaits.");
             }
         }
 
@@ -299,7 +300,7 @@ namespace ClientLibrairie
             rbWish.Show();
             rbEmprunt.Show();
             btAddAction.Show();
-            pictureBox1.ImageLocation = @"C:\Users\Murad\documents\Exam SGBD 2016-17\Images\book-cover_template.jpg";
+            pictureBox1.ImageLocation = @"~\Covers\book-cover_template.jpg"; //@"C:\Users\Murad\documents\Exam SGBD 2016-17\Images\book-cover_template.jpg"
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             SetVolInfoBox(true);
 
@@ -456,25 +457,32 @@ namespace ClientLibrairie
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btAddAction_Click(object sender, EventArgs e)
-        {   // Si ajout dans la wishlist.
-            if (rbWish.Checked == true)
-            {
-                AddToWishList();
-                _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
-                                                     //GetVolumeDetailsByIsbn(_currentVolume.Isbn); //Pour rafraîchir et avoir l'Id.
-                SetVolInfoBox(true);
-            }
-            // Sinon, on ouvre un form pour emprunt.
+        {
             if (_user != null && _currentVolume != null)
             {
-                FormDetailsEmprunt formEmprunt = new FormDetailsEmprunt(this._parentForm, _user, _currentVolume);
-                formEmprunt.MdiParent = this._parentForm;
-                formEmprunt.Show();
+                // Si ajout dans la wishlist.
+                if (rbWish.Checked == true)
+                {
+                    AddToWishList();
+                    _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
+                                                         //GetVolumeDetailsByIsbn(_currentVolume.Isbn); //Pour rafraîchir et avoir l'Id.
+                    SetVolInfoBox(true);
+                }
+                // Sinon, on ouvre un form pour emprunt.
+                if (rbEmprunt.Checked == true)
+                {
+                    FormDetailsEmprunt formEmprunt = new FormDetailsEmprunt(this._parentForm, _user, _currentVolume);
+                    formEmprunt.MdiParent = this._parentForm;
+                    formEmprunt.Show();
+                }
             }
             else
+            {
                 MessageBox.Show("Veuillez d'abord choisir un ouvrage !", "Informations manquantes",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
+
 
         /// <summary>
         /// Selectionne le volume courant.

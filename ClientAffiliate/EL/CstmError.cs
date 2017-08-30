@@ -112,7 +112,7 @@ namespace EL
                         sMessage = " Cet ouvrage n'a pas d'exemplaire !";
                         break;
                     case 16:
-                        sMessage = " !";
+                        sMessage = "Ce lecteur n'a pas d'emprunts en cours.";
                         break;
                     case 17:
                         sMessage = " !";

@@ -165,19 +165,20 @@ namespace WcfBLAffiliate
             }
         }
 
-        /// <summary>
-        /// Retourne les retards d'une librairie.
-        /// la date n'est pas utilisée.
-        /// </summary>
-        /// <param name="date"></param>
-        /// <param name="libId"></param>
-        /// <returns></returns>
-        public List<Emprunt> GetRetards(DateTime date, int libId) //List<vEmpruntDetail>
+
+       /// <summary>
+       /// Retourne les retards d'un lecteur.
+       /// (getemrpunt bool selectclosed = true).
+       /// </summary>
+       /// <param name="lectId"></param>
+       /// <returns></returns>
+        public List<Emprunt> GetRetards(int lectId)  
         {
+
             List<Emprunt> listToReturn = new List<Emprunt>();
             try
             {
-                DalEmprunt.GetRetardsByLib(libId, ref listToReturn);
+                DalEmprunt.GetEmpruntsByCardNum(lectId, true, ref listToReturn);
                 return listToReturn;
             }
             catch (CstmError ex)
@@ -189,6 +190,7 @@ namespace WcfBLAffiliate
                 throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
             }
         }
+
 
         /// <summary>
         /// Retourne un emprunt par le code de l'exemplaire emprunté. [PAS UTILISE]

@@ -43,7 +43,7 @@ namespace WcfBLAffiliate
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        List<Emprunt> GetRetards(DateTime date, int libId);
+        List<Emprunt> GetRetards(int affiliateId);
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]

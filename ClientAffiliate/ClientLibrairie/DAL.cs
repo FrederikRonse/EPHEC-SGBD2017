@@ -55,6 +55,41 @@ namespace ClientLibrairie
         }
 
         /// <summary>
+        /// Retourne tous les emprunts d'un affilié.
+        /// </summary>
+        /// <param name="cardNum"></param>
+        /// <returns></returns>
+        internal static List<Emprunt> GetEmprunts(int cardNum)
+        {
+            List<Emprunt> _emprunts = new List<Emprunt>();
+            try
+            {
+                using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
+                {
+                    _emprunts = _sClient.GetEmpruntsByAffiliate(cardNum).ToList();
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError.Display(new CstmError(cstmErrorN, endpointEx));
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                CstmError.Display(new CstmError(7, e)); //Un problème est survenu à la récupération des données !
+            }
+            return _emprunts;
+        }
+
+        /// <summary>
         /// Retourne la liste des exemplaires d'un livre.
         /// </summary>
         /// <param name="volumeId"></param>

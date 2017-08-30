@@ -55,6 +55,7 @@ namespace ClientLibrairie
             textBoxDailyPenalty.Text = _CurrentPreEmprunt.DailyPenalty.ToString();
             textBoxFee.Text = _CurrentPreEmprunt.Fee.ToString();
             textBoxTarif.Text = _CurrentPreEmprunt.TarifName;
+            textBoxDurée.Text = _CurrentPreEmprunt.Duration.ToString();
         }
         /// <summary>
         /// Remplissage de la liste des exemplaires.

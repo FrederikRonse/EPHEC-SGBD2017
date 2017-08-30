@@ -136,6 +136,36 @@ namespace WcfBLAffiliate
             }
         }
 
+        //INUTILE : UTILISER getemprunt avec bool false.
+        //public static void GetRetardsAffiliate(int cardNum, bool selectClosed, ref List<Emprunt> listToReturn)
+        //{
+        //    StringBuilder sLog = new StringBuilder();
+
+        //    listToReturn.Clear();
+        //    using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+        //    {
+        //        try
+        //        {
+        //            foreach (GetEmpruntById_Result vresult in dbEntity.GetEmpruntById(cardNum,true))
+        //            {
+        //                Emprunt emprunt = new Emprunt();
+
+        //                emprunt.Id = vresult.IdEmprunt;
+        //                emprunt.CardNum = vresult.CardNum;
+        //                emprunt. = vresult.;
+        //                emprunt. = vresult.;
+        //                emprunt. = vresult.;
+
+        //                listToReturn.Add((emprunt));
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            int DefaultError = 7; //"Problème à la récupération des données !"
+        //            throw new EL.CstmError(DefaultError, ex);
+        //        }
+        //    }
+        //}
 
         //TODO FAIRE RETARDS du lecteur (+ RETARDS PAR LIBS?)
         /// <summary>

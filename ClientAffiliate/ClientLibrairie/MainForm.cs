@@ -16,6 +16,7 @@ namespace ClientLibrairie
     {
         internal List<ServiceReference.Library> _libraries;
         internal ServiceReference.Affiliate _CurrentAffiliate;
+        internal List<Emprunt> _emprunts = new List<Emprunt>(); 
         ///Pour test
         int userid = 1;
         public MainForm()
@@ -23,6 +24,7 @@ namespace ClientLibrairie
             InitializeComponent();
             SetAllLibraries();
             GetCurrentUser(userid);  //pour tests
+            GetUserEmprunts(_CurrentAffiliate.CardNum);
         }
         /// <summary>
         /// Charge toutes les librairies pour le choix de la librairie active.
@@ -109,16 +111,49 @@ namespace ClientLibrairie
             }
         }
 
+        private void GetUserEmprunts(int cardNum)
+        {
+            try
+            {
+                List<Emprunt> emprunts = DAL.GetEmprunts(cardNum);
+                if (emprunts != null) _emprunts = emprunts;
+                else
+                {
+                    int cstmErrorN = 16; //"Ce lecteur n'a pas d'emprunts en cours."
+                    throw new CstmError(cstmErrorN);
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
+                CstmError.Display(cstmError);
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Une exception s'est produite à la récupération des données !", "Erreur",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void whishListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormRetards formRetards = new FormRetards(this);
+            FormEmprunts formRetards = new FormEmprunts(this);
             formRetards.MdiParent = this;
             formRetards.Show();
         }
 
         private void retardsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormRetards formRetards = new FormRetards(this);
+            FormEmprunts formRetards = new FormEmprunts(this);
             formRetards.MdiParent = this;
             formRetards.Show();
         }
