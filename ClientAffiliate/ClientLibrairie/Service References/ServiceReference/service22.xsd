@@ -90,8 +90,7 @@
   <xs:element name="GetRetards">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="date" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="libId" type="xs:int" />
+        <xs:element minOccurs="0" name="affiliateId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -240,6 +239,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="cardNum" type="xs:int" />
         <xs:element minOccurs="0" name="item_Id" type="xs:int" />
+        <xs:element minOccurs="0" name="volume_Id" type="xs:int" />
         <xs:element minOccurs="0" name="tarif_Id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

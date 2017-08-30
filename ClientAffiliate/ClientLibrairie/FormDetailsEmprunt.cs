@@ -20,7 +20,6 @@ namespace ClientLibrairie
         private List<Item> _exemplaires = new List<Item>();
         private List<Emprunt> _LstPreEmprunts = new List<Emprunt>();
         private Emprunt _CurrentPreEmprunt =new Emprunt();
-        //  private FormLect.EmpruntXtd _emprunt;
 
         private BindingSource _bsDataGridView = new BindingSource();
 
@@ -122,8 +121,9 @@ namespace ClientLibrairie
         {
             int cardNum = _currentUser.CardNum;
             int item_Id = _CurrentPreEmprunt.ItemId;
+            int volume_Id =(int) _volume.Id;
             int tarif_Id =int.Parse(_CurrentPreEmprunt.ItemCode);
-            DAL.StartEmprunt(cardNum,  item_Id,  tarif_Id);
+            DAL.StartEmprunt(cardNum,  item_Id,(int)_volume.Id,  tarif_Id);
             SetMessage("Votre emprunt est enregistré");
         }
 

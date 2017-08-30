@@ -1154,10 +1154,10 @@ namespace ClientLibrairie.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetRetards", ReplyAction="http://tempuri.org/IAffiliateService/GetRetardsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetRetardsCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
-        ClientLibrairie.ServiceReference.Emprunt[] GetRetards(System.DateTime date, int libId);
+        ClientLibrairie.ServiceReference.Emprunt[] GetRetards(int affiliateId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetRetards", ReplyAction="http://tempuri.org/IAffiliateService/GetRetardsResponse")]
-        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Emprunt[]> GetRetardsAsync(System.DateTime date, int libId);
+        System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Emprunt[]> GetRetardsAsync(int affiliateId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/GetLibraries", ReplyAction="http://tempuri.org/IAffiliateService/GetLibrariesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/GetLibrariesCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
@@ -1231,10 +1231,10 @@ namespace ClientLibrairie.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/StartEmprunt", ReplyAction="http://tempuri.org/IAffiliateService/StartEmpruntResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ClientLibrairie.ServiceReference.CustomFault), Action="http://tempuri.org/IAffiliateService/StartEmpruntCustomFaultFault", Name="CustomFault", Namespace="http://schemas.datacontract.org/2004/07/WcfBLAffiliate")]
-        void StartEmprunt(int cardNum, int item_Id, int tarif_Id);
+        void StartEmprunt(int cardNum, int item_Id, int volume_Id, int tarif_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAffiliateService/StartEmprunt", ReplyAction="http://tempuri.org/IAffiliateService/StartEmpruntResponse")]
-        System.Threading.Tasks.Task StartEmpruntAsync(int cardNum, int item_Id, int tarif_Id);
+        System.Threading.Tasks.Task StartEmpruntAsync(int cardNum, int item_Id, int volume_Id, int tarif_Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1312,12 +1312,12 @@ namespace ClientLibrairie.ServiceReference {
             return base.Channel.GetEmpruntByCodeAsync(code);
         }
         
-        public ClientLibrairie.ServiceReference.Emprunt[] GetRetards(System.DateTime date, int libId) {
-            return base.Channel.GetRetards(date, libId);
+        public ClientLibrairie.ServiceReference.Emprunt[] GetRetards(int affiliateId) {
+            return base.Channel.GetRetards(affiliateId);
         }
         
-        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Emprunt[]> GetRetardsAsync(System.DateTime date, int libId) {
-            return base.Channel.GetRetardsAsync(date, libId);
+        public System.Threading.Tasks.Task<ClientLibrairie.ServiceReference.Emprunt[]> GetRetardsAsync(int affiliateId) {
+            return base.Channel.GetRetardsAsync(affiliateId);
         }
         
         public ClientLibrairie.ServiceReference.Library[] GetLibraries() {
@@ -1400,12 +1400,12 @@ namespace ClientLibrairie.ServiceReference {
             return base.Channel.DeleteWishListItemAsync(wishId);
         }
         
-        public void StartEmprunt(int cardNum, int item_Id, int tarif_Id) {
-            base.Channel.StartEmprunt(cardNum, item_Id, tarif_Id);
+        public void StartEmprunt(int cardNum, int item_Id, int volume_Id, int tarif_Id) {
+            base.Channel.StartEmprunt(cardNum, item_Id, volume_Id, tarif_Id);
         }
         
-        public System.Threading.Tasks.Task StartEmpruntAsync(int cardNum, int item_Id, int tarif_Id) {
-            return base.Channel.StartEmpruntAsync(cardNum, item_Id, tarif_Id);
+        public System.Threading.Tasks.Task StartEmpruntAsync(int cardNum, int item_Id, int volume_Id, int tarif_Id) {
+            return base.Channel.StartEmpruntAsync(cardNum, item_Id, volume_Id, tarif_Id);
         }
     }
 }

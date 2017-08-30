@@ -95,7 +95,7 @@ namespace WcfBLAffiliate
 
         [OperationContract]
         [FaultContract(typeof(CustomFault))]
-        void StartEmprunt(int cardNum, int item_Id, int tarif_Id);
+        void StartEmprunt(int cardNum, int item_Id, int volume_Id, int tarif_Id);
 
         #endregion Operations "Set"
 

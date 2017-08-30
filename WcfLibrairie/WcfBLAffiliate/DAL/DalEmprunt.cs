@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using BusinessObjects;
+using System.Transactions;
 
 namespace WcfBLAffiliate
 {
@@ -114,25 +115,36 @@ namespace WcfBLAffiliate
         /// <summary>
         /// Insère un nouvel emprunt.
         /// La date de départ est crée dans la base de données.
+        /// Supprime un éventuel wish item correspondant à cet exemplaire.
+        /// (Transaction)
         /// </summary>
         /// <param name="CardNum"></param>
         /// <param name="Item_Id"></param>
         /// <param name="Tarif_Id"></param>
-        public static void InsertEmprunt(int cardNum, int item_Id, int tarif_Id)
+        public static void InsertEmprunt(int cardNum, int item_Id, int volume_Id, int tarif_Id)
         {
             StringBuilder sLog = new StringBuilder();
 
-            using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
+            try
             {
-                try
+                using (ExamSGBD2017Entities dbEntity = new ExamSGBD2017Entities())
                 {
-                    dbEntity.InsertEmprunt(cardNum, item_Id, tarif_Id);
+                    using (TransactionScope ts = new TransactionScope())
+                    {
+                        dbEntity.InsertEmprunt(cardNum, item_Id, tarif_Id);
+                        foreach (var wishes in dbEntity.GetWishlist(cardNum).Where(w=> w.Volume_Id == volume_Id))
+                        {
+                            dbEntity.DeleteWishById(wishes.Id);
+                            ts.Complete();
+                        }
+                    }
                 }
-                catch (Exception ex)
-                {
-                    int DefaultError = 12; //" Un problème est survenu à l'ajout !"
-                    throw new EL.CstmError(DefaultError, ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                int DefaultError = 12; //" Un problème est survenu à l'ajout !"
+                throw new EL.CstmError(DefaultError, ex);
+
             }
         }
 

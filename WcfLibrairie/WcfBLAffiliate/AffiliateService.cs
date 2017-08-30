@@ -401,11 +401,11 @@ namespace WcfBLAffiliate
         /// <param name="CardNum"></param>
         /// <param name="Item_Id"></param>
         /// <param name="Tarif_Id"></param>
-        public void StartEmprunt(int cardNum,int item_Id,int tarif_Id)
+        public void StartEmprunt(int cardNum,int item_Id, int volume_Id, int tarif_Id)
         {
             try
             {
-                DalEmprunt.InsertEmprunt(cardNum,  item_Id,  tarif_Id);
+                DalEmprunt.InsertEmprunt(cardNum,  item_Id,  volume_Id, tarif_Id);
             }
             catch (CstmError ex)
             {

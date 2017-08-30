@@ -192,22 +192,21 @@ namespace ClientLibrairie
             return _tarifToReturn;
         }
 
-        //PAS BON, VERSION ADMIN (par bibliothèque)
         /// <summary>
         /// Récupère les retards.
-        /// (par bibliothèque)
+        ///  
         /// </summary>
         /// <param name="libId"></param>
         /// <param name="referenceDate"></param>
         /// <returns></returns>
-        internal static List<Emprunt> GetRetards(int libId, DateTime referenceDate = default(DateTime) )
+        internal static List<Emprunt> GetRetards(int affId, DateTime referenceDate = default(DateTime) )
         {
             List<Emprunt> _Retards = new List<Emprunt>();
             try
             {
                 using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
                 {
-                    _Retards = _sClient.GetRetards(referenceDate, libId).ToList();
+                    _Retards = _sClient.GetRetards(affId).ToList(); 
                 }
             }
             catch (System.ServiceModel.EndpointNotFoundException endpointEx)
@@ -237,13 +236,13 @@ namespace ClientLibrairie
         /// <param name="cardNum"></param>
         /// <param name="item_Id"></param>
         /// <param name="tarif_Id"></param>
-        internal static void StartEmprunt(int cardNum, int item_Id, int tarif_Id)
+        internal static void StartEmprunt(int cardNum, int item_Id,int _volume_Id, int tarif_Id)
         {
             try
             {
                 using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
                 {
-                    _sClient.StartEmprunt( cardNum,  item_Id,  tarif_Id);
+                    _sClient.StartEmprunt( cardNum,  item_Id, _volume_Id, tarif_Id);
                 }
             }
             catch (System.ServiceModel.EndpointNotFoundException endpointEx)
