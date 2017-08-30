@@ -17,7 +17,7 @@ namespace ClientLibrairie
         internal List<ServiceReference.Library> _libraries;
         internal ServiceReference.Affiliate _CurrentAffiliate;
         internal List<Emprunt> _emprunts = new List<Emprunt>();
-        List<WishListItem> _wishList = new List<WishListItem>();
+        internal List<WishListItem> _wishList = new List<WishListItem>();
         ///Pour test
         int userid = 1;
         public MainForm()

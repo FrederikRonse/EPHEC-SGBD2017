@@ -32,6 +32,7 @@
             this.tbTitleSearch = new System.Windows.Forms.TextBox();
             this.dgvItems = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btSwitchView = new System.Windows.Forms.Button();
             this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.panelAddItem = new System.Windows.Forms.Panel();
             this.btAddAction = new System.Windows.Forms.Button();
@@ -84,20 +85,21 @@
             // 
             this.dgvItems.AllowUserToAddRows = false;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Location = new System.Drawing.Point(15, 385);
+            this.dgvItems.Location = new System.Drawing.Point(15, 399);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(2);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowTemplate.Height = 24;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(406, 259);
+            this.dgvItems.Size = new System.Drawing.Size(406, 245);
             this.dgvItems.TabIndex = 4;
             this.dgvItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvItems_MouseDoubleClick);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btSwitchView);
             this.panel1.Controls.Add(this.textBoxMessage);
             this.panel1.Controls.Add(this.panelAddItem);
             this.panel1.Controls.Add(this.lblSearchTitle);
@@ -113,6 +115,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(435, 656);
             this.panel1.TabIndex = 6;
+            // 
+            // btSwitchView
+            // 
+            this.btSwitchView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSwitchView.Location = new System.Drawing.Point(124, 86);
+            this.btSwitchView.Margin = new System.Windows.Forms.Padding(2);
+            this.btSwitchView.Name = "btSwitchView";
+            this.btSwitchView.Size = new System.Drawing.Size(143, 35);
+            this.btSwitchView.TabIndex = 13;
+            this.btSwitchView.Text = "Voir la WishList";
+            this.btSwitchView.UseVisualStyleBackColor = true;
+            this.btSwitchView.Click += new System.EventHandler(this.btSwitchView_Click);
             // 
             // textBoxMessage
             // 
@@ -216,12 +230,13 @@
             // labelDGV
             // 
             this.labelDGV.AutoSize = true;
-            this.labelDGV.Location = new System.Drawing.Point(12, 370);
+            this.labelDGV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDGV.Location = new System.Drawing.Point(121, 381);
             this.labelDGV.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDGV.Name = "labelDGV";
-            this.labelDGV.Size = new System.Drawing.Size(13, 13);
+            this.labelDGV.Size = new System.Drawing.Size(190, 16);
             this.labelDGV.TabIndex = 5;
-            this.labelDGV.Text = " :";
+            this.labelDGV.Text = " Ouvrages en bibliothèque";
             // 
             // panelVolumeInfo
             // 
@@ -376,5 +391,6 @@
         private System.Windows.Forms.TextBox textBoxMessage;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelDGV;
+        private System.Windows.Forms.Button btSwitchView;
     }
 }

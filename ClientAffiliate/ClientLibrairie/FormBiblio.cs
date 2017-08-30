@@ -22,7 +22,7 @@ namespace ClientLibrairie
         private ServiceReference.Library _currentLibrary;
         private List<ServiceReference.Volume> _volumes;
         private ServiceReference.Volume _currentVolume = null;
-        private bool _toWishList = true;
+        private bool _showVolumes = true;
 
 
 
@@ -47,9 +47,36 @@ namespace ClientLibrairie
             if (_user.FirstName != null) this.Text = string.Format("Bienvenue {0} !", _user.FirstName);
             GetAllVolumes();
             BindAndSet();
-
+            SwitchVolWish();
         }
 
+
+        /// <summary>
+        /// Lie les differents controles aux données et les initialise.
+        /// </summary>
+        private void BindAndSet()
+        {
+            comboBoxLibChoice.DataSource = _libraries;
+            comboBoxLibChoice.DisplayMember = "Name";
+            comboBoxLibChoice.ValueMember = "Id";
+            _bsCurrentLib.DataSource = null;
+            _bsCurrentLib.DataSource = _currentLibrary;
+            dgvBiblioInfo.DataSource = null;
+            dgvBiblioInfo.DataSource = _bsCurrentLib;
+            dgvBiblioInfo.ColumnHeadersVisible = false;
+            dgvBiblioInfo.Columns[0].Visible = false;
+            dgvBiblioInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvItems.ColumnHeadersVisible = false;
+
+            rbEmprunt.Checked = true;
+            rbWish.Show();
+            rbEmprunt.Show();
+            btAddAction.Show();
+            pictureBox1.ImageLocation = @"~\Covers\book-cover_template.jpg"; //@"C:\Users\Murad\documents\Exam SGBD 2016-17\Images\book-cover_template.jpg"
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            SetVolInfoBox(true);
+        }
 
         /// <summary>
         /// Charge toutes les librairies pour le combobox du choix de la librairie active.
@@ -273,37 +300,40 @@ namespace ClientLibrairie
         }
 
 
-        /// <summary>
-        /// Lie les differents controles aux données et les initialise.
-        /// </summary>
-        private void BindAndSet()
+
+        private void SwitchVolWish()
         {
-            _bsCurrentLib.DataSource = null;
-            _bsCurrentLib.DataSource = _currentLibrary;
-            dgvBiblioInfo.DataSource = null;
-            dgvBiblioInfo.DataSource = _bsCurrentLib;
-            dgvBiblioInfo.Columns[0].Visible = false;
-            dgvBiblioInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            switch (_showVolumes)
+            {
+                case true:
+                    if (_volumes != null)
+                    {
+                        _bsDataGridView.DataSource = null;
+                        _bsDataGridView.DataSource = _volumes;
+                        dgvItems.DataSource = null;
+                        dgvItems.DataSource = _bsDataGridView;
+                        rbWish.Visible = true;
+                        labelDGV.Text = "Ouvrages en bibliothèque";
+                        btSwitchView.Text = "Voir la WishList";
+                        _showVolumes = false;
+                    }
+                    break;
+                case false:
+                    if (_parentForm._wishList != null)
+                    {
+                        _bsDataGridView.DataSource = null;
+                        _bsDataGridView.DataSource = _parentForm._wishList;
+                        dgvItems.DataSource = null;
+                        dgvItems.DataSource = _bsDataGridView;
+                        rbWish.Visible = false;
+                        labelDGV.Text = "Votre WishList";
+                        btSwitchView.Text = "Voir les livres";
+                        rbEmprunt.Checked = true;
+                        _showVolumes = true;
+                    }
+                    break;
 
-            _bsDataGridView.DataSource = null;
-            _bsDataGridView.DataSource = _volumes;
-            dgvItems.DataSource = null;
-            dgvItems.DataSource = _bsDataGridView;
-            dgvItems.ColumnHeadersVisible = false;
-            //   dgvItems.Columns["PersId"].Visible = false;
-            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            comboBoxLibChoice.DataSource = _libraries;
-            comboBoxLibChoice.DisplayMember = "Name";
-            comboBoxLibChoice.ValueMember = "Id";
-
-            rbWish.Show();
-            rbEmprunt.Show();
-            btAddAction.Show();
-            pictureBox1.ImageLocation = @"~\Covers\book-cover_template.jpg"; //@"C:\Users\Murad\documents\Exam SGBD 2016-17\Images\book-cover_template.jpg"
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            SetVolInfoBox(true);
-
+            }
         }
 
         /// <summary>
@@ -415,7 +445,7 @@ namespace ClientLibrairie
 
 
         /// <summary>
-        /// Prépare un ajout à la wishlist ou une réservation, selon choix utilisateur.
+        /// Mise en forme visuelle wishlist ou une réservation, selon choix utilisateur.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -431,13 +461,11 @@ namespace ClientLibrairie
                         switch (radio.Name)
                         {
                             case "rbEmprunt":
-                                _toWishList = false;
                                 // Mise en forme visuelle.
                                 btAddAction.Text = "Emprunter";
                                 break;
 
                             case "rbWish":
-                                _toWishList = true;
                                 // Mise en forme visuelle.
                                 btAddAction.Text = "Ajouter à votre WishList";
                                 break;
@@ -481,6 +509,11 @@ namespace ClientLibrairie
                 MessageBox.Show("Veuillez d'abord choisir un ouvrage !", "Informations manquantes",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void btSwitchView_Click(object sender, EventArgs e)
+        {
+            SwitchVolWish();
         }
 
 
@@ -560,6 +593,7 @@ namespace ClientLibrairie
         }
 
         #endregion non utilisé (pour autres forms)
+
 
     }
 }
