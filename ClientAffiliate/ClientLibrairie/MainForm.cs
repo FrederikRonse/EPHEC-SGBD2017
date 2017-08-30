@@ -16,7 +16,8 @@ namespace ClientLibrairie
     {
         internal List<ServiceReference.Library> _libraries;
         internal ServiceReference.Affiliate _CurrentAffiliate;
-        internal List<Emprunt> _emprunts = new List<Emprunt>(); 
+        internal List<Emprunt> _emprunts = new List<Emprunt>();
+        List<WishListItem> _wishList = new List<WishListItem>();
         ///Pour test
         int userid = 1;
         public MainForm()
@@ -25,6 +26,7 @@ namespace ClientLibrairie
             SetAllLibraries();
             GetCurrentUser(userid);  //pour tests
             GetUserEmprunts(_CurrentAffiliate.CardNum);
+            GetWishList(_CurrentAffiliate.CardNum);
         }
         /// <summary>
         /// Charge toutes les librairies pour le choix de la librairie active.
@@ -62,12 +64,7 @@ namespace ClientLibrairie
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void bibliothèquesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormBiblio formBiblio = new FormBiblio(this);
-            formBiblio.MdiParent = this;
-            formBiblio.Show();
-        }
+  
 
         /// <summary>
         /// Retourne le lecteur connecté par son id (N° de carte).
@@ -110,7 +107,10 @@ namespace ClientLibrairie
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// Récupère les emprunts de l'affilié.
+        /// </summary>
+        /// <param name="cardNum"></param>
         private void GetUserEmprunts(int cardNum)
         {
             try
@@ -144,6 +144,56 @@ namespace ClientLibrairie
             }
         }
 
+        /// <summary>
+        /// Récupère la wishlist de l'affilié.
+        /// </summary>
+        /// <param name="cardNum"></param>
+        private void GetWishList(int cardNum)
+        {
+            try
+            {
+                List<WishListItem> wishlist = DAL.GetWishList(cardNum);
+                if (wishlist != null) _wishList = wishlist;
+                else
+                {
+                    int cstmErrorN = 16; //"Ce lecteur n'a pas d'emprunts en cours."
+                    throw new CstmError(cstmErrorN);
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError cstmError = new CstmError(cstmErrorN, endpointEx);
+                CstmError.Display(cstmError);
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Une exception s'est produite à la récupération des données !", "Erreur",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Ouvre la fenêtre de choix pour emprunt et consultation wishlist.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bibliothèquesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBiblio formBiblio = new FormBiblio(this);
+            formBiblio.MdiParent = this;
+            formBiblio.Show();
+        }
+
+        //pas utilisé
         private void whishListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEmprunts formRetards = new FormEmprunts(this);
@@ -151,6 +201,11 @@ namespace ClientLibrairie
             formRetards.Show();
         }
 
+        /// <summary>
+        /// Fenêtre emrpunts et retards
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void retardsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEmprunts formRetards = new FormEmprunts(this);
@@ -158,6 +213,11 @@ namespace ClientLibrairie
             formRetards.Show();
         }
 
+        /// <summary>
+        /// Fenêtre infos lecteur.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLect formLect = new FormLect(this);

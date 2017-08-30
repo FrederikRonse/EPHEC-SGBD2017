@@ -90,6 +90,41 @@ namespace ClientLibrairie
         }
 
         /// <summary>
+        /// Renvoie la whislist de l'affilié.
+        /// </summary>
+        /// <param name="cardNum"></param>
+        /// <returns></returns>
+        internal static List<WishListItem> GetWishList(int cardNum)
+        {
+            List<WishListItem> _wishList = new List<WishListItem>();
+            try
+            {
+                using (AffiliateServiceClient _sClient = new AffiliateServiceClient())
+                {
+                    _wishList = _sClient.GetWishListByCardNum(cardNum).ToList();
+                }
+            }
+            catch (System.ServiceModel.EndpointNotFoundException endpointEx)
+            {
+                int cstmErrorN = 9; // "End point not found! Vérifiez que le serveur est lancé."
+                CstmError.Display(new CstmError(cstmErrorN, endpointEx));
+            }
+            catch (System.ServiceModel.FaultException<ServiceReference.CustomFault> Fault)
+            {
+                CstmError.Display(Fault.Message);
+            }
+            catch (CstmError cstmError)
+            {
+                CstmError.Display(cstmError);
+            }
+            catch (Exception e)
+            {
+                CstmError.Display(new CstmError(7, e)); //Un problème est survenu à la récupération des données !
+            }
+            return _wishList;
+        }
+
+        /// <summary>
         /// Retourne la liste des exemplaires d'un livre.
         /// </summary>
         /// <param name="volumeId"></param>
