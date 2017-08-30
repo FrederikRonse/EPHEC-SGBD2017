@@ -63,11 +63,13 @@ namespace ClientLibrairie
             _bsCurrentLib.DataSource = _currentLibrary;
             dgvBiblioInfo.DataSource = null;
             dgvBiblioInfo.DataSource = _bsCurrentLib;
+            dgvBiblioInfo.AutoSize = true;
             dgvBiblioInfo.ColumnHeadersVisible = false;
             dgvBiblioInfo.Columns[0].Visible = false;
             dgvBiblioInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvItems.ColumnHeadersVisible = false;
+            dgvItems.AutoSize = true;
 
             rbEmprunt.Checked = true;
             rbWish.Show();

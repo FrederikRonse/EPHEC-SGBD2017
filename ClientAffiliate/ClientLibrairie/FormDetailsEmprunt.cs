@@ -64,6 +64,7 @@ namespace ClientLibrairie
         {
             _bsDataGridView.DataSource = null;
             _bsDataGridView.DataSource = _LstPreEmprunts;
+            dgvItems.AutoSize = true;
             dgvItems.DataSource = null;
             dgvItems.DataSource = _bsDataGridView;
             dgvItems.ColumnHeadersVisible = false;

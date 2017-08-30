@@ -181,6 +181,7 @@ namespace ClientLibrairie
             }
         }
 
+
         /// <summary>
         /// Ouvre la fenêtre de choix pour emprunt et consultation wishlist.
         /// </summary>

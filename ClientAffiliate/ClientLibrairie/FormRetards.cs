@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientLibrairie.ServiceReference;
+using Utilities;
 using EL;
 
 
@@ -41,8 +42,12 @@ namespace ClientLibrairie
             comboBoxLibChoice.DisplayMember = "Name";
             comboBoxLibChoice.ValueMember = "Id";
 
-            _bsDataGridView.DataSource = null;
-            _bsDataGridView.DataSource = _emprunts;
+            dataGridView1.AutoSize = true;
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _emprunts;// _bsDataGridView;
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            SetMessage(string.Format("Vos emprunts, {0} .",_parentForm._CurrentAffiliate.FirstName));
         }
 
         private void SetMessage(string message)
