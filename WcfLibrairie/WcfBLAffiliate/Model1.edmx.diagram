@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="ExamSGBD2017Model.vLibrary" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExamSGBD2017Model.vVolume" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ExamSGBD2017Model.vWishlist" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExamSGBD2017Model.vTarif" Width="1.5" PointX="3.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

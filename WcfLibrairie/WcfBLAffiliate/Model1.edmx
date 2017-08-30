@@ -105,6 +105,26 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vLibrary' does not have 
           <Property Name="CodeIdLibrary" Type="nchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vTarif' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vTarif">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Library_Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Fee" />
+            <PropertyRef Name="DailyPenalty" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Library_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Year" Type="smallint" Nullable="false" />
+          <Property Name="Duration" Type="smallint" Nullable="false" />
+          <Property Name="Fee" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="DailyPenalty" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vVolume' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vVolume">
           <Key>
@@ -180,6 +200,12 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <Parameter Name="Idvol" Type="int" Mode="In" />
         </Function>
         <Function Name="GetLibraries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate" />
+        <Function Name="GetTarifByLibId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTarifShortById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetVolumeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SchAffiliate">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -259,6 +285,17 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
     [vLibrary].[NameLibrary] AS [NameLibrary], 
     [vLibrary].[CodeIdLibrary] AS [CodeIdLibrary]
     FROM [SchAffiliate].[vLibrary] AS [vLibrary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vTarif" EntityType="Self.vTarif" store:Type="Views" store:Schema="SchAffiliate">
+            <DefiningQuery>SELECT 
+    [vTarif].[Id] AS [Id], 
+    [vTarif].[Library_Id] AS [Library_Id], 
+    [vTarif].[Name] AS [Name], 
+    [vTarif].[Year] AS [Year], 
+    [vTarif].[Duration] AS [Duration], 
+    [vTarif].[Fee] AS [Fee], 
+    [vTarif].[DailyPenalty] AS [DailyPenalty]
+    FROM [SchAffiliate].[vTarif] AS [vTarif]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vVolume" EntityType="Self.vVolume" store:Type="Views" store:Schema="SchAffiliate">
             <DefiningQuery>SELECT 
@@ -476,6 +513,13 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
             <Parameter Name="Item_Id" Mode="In" Type="Int32" />
             <Parameter Name="Tarif_Id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="vTarifs" EntityType="ExamSGBD2017Model.vTarif" />
+          <FunctionImport Name="GetTarifByLibId" ReturnType="Collection(ExamSGBD2017Model.GetTarifByLibId_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTarifShortById" ReturnType="Collection(ExamSGBD2017Model.GetTarifShortById_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAffiliateByCardNum_Result">
           <Property Type="Int32" Name="CardNum" Nullable="false" />
@@ -606,6 +650,38 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
           <Property Type="String" Name="Isbn" Nullable="false" MaxLength="13" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Cover" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="vTarif">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Library_Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Fee" />
+            <PropertyRef Name="DailyPenalty" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Library_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int16" Nullable="false" />
+          <Property Name="Duration" Type="Int16" Nullable="false" />
+          <Property Name="Fee" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="DailyPenalty" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+        </EntityType>
+        <ComplexType Name="GetTarifByLibId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Library_Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int16" Name="Year" Nullable="false" />
+          <Property Type="Int16" Name="Duration" Nullable="false" />
+          <Property Type="Decimal" Name="Fee" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="DailyPenalty" Nullable="false" Precision="8" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetTarifShortById_Result">
+          <Property Type="Int16" Name="Duration" Nullable="false" />
+          <Property Type="Decimal" Name="Fee" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="DailyPenalty" Nullable="false" Precision="8" Scale="2" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -897,6 +973,41 @@ warning 6002: The table/view 'ExamSGBD2017.SchAffiliate.vWishlist' does not have
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertEmprunt" FunctionName="ExamSGBD2017Model.Store.InsertEmprunt" />
+          <EntitySetMapping Name="vTarifs">
+            <EntityTypeMapping TypeName="ExamSGBD2017Model.vTarif">
+              <MappingFragment StoreEntitySet="vTarif">
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTarifByLibId" FunctionName="ExamSGBD2017Model.Store.GetTarifByLibId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetTarifByLibId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Library_Id" ColumnName="Library_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTarifShortById" FunctionName="ExamSGBD2017Model.Store.GetTarifShortById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExamSGBD2017Model.GetTarifShortById_Result">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="DailyPenalty" ColumnName="DailyPenalty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

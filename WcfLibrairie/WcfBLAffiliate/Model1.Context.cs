@@ -34,6 +34,7 @@ namespace WcfBLAffiliate
         public virtual DbSet<vLibrary> vLibraries { get; set; }
         public virtual DbSet<vVolume> vVolumes { get; set; }
         public virtual DbSet<vWishlist> vWishlists { get; set; }
+        public virtual DbSet<vTarif> vTarifs { get; set; }
     
         public virtual int DeleteWishById(Nullable<int> id)
         {
@@ -228,6 +229,24 @@ namespace WcfBLAffiliate
                 new ObjectParameter("Tarif_Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertEmprunt", cardNumParameter, item_IdParameter, tarif_IdParameter);
+        }
+    
+        public virtual ObjectResult<GetTarifByLibId_Result> GetTarifByLibId(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTarifByLibId_Result>("GetTarifByLibId", idParameter);
+        }
+    
+        public virtual ObjectResult<GetTarifShortById_Result> GetTarifShortById(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTarifShortById_Result>("GetTarifShortById", idParameter);
         }
     }
 }

@@ -854,12 +854,6 @@ namespace ClientLibrairie.ServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int VolumeIdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VolumeIsbnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VolumeTitleField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -961,32 +955,6 @@ namespace ClientLibrairie.ServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VolumeIsbn {
-            get {
-                return this.VolumeIsbnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VolumeIsbnField, value) != true)) {
-                    this.VolumeIsbnField = value;
-                    this.RaisePropertyChanged("VolumeIsbn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VolumeTitle {
-            get {
-                return this.VolumeTitleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VolumeTitleField, value) != true)) {
-                    this.VolumeTitleField = value;
-                    this.RaisePropertyChanged("VolumeTitle");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1010,7 +978,7 @@ namespace ClientLibrairie.ServiceReference {
         private decimal DailyPenaltyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DurationField;
+        private int DurationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal FeeField;
@@ -1051,7 +1019,7 @@ namespace ClientLibrairie.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Duration {
+        public int Duration {
             get {
                 return this.DurationField;
             }

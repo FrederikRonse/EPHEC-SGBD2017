@@ -307,11 +307,13 @@ namespace WcfBLAffiliate
                 throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
             }
         }
+
         /// <summary>
         /// Retourne tous les exemplaires d'un volume.
         /// </summary>
         /// <param name="VolumeId"></param>
         /// <returns></returns>
+        /// 
         public List<Item> GetItemsByVolume(int VolumeId)
         {
             List<Item> _listToReturn = new List<Item>();
@@ -329,6 +331,30 @@ namespace WcfBLAffiliate
                 throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
             }
         }
+
+        /// <summary>
+        /// retourne les tarifs d'une librairie.
+        /// </summary>
+        /// <param name="LibraryId"></param>
+        /// <returns></returns>
+        public List<Tarif> GetTarifsByLib(int LibraryId)
+        {
+            List<Tarif> _listToReturn = new List<Tarif>();
+            try
+            {
+                DalTarif.GetTarifByLib(LibraryId, ref _listToReturn);
+                return _listToReturn;
+            }
+            catch (CstmError ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Un problème est survenu à la récupération des données !"), new FaultReason(ex.GetMsg));
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<CustomFault>(new CustomFault("Une erreur est survenue au niveau du serveur !"));
+            }
+        }
+
 
         #endregion Opérations "Get"
 
@@ -401,10 +427,7 @@ namespace WcfBLAffiliate
         }
 
         // A SUPPRIMER?
-        public List<Tarif> GetTarifsByLib(int LibraryId)
-        {
-            throw new NotImplementedException();
-        }
+     
 
     
 

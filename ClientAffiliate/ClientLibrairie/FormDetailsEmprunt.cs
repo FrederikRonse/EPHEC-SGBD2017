@@ -18,8 +18,8 @@ namespace ClientLibrairie
         private Affiliate _currentUser = null;
         private Volume _volume = null;
         private List<Item> _exemplaires = new List<Item>();
-        private List<Emprunt> _LstPreEmprunts = null;
-        private Emprunt _CurrentPreEmprunt = null;
+        private List<Emprunt> _LstPreEmprunts = new List<Emprunt>();
+        private Emprunt _CurrentPreEmprunt =new Emprunt();
         //  private FormLect.EmpruntXtd _emprunt;
 
         private BindingSource _bsDataGridView = new BindingSource();
@@ -38,8 +38,11 @@ namespace ClientLibrairie
         {
             SetPreEmpList();
             SetDgvPreEmps();
-            if (_LstPreEmprunts !=null && _LstPreEmprunts.Count >0) _CurrentPreEmprunt = _LstPreEmprunts.First();
-            RefreshDetails();
+            if (_LstPreEmprunts != null && _LstPreEmprunts.Count > 0)
+            {
+                _CurrentPreEmprunt = _LstPreEmprunts.First();
+                RefreshDetails();
+            }
         }
 
         /// <summary>
@@ -91,14 +94,21 @@ namespace ClientLibrairie
             foreach (Item item in _exemplaires)
             {
                 Emprunt preEmp = new Emprunt();
+                preEmp.CardNum = _currentUser.CardNum;
+                preEmp.ItemId = item.Id;
+                preEmp.VolumeTitle = _volume.Title;
+                preEmp.LibraryId = item.LibraryId;
+
                 Library empLib = _parentForm._libraries.SingleOrDefault(l => l.Id == item.LibraryId);
                 Tarif empTarif = DAL.getTarif(empLib.Id);
                 preEmp.LibraryName = empLib.Name.ToString();
                 preEmp.ItemCode = empTarif.Id.ToString(); 
                 preEmp.TarifName = empTarif.Name;
                 preEmp.Fee = empTarif.Fee;
-                preEmp.DailyPenalty = empTarif.DailyPenalty;
-                //      preEmp.Duration =   empTarif.Duration;
+                preEmp.Duration = empTarif.Duration;
+               preEmp.DailyPenalty = empTarif.DailyPenalty;
+
+                _LstPreEmprunts.Add(preEmp);
             }
         }
 
@@ -122,7 +132,7 @@ namespace ClientLibrairie
         /// <param name="e"></param>
         private void dgvItems_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _CurrentPreEmprunt = _LstPreEmprunts.SingleOrDefault(em => em.Id == (int)dgvItems.SelectedRows[0].Cells["Id"].Value) ?? _CurrentPreEmprunt;
+            _CurrentPreEmprunt = _LstPreEmprunts.SingleOrDefault(em => em.ItemId == (int)dgvItems.SelectedRows[0].Cells["ItemId"].Value) ?? _CurrentPreEmprunt;
             _bsDataGridView.ResetBindings(false);// Sinon ne mets pas l'affichage à jour.
         }
 

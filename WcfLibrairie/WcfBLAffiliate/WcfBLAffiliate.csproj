@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DAL\DalAffiliate.cs" />
     <Compile Include="DAL\DalAuthor.cs" />
+    <Compile Include="DAL\DalTarif.cs" />
     <Compile Include="DAL\DalWishList.cs" />
     <Compile Include="DAL\DalEmprunt.cs" />
     <Compile Include="DAL\DalItem.cs" />
@@ -92,6 +93,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GetLibraries_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTarifByLibId_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTarifShortById_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GetVolumeById_Result.cs">
@@ -137,6 +144,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="vLibrary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vTarif.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="vVolume.cs">

@@ -13,7 +13,7 @@ namespace WcfBLAffiliate
     {
 
         /// <summary>
-        /// Retourne les emprunts en cours du lecteur.
+        /// Retourne la liste des volumes souhaités par le lecteur.
         /// </summary>
         /// <param name="cardNum"></param>
         /// <param name="listToReturn"></param>
@@ -26,7 +26,7 @@ namespace WcfBLAffiliate
             {
                 try
                 {
-                    foreach (GetWishlist_Result vWish in dbEntity.GetWishlist(cardNum)) //vEmpruntDetail
+                    foreach (GetWishlist_Result vWish in dbEntity.GetWishlist(cardNum)) 
                     {
                         WishListItem wishListItem = new WishListItem();
 
