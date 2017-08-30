@@ -312,13 +312,16 @@
             this.dgvBiblioInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             this.dgvBiblioInfo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvBiblioInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBiblioInfo.ColumnHeadersVisible = false;
             this.dgvBiblioInfo.Location = new System.Drawing.Point(32, 10);
             this.dgvBiblioInfo.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBiblioInfo.Name = "dgvBiblioInfo";
             this.dgvBiblioInfo.ReadOnly = true;
+            this.dgvBiblioInfo.RowHeadersVisible = false;
             this.dgvBiblioInfo.RowTemplate.Height = 24;
             this.dgvBiblioInfo.Size = new System.Drawing.Size(225, 42);
             this.dgvBiblioInfo.TabIndex = 4;
+            this.dgvBiblioInfo.Visible = false;
             // 
             // comboBoxLibChoice
             // 
